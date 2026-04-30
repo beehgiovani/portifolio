@@ -9,5 +9,9 @@ RUN mvn clean package -DskipTests
 FROM eclipse-temurin:21-jre-alpine
 WORKDIR /app
 COPY --from=build /app/target/*.jar app.jar
-EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "app.jar"]
+
+# Configurações para o Render:
+# 1. Usar porta dinâmica do ambiente ou 10000 (padrão Render)
+# 2. Limitar memória da JVM para caber no plano Free (512MB)
+ENV PORT=10000
+ENTRYPOINT ["java", "-Xmx384m", "-Xms384m", "-jar", "app.jar", "--server.port=${PORT}"]

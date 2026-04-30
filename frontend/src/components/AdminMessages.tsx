@@ -47,7 +47,7 @@ export function AdminMessages({ onClose }: { onClose: () => void }) {
     // Timer para timeout de 60s (acomodar cold start do Render)
     const timeoutId = setTimeout(() => {
       controller.abort();
-    }, 60000);
+    }, 120000);
 
     fetchMessages(controller.signal).finally(() => clearTimeout(timeoutId));
 

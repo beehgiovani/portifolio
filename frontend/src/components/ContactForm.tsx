@@ -15,7 +15,7 @@ export function ContactForm() {
     setResponseMsg('');
 
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 60000); // 60s for cold start
+    const timeoutId = setTimeout(() => controller.abort(), 120000); // 120s for cold start
 
     // Mostrar aviso de cold start após 5 segundos
     const coldStartTimer = setTimeout(() => {
