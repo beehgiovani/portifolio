@@ -8,7 +8,7 @@ export function TechMarquee() {
   const scrollTechs = [...techs, ...techs];
 
   return (
-    <div style={{ padding: '3rem 0', background: 'rgba(2, 6, 23, 0.5)', borderTop: '1px solid var(--border-glass)', borderBottom: '1px solid var(--border-glass)' }}>
+    <div className="tech-marquee-wrapper">
       <div className="marquee-container">
         <div className="marquee-content">
           {scrollTechs.map((tech, idx) => (

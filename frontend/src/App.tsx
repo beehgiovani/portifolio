@@ -1,5 +1,6 @@
-import { useState } from 'react'
-import { useI18n, type Project } from './hooks/useI18n'
+import { useState, useEffect, useRef } from 'react'
+import { useI18n } from './hooks/useI18n.ts'
+import type { Project } from './types/project.ts'
 import { motion } from 'framer-motion'
 
 // Importando nossos componentes modulares
@@ -15,25 +16,25 @@ import { TechMarquee } from './components/TechMarquee'
 
 // Comportamentos visuais globais (Movidos para cá pra centralizar)
 function MouseGlow() {
-  const [pos, setPos] = useState({ x: 0, y: 0 });
-  
-  useState(() => {
-    const handle = (e: MouseEvent) => setPos({ x: e.clientX, y: e.clientY });
+  const glowRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handle = (e: MouseEvent) => {
+      if (glowRef.current) {
+        glowRef.current.style.transform = `translate(${e.clientX - 250}px, ${e.clientY - 250}px)`;
+      }
+    };
     window.addEventListener('mousemove', handle);
     return () => window.removeEventListener('mousemove', handle);
-  });
+  }, []);
 
   return (
-    <div className="ambient-glow" style={{ 
-      width: '500px', height: '500px',
-      transform: `translate(${pos.x - 250}px, ${pos.y - 250}px)`,
-      transition: 'transform 0.1s ease-out'
-    }}></div>
+    <div ref={glowRef} className="ambient-glow"></div>
   );
 }
 
 function App() {
-  const { t, setLang } = useI18n();
+  const { t, lang, setLang } = useI18n();
   const [showDialog, setShowDialog] = useState(true);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
@@ -42,14 +43,14 @@ function App() {
   }
 
   return (
-    <div className="container" style={{ position: 'relative' }}>
+    <div className="container app-container">
       <MouseGlow />
-      
+
       <Navbar />
 
-      <main style={{ position: 'relative', zIndex: 1 }}>
+      <main className="app-main">
         <Hero />
-        
+
         <TechMarquee />
 
         <LogoMarquee />
@@ -61,40 +62,38 @@ function App() {
         <CertificationSection />
 
         {/* Seção de Autoridade Técnica (Skills) */}
-        <section id="skills" style={{ paddingBottom: '8rem' }}>
+        <section id="skills" className="skills-section">
           <span className="section-label">{t.sections.skills}</span>
-          <div className="grid-bento" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', marginTop: '2rem' }}>
-            <motion.div 
+          <div className="grid-bento skills-grid">
+            <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="card-masterpiece" 
-              style={{ padding: '2rem', flex: 1 }}
+              className="card-masterpiece skills-card"
             >
-              <h4 style={{ marginBottom: '1.5rem', color: 'var(--primary-gold)' }}>Expert Tech Stack</h4>
-              <ul style={{ listStyle: 'none', color: '#94a3b8', fontSize: '1rem' }}>
-                <li style={{ marginBottom: '1rem' }}>⚡ {t.skills.java}</li>
-                <li style={{ marginBottom: '1rem' }}>⚡ {t.skills.react}</li>
-                <li style={{ marginBottom: '1rem' }}>⚡ {t.skills.spring}</li>
-                <li style={{ marginBottom: '1rem' }}>⚡ {t.skills.python}</li>
+              <h4 className="skills-h4">Expert Tech Stack</h4>
+              <ul className="skills-ul">
+                <li className="skills-li">⚡ {t.skills.java}</li>
+                <li className="skills-li">⚡ {t.skills.react}</li>
+                <li className="skills-li">⚡ {t.skills.spring}</li>
+                <li className="skills-li">⚡ {t.skills.python}</li>
               </ul>
             </motion.div>
-            
-            <motion.div 
+
+            <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="card-masterpiece" 
-              style={{ padding: '2rem', flex: 1 }}
+              className="card-masterpiece skills-card"
             >
-              <h4 style={{ marginBottom: '1.5rem' }}>Ecosystem Authority</h4>
-              <ul style={{ listStyle: 'none', color: '#94a3b8', fontSize: '1rem' }}>
-                <li style={{ marginBottom: '1rem' }}>☁️ {t.skills.cloud}</li>
-                <li style={{ marginBottom: '1rem' }}>🗺️ {t.skills.gis}</li>
-                <li style={{ marginBottom: '1rem' }}>🏛️ {t.skills.arch}</li>
-                <li style={{ marginBottom: '1rem' }}>🤖 AI & Computer Vision</li>
+              <h4 className="skills-h4-white">Ecosystem Authority</h4>
+              <ul className="skills-ul">
+                <li className="skills-li">☁️ {t.skills.cloud}</li>
+                <li className="skills-li">🗺️ {t.skills.gis}</li>
+                <li className="skills-li">🏛️ {t.skills.arch}</li>
+                <li className="skills-li">🤖 AI & Computer Vision</li>
               </ul>
             </motion.div>
           </div>
@@ -107,25 +106,72 @@ function App() {
       )}
 
       {/* Rodapé principal */}
-      <motion.footer 
+      <motion.footer
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 1 }}
-        style={{ padding: '8rem 0 4rem', textAlign: 'center', borderTop: '1px solid var(--border-glass)' }}
+        className="app-footer"
       >
-        <h3 className="gradient-heading" style={{ fontSize: '2.5rem', marginBottom: '2rem' }}>{t.sections.contact}</h3>
-        <p style={{ color: '#fff', fontSize: '1.2rem', fontWeight: 800, marginBottom: '0.5rem' }}>
+        <h3 className="gradient-heading footer-title">{t.sections.contact}</h3>
+        <p className="footer-phone">
           {t.contact.phone}
         </p>
-        <p style={{ color: 'var(--primary-gold)', marginBottom: '3rem' }}>
+        <p className="footer-email">
           {t.contact.email}
         </p>
-        <div style={{ display: 'flex', gap: '2rem', justifyContent: 'center', marginBottom: '4rem' }}>
+        <div className="footer-social">
           <a href={t.contact.linkedin} target="_blank" rel="noreferrer" className="nav-link">LinkedIn</a>
           <a href={t.contact.github} target="_blank" rel="noreferrer" className="nav-link">GitHub</a>
         </div>
-        <p style={{ color: '#4b5563', fontSize: '0.8rem' }}>
+
+        <div className="footer-details-box">
+          <h4 className="footer-details-title">{lang === 'en' ? 'Professional Details' : 'Detalhes Profissionais'}</h4>
+          <div className="footer-details-grid">
+            <div className="footer-detail-item">
+              <span className="footer-detail-icon">💰</span>
+              <div className="footer-detail-content">
+                <div className="footer-topic">
+                  <span className="topic-label">PJ (B2B):</span>
+                  <span className="topic-value">R$ 10k - 12k (R$ 60-75/h)</span>
+                </div>
+                <div className="footer-topic">
+                  <span className="topic-label">CLT (Full-Time):</span>
+                  <span className="topic-value">R$ 8k - 9.5k (+ Ben.)</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="footer-detail-item">
+              <span className="footer-detail-icon">🌍</span>
+              <div className="footer-detail-content">
+                <div className="footer-topic">
+                  <span className="topic-label">{lang === 'en' ? 'MODEL' : 'MODELO'}:</span>
+                  <span className="topic-value">Remoto, Híbrido ou Presencial</span>
+                </div>
+                <div className="footer-topic">
+                  <span className="topic-label">{lang === 'en' ? 'MOBILITY' : 'MOBILIDADE'}:</span>
+                  <span className="topic-value">Disponível para viagens</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="footer-detail-item">
+              <span className="footer-detail-icon">🗣️</span>
+              <div className="footer-detail-content">
+                <div className="footer-topic">
+                  <span className="topic-label">{lang === 'en' ? 'NATIVE' : 'NATIVO'}:</span>
+                  <span className="topic-value">Português (Nativo)</span>
+                </div>
+                <div className="footer-topic">
+                  <span className="topic-label">{lang === 'en' ? 'SECOND' : 'SEGUNDO'}:</span>
+                  <span className="topic-value">Inglês (Intermediário B1/B2)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p className="footer-copyright">
           Precision Engineering. © 2026 Bruno Giovani Pereira
         </p>
       </motion.footer>

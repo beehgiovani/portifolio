@@ -1,73 +1,90 @@
-# Bruno Giovani - Professional Portfolio
+# 🚀 Bruno Giovani | Senior Software Engineer & Architect
 
-![React](https://img.shields.io/badge/Frontend-React_19-blue?style=flat-square&logo=react)
-![TypeScript](https://img.shields.io/badge/Language-TypeScript-blue?style=flat-square&logo=typescript)
-![Spring Boot](https://img.shields.io/badge/Backend-Spring_Boot_3-green?style=flat-square&logo=spring)
-![Java](https://img.shields.io/badge/Language-Java_21-orange?style=flat-square&logo=java)
-![PostgreSQL](https://img.shields.io/badge/Database-PostgreSQL-blue?style=flat-square&logo=postgresql)
+<div align="center">
 
-> **Senior Software Engineer | Architecting high-performance digital ecosystems.**  
-> Specializing in Geo-Intelligence, Resilient Microservices, Autonomous AI Agents, and Native Architectures.
+![React](https://img.shields.io/badge/Frontend-React_19-blue?style=for-the-badge&logo=react)
+![TypeScript](https://img.shields.io/badge/Language-TypeScript-blue?style=for-the-badge&logo=typescript)
+![Spring Boot](https://img.shields.io/badge/Backend-Spring_Boot_3-green?style=for-the-badge&logo=spring)
+![Java](https://img.shields.io/badge/Language-Java_21-orange?style=for-the-badge&logo=java)
+![PostgreSQL](https://img.shields.io/badge/Database-PostgreSQL-blue?style=for-the-badge&logo=postgresql)
 
-This repository contains the source code for my professional portfolio, built as a modern, high-performance web application designed to showcase my experience, projects, and technical skills.
+**[LinkedIn](https://linkedin.com/in/bruno-giovani-a50b32230) | [Portfólio Online](https://portifolio-25cfa.web.app/) | [GitHub](https://github.com/BrunoGiovani)**
 
----
+</div>
 
-## 🏗️ Architecture
-
-The project is structured as a full-stack monorepo, separating the UI layer from the robust backend infrastructure.
-
-### Frontend (`/frontend`)
-A highly optimized, SEO-friendly, and fully responsive Single Page Application.
-- **Framework:** React 19 + TypeScript powered by Vite.
-- **Design:** Modern glassmorphism UI, advanced CSS animations, dynamic 3D-perspective cards.
-- **Features:** Client-side i18n (English/Portuguese), interactive mapping placeholders, dynamic theme toggling, and fully componentized architecture.
-- **Deployment Target:** AWS S3 + CloudFront (or Firebase Hosting).
-
-### Backend (`/backend`)
-A resilient, microservice-ready JVM application designed to handle contact form submissions, dynamic portfolio data fetching, and integrations.
-- **Framework:** Java 21 + Spring Boot 3.
-- **Architecture:** Clean Architecture patterns, RESTful APIs, and robust exception handling.
-- **Deployment Target:** AWS App Runner / Docker.
+> **Engenharia de Software Pleno/Senior focada em alta performance, ecossistemas digitais escaláveis e impacto real de negócios.**  
+> Especialista em Geo-Inteligência, Microserviços Resilientes (Java/Spring), Agentes Autônomos de IA (Python) e Arquiteturas Nativas.
 
 ---
 
-## 🚀 Running Locally
+## 🎯 Sobre o Portfólio
 
-### Prerequisites
-- Node.js (v18+)
-- Java JDK 21
-- Maven
+Este repositório não é apenas um site estático; é um **ecossistema full-stack arquitetado do zero** para demonstrar de forma tátil a minha filosofia de desenvolvimento de software.
 
-### Frontend Setup
+Enquanto a maioria dos portfólios são templates prontos, este projeto utiliza **React 19, Vite, Framer Motion e TypeScript** no Frontend, servindo como prova técnica da minha capacidade em desenvolver Single Page Applications altamente performáticas, componentizadas, com suporte a i18n nativo e animações 3D otimizadas na GPU.
+
+### 💡 Filosofia de Arquitetura do Projeto
+- **Single Source of Truth (SSOT):** O projeto utiliza um sistema centralizado (`portfolio.data.json`) onde os dados alimentam tanto a interface React dinâmica quanto os pipelines em Node.js que renderizam os meus 5 currículos automaticamente (em PDF, MD e HTML).
+- **Clean Code & Manutenibilidade:** Estilos componentizados, hooks customizados (`useI18n`) e código escalável focado no princípio DRY (Don't Repeat Yourself).
+- **Glassmorphism & Animação 3D:** Interface desenhada para causar impacto visual sem comprometer o First Contentful Paint (FCP) ou SEO.
+
+---
+
+## 🏆 Projetos de Alto Impacto & Cases de Sucesso
+
+Durante a minha carreira, liderei e desenvolvi sistemas que geraram redução severa de custos e automação de escala em ambientes de produção. Alguns dos destaques arquitetônicos incluem:
+
+### 1. GuaruGeo - Inteligência Imobiliária Geográfica
+- **Ecossistema:** Python, PostGIS, Geopandas.
+- **Impacto:** Construção do maior banco de dados proprietário do litoral paulista. Transformei APIs complexas de WFS em puro dado comercial valioso através de workflows assíncronos isolados.
+
+### 2. AutoScraper Core (UrbanIntelligence)
+- **Ecossistema:** Python, PyTorch, Tor Multiplexing.
+- **Impacto:** Redução de **95% no custo de aquisição de dados governamentais**, através de bots orquestrados na rede Tor capazes de quebrar e resolver captchas matemáticos em massa usando redes neurais convolucionais de visão computacional.
+
+### 3. NidusCare (HealthTech)
+- **Ecossistema:** Kotlin Nativo, Android Jetpack, Room Database.
+- **Impacto:** App offline-first que elevou drasticamente a adesão medicamentosa. Usa Coroutines para sincronização paralela segura sem drenar a bateria do usuário em background.
+
+### 4. Certidões App (AutoJuris AI)
+- **Ecossistema:** Node.js, Puppeteer, Supabase.
+- **Impacto:** RPA serverless rodando no limite da nuvem para emissão massiva de certidões negativas sem acionamento humano.
+
+---
+
+## 🛠️ Stack Tecnológica
+
+| Domínio | Tecnologias Principais |
+|---|---|
+| **Backend & Microserviços** | Java 21, Spring Boot 3, Kotlin, Clean Architecture |
+| **Data Engineering & IA** | Python, PyTorch, Pandas, Geopandas, OpenCV |
+| **Bancos de Dados** | PostgreSQL, PostGIS, MySQL, Redis, Supabase |
+| **Frontend & Mobile** | React 19, TypeScript, Android Nativo (MVVM) |
+| **Cloud & DevOps** | AWS, Docker, Kubernetes, CI/CD, Firebase, Tor Networks |
+
+---
+
+## 🚀 Como Executar o Portfólio Localmente
+
+A arquitetura do repositório foi construída para rodar com o mínimo de atrito.
+
+### Frontend
 ```bash
 cd frontend
 npm install
 npm run dev
 ```
-The frontend will be available at `http://localhost:5173`.
+> O SPA (Single Page App) com hot-reloading estará disponível em `http://localhost:5173`.
 
-### Backend Setup
+### Sincronização Automatizada de Dados
+Caso precise atualizar meus dados no currículo, o pipeline customizado pode ser executado:
 ```bash
-cd backend
-mvn clean install
-mvn spring-boot:run
+node sync_resumes.js
 ```
-The backend will be available at `http://localhost:8080`.
+> Isso varre o `portfolio.data.json` e automaticamente compila todos os `.md` e `.html` sem edição manual.
 
 ---
 
-## 🌟 Featured Projects Highlight
-My portfolio dynamically renders projects that underline my core competencies:
-- **PredictMed**: Enterprise AI-driven inventory prediction leveraging Gemini Vision.
-- **GuaruGeo**: High-fidelity GIS platform and CRM for real estate analytics using PostGIS.
-- **AutoScraper Core**: Distributed bot orchestrator for massive municipal data extraction bypassing complex WAFs via PyTorch ML.
-- **NidusCare**: Comprehensive digital health management native Android app.
-
-*(See the live portfolio for the complete list and interactive technical details).*
-
----
-
-## 🛡️ License & Copyright
-© 2026 Bruno Giovani. All rights reserved.
-Code in this repository is strictly for portfolio demonstration purposes.
+<div align="center">
+  <i>"Arquitetura de software não é sobre desenhar caixas e setas, é sobre resolver problemas de negócios da forma mais escalável, resiliente e menos custosa possível."</i>
+</div>

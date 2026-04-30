@@ -47,3 +47,8 @@ docs/
 curriculos/
 generate_html_resumes.js
 update_*.js
+inject_*.js
+portfolio.data.json
+refactor_*.js
+sync_*.js
+*bak
