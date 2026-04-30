@@ -1,13 +1,21 @@
 package com.brunogiovani.portfolio.controller;
 
 import org.springframework.web.bind.annotation.*;
+import org.springframework.lang.NonNull;
 import java.util.Map;
 import java.util.List;
+import com.brunogiovani.portfolio.model.Contact;
 
 @RestController
 @RequestMapping("/api/portfolio")
 @CrossOrigin(origins = "*") // Liberando o CORS pra não dar erro no React durante o dev
 public class PortfolioController {
+
+    private final com.brunogiovani.portfolio.repository.ContactRepository contactRepository;
+
+    public PortfolioController(com.brunogiovani.portfolio.repository.ContactRepository contactRepository) {
+        this.contactRepository = contactRepository;
+    }
 
     @GetMapping
     public Map<String, String> getProfile() {
@@ -40,9 +48,15 @@ public class PortfolioController {
     }
 
     @PostMapping("/contact")
-    public Map<String, String> submitContact(@RequestBody Map<String, String> contact) {
-        // Mock rápido pra simular o recebimento do formulário de contato
-        String name = contact.get("name");
-        return Map.of("message", "Obrigado, " + name + "! Recebi seu contato com sucesso.");
+    public Map<String, String> submitContact(@RequestBody @NonNull com.brunogiovani.portfolio.model.Contact contact) {
+        com.brunogiovani.portfolio.model.Contact saved = contactRepository.save(contact);
+        return Map.of(
+            "message", "Olá, " + saved.getName() + "! Mensagem recebida com sucesso. Entrarei em contato em breve — obrigado pela atenção! 🚀"
+        );
+    }
+
+    @GetMapping("/contact")
+    public List<Contact> getContacts() {
+        return contactRepository.findAll();
     }
 }
