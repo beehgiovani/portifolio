@@ -1,12 +1,17 @@
 import { useI18n } from '../hooks/useI18n'
 import profilePic from '../assets/profile.jpg'
+import { motion } from 'framer-motion'
 
 export function Hero() {
   const { t } = useI18n();
 
   return (
     <section className="hero-section-master">
-      <div className="reveal-on-scroll visible">
+      <motion.div 
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, ease: "easeOut" }}
+      >
         <img src={profilePic} alt="Bruno" className="profile-squircle" />
         <h1 className="gradient-heading" style={{ fontSize: 'clamp(3.5rem, 10vw, 7.5rem)', lineHeight: 0.85, marginBottom: '2rem' }}>
           {t.hero.greeting}
@@ -23,7 +28,7 @@ export function Hero() {
           <span className="tech-tag" style={{ border: 'none', color: 'var(--text-muted)' }}>#Cloud_Native</span>
           <span className="tech-tag" style={{ border: 'none', color: '#fff' }}>#Geo_Intelligence</span>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

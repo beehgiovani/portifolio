@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useI18n, type Project } from './hooks/useI18n'
+import { motion } from 'framer-motion'
 
 // Importando nossos componentes modulares
 import { Navbar } from './components/Navbar'
@@ -10,6 +11,7 @@ import { ProjectModal } from './components/ProjectModal'
 import { ExperienceTimeline } from './components/ExperienceTimeline'
 import { CertificationSection } from './components/CertificationSection'
 import { LanguageDialog } from './components/LanguageDialog'
+import { TechMarquee } from './components/TechMarquee'
 
 // Comportamentos visuais globais (Movidos para cá pra centralizar)
 function MouseGlow() {
@@ -48,6 +50,8 @@ function App() {
       <main style={{ position: 'relative', zIndex: 1 }}>
         <Hero />
         
+        <TechMarquee />
+
         <LogoMarquee />
 
         <ProjectGrid onSelect={(p) => setSelectedProject(p)} />
@@ -60,7 +64,14 @@ function App() {
         <section id="skills" style={{ paddingBottom: '8rem' }}>
           <span className="section-label">{t.sections.skills}</span>
           <div className="grid-bento" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', marginTop: '2rem' }}>
-            <div className="card-masterpiece" style={{ padding: '2rem', flex: 1 }}>
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="card-masterpiece" 
+              style={{ padding: '2rem', flex: 1 }}
+            >
               <h4 style={{ marginBottom: '1.5rem', color: 'var(--primary-gold)' }}>Expert Tech Stack</h4>
               <ul style={{ listStyle: 'none', color: '#94a3b8', fontSize: '1rem' }}>
                 <li style={{ marginBottom: '1rem' }}>⚡ {t.skills.java}</li>
@@ -68,9 +79,16 @@ function App() {
                 <li style={{ marginBottom: '1rem' }}>⚡ {t.skills.spring}</li>
                 <li style={{ marginBottom: '1rem' }}>⚡ {t.skills.python}</li>
               </ul>
-            </div>
+            </motion.div>
             
-            <div className="card-masterpiece" style={{ padding: '2rem', flex: 1 }}>
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="card-masterpiece" 
+              style={{ padding: '2rem', flex: 1 }}
+            >
               <h4 style={{ marginBottom: '1.5rem' }}>Ecosystem Authority</h4>
               <ul style={{ listStyle: 'none', color: '#94a3b8', fontSize: '1rem' }}>
                 <li style={{ marginBottom: '1rem' }}>☁️ {t.skills.cloud}</li>
@@ -78,7 +96,7 @@ function App() {
                 <li style={{ marginBottom: '1rem' }}>🏛️ {t.skills.arch}</li>
                 <li style={{ marginBottom: '1rem' }}>🤖 AI & Computer Vision</li>
               </ul>
-            </div>
+            </motion.div>
           </div>
         </section>
       </main>
@@ -89,7 +107,13 @@ function App() {
       )}
 
       {/* Rodapé principal */}
-      <footer style={{ padding: '8rem 0 4rem', textAlign: 'center', borderTop: '1px solid var(--border-glass)' }}>
+      <motion.footer 
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1 }}
+        style={{ padding: '8rem 0 4rem', textAlign: 'center', borderTop: '1px solid var(--border-glass)' }}
+      >
         <h3 className="gradient-heading" style={{ fontSize: '2.5rem', marginBottom: '2rem' }}>{t.sections.contact}</h3>
         <p style={{ color: '#fff', fontSize: '1.2rem', fontWeight: 800, marginBottom: '0.5rem' }}>
           {t.contact.phone}
@@ -104,7 +128,7 @@ function App() {
         <p style={{ color: '#4b5563', fontSize: '0.8rem' }}>
           Precision Engineering. © 2026 Bruno Giovani Pereira
         </p>
-      </footer>
+      </motion.footer>
     </div>
   );
 }

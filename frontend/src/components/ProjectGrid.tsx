@@ -1,5 +1,6 @@
 import { useRef } from 'react'
 import { useI18n, type Project } from '../hooks/useI18n'
+import { motion } from 'framer-motion'
 
 export function ProjectCard({ project, onSelect, span = false }: { project: Project, onSelect: (p: Project) => void, span?: boolean }) {
   const cardRef = useRef<HTMLDivElement>(null);
@@ -17,9 +18,13 @@ export function ProjectCard({ project, onSelect, span = false }: { project: Proj
   };
 
   return (
-    <div 
+    <motion.div 
       ref={cardRef}
-      className={`card-masterpiece reveal-on-scroll visible ${span ? 'card-span-2' : ''}`}
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className={`card-masterpiece ${span ? 'card-span-2' : ''}`}
       onMouseMove={handleMouseMove}
       onMouseLeave={reset}
       onClick={() => onSelect(project)}
@@ -52,7 +57,7 @@ export function ProjectCard({ project, onSelect, span = false }: { project: Proj
       <div style={{ marginTop: '1.5rem', color: 'var(--primary-gold)', fontSize: '0.75rem', fontWeight: 800 }}>
         {useI18n().lang === 'en' ? 'Click for Strong Points →' : 'Ver Pontos Fortes →'}
       </div>
-    </div>
+    </motion.div>
   );
 }
 
@@ -62,11 +67,16 @@ export function ProjectGrid({ onSelect }: { onSelect: (p: Project) => void }) {
 
   return (
     <section id="projects" style={{ marginTop: '5rem' }}>
-      <h2 style={{ fontSize: '2.5rem', marginBottom: '4rem' }} className="reveal-on-scroll visible">
+      <motion.h2 
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        style={{ fontSize: '2.5rem', marginBottom: '4rem' }}
+      >
         {t.sections.projects}
-      </h2>
+      </motion.h2>
       <div className="grid-bento">
-        {projectList.map((project: any, idx: number) => (
+        {projectList.map((project: Project, idx: number) => (
           <ProjectCard 
             key={idx} 
             project={project} 

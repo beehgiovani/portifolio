@@ -44,3 +44,6 @@ hs_err_pid*
 # Others
 _archive/
 docs/
+curriculos/
+generate_html_resumes.js
+update_*.js

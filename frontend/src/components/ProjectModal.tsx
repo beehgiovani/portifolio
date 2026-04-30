@@ -1,4 +1,6 @@
 import { useI18n, type Project } from '../hooks/useI18n'
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism'
 
 export function ProjectModal({ project, onClose }: { project: Project, onClose: () => void }) {
   const { lang } = useI18n();
@@ -51,7 +53,7 @@ export function ProjectModal({ project, onClose }: { project: Project, onClose: 
             
             {/* Impacto / Business Impact */}
             {project.details.businessImpact && (
-              <div className="card-masterpiece" style={{ padding: '2rem', border: '1px solid var(--primary-gold)', gridColumn: '1 / -1' }}>
+              <div className="card-masterpiece" style={{ padding: '2rem', border: '1px solid var(--primary-gold)', gridColumn: '1 / -1', justifyContent: 'flex-start' }}>
                 <h4 style={{ color: 'var(--primary-gold)', marginBottom: '1rem', fontSize: '1.2rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                   🎯 {lang === 'en' ? 'Business Impact' : 'Impacto de Negócio'}
                 </h4>
@@ -60,7 +62,7 @@ export function ProjectModal({ project, onClose }: { project: Project, onClose: 
             )}
 
             {/* Inovação */}
-            <div className="card-masterpiece" style={{ padding: '2rem' }}>
+            <div className="card-masterpiece" style={{ padding: '2rem', justifyContent: 'flex-start' }}>
               <h4 style={{ color: 'var(--primary-gold)', marginBottom: '1rem', fontSize: '1.2rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                 💡 {lang === 'en' ? 'Core Innovation' : 'Inovação Principal'}
               </h4>
@@ -68,7 +70,7 @@ export function ProjectModal({ project, onClose }: { project: Project, onClose: 
             </div>
             
             {/* Pontos Fortes */}
-            <div className="card-masterpiece" style={{ padding: '2rem' }}>
+            <div className="card-masterpiece" style={{ padding: '2rem', justifyContent: 'flex-start' }}>
               <h4 style={{ color: 'var(--primary-gold)', marginBottom: '1rem', fontSize: '1.2rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                 ⚡ {lang === 'en' ? 'Strong Points' : 'Pontos Fortes'}
               </h4>
@@ -83,7 +85,7 @@ export function ProjectModal({ project, onClose }: { project: Project, onClose: 
 
             {/* Desafios Técnicos */}
             {project.details.technicalChallenges && (
-              <div className="card-masterpiece" style={{ padding: '2rem', gridColumn: '1 / -1' }}>
+              <div className="card-masterpiece" style={{ padding: '2rem', gridColumn: '1 / -1', justifyContent: 'flex-start' }}>
                 <h4 style={{ color: 'var(--primary-gold)', marginBottom: '1rem', fontSize: '1.2rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                   ⚙️ {lang === 'en' ? 'Technical Challenges Overcome' : 'Desafios Técnicos Superados'}
                 </h4>
@@ -100,6 +102,26 @@ export function ProjectModal({ project, onClose }: { project: Project, onClose: 
                 {project.details.architecture}
               </div>
             </div>
+            
+            {/* Code Snippet Embutido */}
+            {project.codeSnippet && project.codeLanguage && (
+              <div className="card-masterpiece" style={{ padding: '2rem', marginTop: '2rem', gridColumn: '1 / -1', border: '1px solid rgba(56, 189, 248, 0.2)' }}>
+                <h4 style={{ marginBottom: '1rem', color: 'var(--primary-gold)', display: 'flex', alignItems: 'center' }}>
+                  <span style={{ marginRight: '0.5rem' }}>{'</>'}</span> 
+                  {lang === 'en' ? 'Core Implementation Snapshot' : 'Trecho Principal de Implementação'}
+                </h4>
+                <div style={{ borderRadius: '8px', overflow: 'hidden' }}>
+                  <SyntaxHighlighter 
+                    language={project.codeLanguage} 
+                    style={vscDarkPlus}
+                    customStyle={{ margin: 0, padding: '1.5rem', fontSize: '0.9rem' }}
+                    showLineNumbers={true}
+                  >
+                    {project.codeSnippet}
+                  </SyntaxHighlighter>
+                </div>
+              </div>
+            )}
           </div>
         )}
       </div>

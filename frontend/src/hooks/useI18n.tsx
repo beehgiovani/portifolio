@@ -1,6 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
 import { useState, useMemo, createContext, useContext, type ReactNode } from 'react'
-import logoPredictMed from '../assets/logo_predictmed.png'
+import logoPredictMed from '../assets/hero.png'
 import logoGuarugeo from '../assets/logo_guarugeo.png'
 import logoCertibot from '../assets/logo_certibot.png'
 import logoPharmaFlow from '../assets/logo_pharmaflow.png'
@@ -16,7 +16,7 @@ const translations = {
   en: {
     hero: {
       greeting: "Bruno Giovani",
-      role: "Senior Software Engineer",
+      role: "Pleno/Senior Software Engineer",
       years: "6+ Years of Scalable Engineering",
       tagline: "Architecting high-performance digital ecosystems. Specializing in Geo-Intelligence, Resilient Microservices, Autonomous AI Agents, and Native Architectures.",
       cta: "View Trajectory"
@@ -30,7 +30,7 @@ const translations = {
     },
     experience: [
       { date: "Mar 2026 - Present", role: "Front-End Lead Developer | PredictMed", desc: "Leading the development of predictive health platforms with a focus on high-availability architecture, Supabase, and AI-driven automation." },
-      { date: "Jan 2024 - Present", role: "Senior Software Engineer | Soo Tech", desc: "Technical leadership in JVM ecosystems, implementing resilient microservices with Spring Boot and Clean Architecture patterns." },
+      { date: "Jan 2024 - Present", role: "Pleno/Senior Software Engineer | Soo Tech", desc: "Technical leadership in JVM ecosystems, implementing resilient microservices with Spring Boot and Clean Architecture patterns." },
       { date: "2023 - Present", role: "Architect & Founder | GuaruGeo", desc: "Developing a high-precision GIS infrastructure integrating PostGIS and OSINT protocols for advanced real estate intelligence." }
     ],
     projects: {
@@ -38,7 +38,7 @@ const translations = {
         title: "PredictMed",
         logo: logoPredictMed,
         impact: "SaaS Ecosystem",
-        desc: "Enterprise AI-driven inventory prediction. Leveraging Gemini Vision for sub-metric asset auditing and automated supply chain replenishment.",
+        desc: "Enterprise AI-driven inventory prediction platform designed for healthcare. Leveraging Gemini Vision for sub-metric physical asset auditing, it correlates visual data with multi-variate market stressors to provide automated, highly accurate supply chain replenishment, effectively mitigating the risk of critical medication stockouts.",
         stack: ["React 19", "Supabase", "Gemini AI", "Deno Edge", "TypeScript"],
         details: {
           innovation: "Proprietary predictive engine utilizing Gemini Vision to analyze physical inventory state and correlate with multi-variate market stressors.",
@@ -46,13 +46,37 @@ const translations = {
           architecture: "Event-driven microservices architecture using Supabase Realtime and Deno Edge Functions for sub-second data processing.",
           businessImpact: "Reduced manual inventory auditing time by 85% and significantly lowered risk of medication stockouts.",
           technicalChallenges: "Orchestrating real-time vision AI inferences while maintaining strict HIPAA-like compliance and sub-second UI updates."
-        }
+        },
+        codeLanguage: "typescript",
+        codeSnippet: `import { serve } from "https://deno.land/std@0.168.0/http/server.ts"
+import { GoogleGenerativeAI } from "npm:@google/genai"
+
+serve(async (req) => {
+  const { imageBase64, facilityId } = await req.json()
+  const ai = new GoogleGenerativeAI(Deno.env.get("GEMINI_API_KEY"))
+  
+  const model = ai.getGenerativeModel({ model: "gemini-1.5-pro-vision" })
+  const prompt = "Analyze this medical inventory shelf. Count the exact number of critical vials and identify impending stockouts based on visual density."
+  
+  const result = await model.generateContent([
+    prompt,
+    { inlineData: { data: imageBase64, mimeType: "image/jpeg" } }
+  ])
+  
+  const predictedDeficit = result.response.text()
+  
+  if (predictedDeficit.includes("STOCKOUT_RISK_HIGH")) {
+     await triggerAutomatedPurchaseOrder(facilityId, predictedDeficit)
+  }
+  
+  return new Response(JSON.stringify({ status: 'analyzed', deficit: predictedDeficit }))
+})`
       },
       guarugeo: {
         title: "GuaruGeo & Interactive Map",
         logo: logoGuarugeo,
         impact: "Geo-Intelligence",
-        desc: "High-fidelity GIS platform and CRM for real estate analytics. Integrating spatial indexing with automated OSINT data pipelines.",
+        desc: "High-fidelity Geographic Information System (GIS) and specialized CRM for advanced real estate analytics. It integrates complex spatial indexing via PostGIS with automated OSINT data pipelines, delivering sub-metric precision mapping. This unified platform accelerates property and tax data querying by 10x, providing a single pane of glass for municipal real estate intelligence.",
         stack: ["PostGIS", "React 19", "Node.js", "JavaScript"],
         details: {
           innovation: "Full-stack GIS implementation achieving sub-metric precision through custom PostGIS spatial indexing and data enrichment pipelines.",
@@ -60,13 +84,43 @@ const translations = {
           architecture: "Robust Spatial DBMS layered with a high-concurrency NodeJS middleware and a specialized React MapGL frontend.",
           businessImpact: "Enabled real estate agencies to query properties and tax data 10x faster, unifying fragmented city data into a single pane of glass.",
           technicalChallenges: "Optimizing the rendering of 18k+ highly detailed polygons on the browser without freezing the main thread."
-        }
+        },
+        codeLanguage: "javascript",
+        codeSnippet: `// Spatial High-Concurrency Intersect Query Engine
+async function getPropertiesInViewport(bounds) {
+  const { xMin, yMin, xMax, yMax } = bounds;
+  
+  // Using PostGIS ST_MakeEnvelope for sub-metric bounding box intersections
+  const query = \`
+    SELECT 
+      p.id, 
+      p.tax_id, 
+      ST_AsGeoJSON(ST_SimplifyPreserveTopology(p.geom, 0.0001)) as geojson,
+      t.assessed_value
+    FROM properties p
+    JOIN tax_records t ON p.tax_id = t.tax_id
+    WHERE p.geom && ST_MakeEnvelope($1, $2, $3, $4, 4326)
+      AND ST_Intersects(p.geom, ST_MakeEnvelope($1, $2, $3, $4, 4326))
+    LIMIT 5000;
+  \`;
+  
+  const client = await pool.connect();
+  try {
+    const res = await client.query(query, [xMin, yMin, xMax, yMax]);
+    return res.rows.map(row => ({
+      ...row,
+      geometry: JSON.parse(row.geojson) // Fast V8 parsing
+    }));
+  } finally {
+    client.release();
+  }
+}`
       },
       cimed_experience: {
         title: "Cimed Experience (Gamified PWA)",
         logo: logoCimed,
         impact: "Gamified Ecosystem",
-        desc: "Progressive Web App (PWA) transforming organic brand influence into tangible POS sales through an interactive Social Hub and Drive-to-Store missions.",
+        desc: "Native-behavior Progressive Web App (PWA) engineered to transform organic brand influence into tangible Point-of-Sale (POS) conversions. It orchestrates global Drive-to-Store campaigns through an interactive Social Hub, real-time gamified rankings, and an AI-driven health consultant, effectively bridging the gap between digital engagement and physical pharmacy visits.",
         stack: ["React", "Supabase", "PWA", "Firebase", "Local AI"],
         details: {
           innovation: "Native-like app experience orchestrating 'Drive-to-Store' global campaigns, powered by Claud.ia—a proprietary AI health consultant.",
@@ -80,7 +134,7 @@ const translations = {
         title: "MetroMarGeo Data Engine",
         logo: logoMetromargeo,
         impact: "Data Engineering",
-        desc: "Autonomous Geo-Spatial data extraction engine. Targeting the São Paulo coast to fetch, normalize, and cross-reference WFS (GeoServer) parameters and municipal tax platforms.",
+        desc: "Autonomous Geo-Spatial data extraction and engineering engine focused on the São Paulo coast. It systematically fetches, normalizes, and cross-references WFS (GeoServer) parameters with municipal tax platforms. Utilizing a hybrid architecture with localized Machine Learning OCR, it seamlessly bypasses complex governmental visual captchas to construct the most comprehensive proprietary real estate database in the region.",
         stack: ["Python 3.11", "ddddOcr", "Pandas", "PostgreSQL"],
         details: {
           innovation: "Hybrid automation blending HTTP payload hijacking with local Machine Learning (OCR) to bypass complex municipal visual captchas seamlessly.",
@@ -94,7 +148,7 @@ const translations = {
         title: "AutoScraper Core (UrbanIntelligence)",
         logo: logoAutoScraper,
         impact: "Civic Automation",
-        desc: "Distributed bot orchestrator for massive municipal data extraction relying on Tor Node Multiplexing and custom PyTorch captcha models.",
+        desc: "Highly distributed bot orchestrator designed for massive, resilient municipal data extraction. It overcomes aggressive governmental Web Application Firewalls (WAFs) by multiplexing dynamically rotated Tor execution threads. Coupled with self-trained PyTorch OCR models for seamless captcha resolution, it achieves extreme parallelization of over 100k records per hour, drastically reducing data acquisition costs.",
         stack: ["Python", "PyTorch", "Tor", "Selenium Grid"],
         details: {
           innovation: "Bypasses complex governmental WAFs by isolating requests across dynamically rotated Tor execution threads and custom neural-network character recognition.",
@@ -108,7 +162,7 @@ const translations = {
         title: "NidusCare",
         logo: logoNidusCare,
         impact: "Digital Health",
-        desc: "Comprehensive health management native Android app. Focuses on caregivers/dependents with medication reminders, health agendas, and activity timelines.",
+        desc: "Comprehensive native Android health management ecosystem dedicated to caregivers and dependents. Built with an offline-first architecture, it ensures critical medication reminders, clinical scheduling, and vital activity timelines are never missed, even in areas with poor connectivity. The shared real-time tracking interface significantly improves patient medication adherence.",
         stack: ["Kotlin", "Android SDK", "Room", "Firebase"],
         details: {
           innovation: "A fully localized health companion supporting offline-first synchronization to guarantee no critical medication reminder is missed.",
@@ -122,7 +176,7 @@ const translations = {
         title: "PharmaFlow Ecosystem",
         logo: logoPharmaFlow,
         impact: "Supply Chain",
-        desc: "Complete delivery solution for pharmacies. Merges a Native Android App with a React Web Platform emphasizing zero-latency dispatch updates.",
+        desc: "End-to-end logistical delivery solution tailored for the pharmaceutical sector. It seamlessly merges a Native Android application for drivers with a React Web operations dashboard. By capturing and synchronizing high-frequency GPS telemetry in near real-time via Firebase, it provides zero-latency dispatch updates, optimizes routing, and automates inventory deductions, boosting delivery capacity by over 30%.",
         stack: ["Kotlin", "Firebase Realtime", "React Web", "Vite"],
         details: {
           innovation: "Bridges mobile telemetry with a web operations dashboard, capturing driver coordinates and ensuring immediate pharmacy compliance.",
@@ -136,7 +190,7 @@ const translations = {
         title: "AutoJuris AI (Certidões App)",
         logo: logoCertibot,
         impact: "Legal Tech",
-        desc: "Fully automated portal targeting bureaucratic certificate extraction. Navigates real estate and tax registries utilizing hybrid headless browsers and API exploitation.",
+        desc: "Fully automated legal tech portal dedicated to rapid bureaucratic certificate extraction. It navigates complex real estate and municipal tax registries using a sophisticated blend of headless browsers and reverse-engineered API exploitation. This system dramatically reduces the turnaround time for legal document retrieval from several days to under 60 seconds through intelligent state preservation and async job queuing.",
         stack: ["Deno", "Node.js", "Puppeteer", "Firebase"],
         details: {
           innovation: "Transforms manual, days-long bureaucratic retrievals into sub-minute API calls by reverse-engineering public endpoint infrastructures.",
@@ -150,7 +204,7 @@ const translations = {
         title: "MarketPoster",
         logo: logoMarketPoster,
         impact: "Retail OS",
-        desc: "Professional Android application for retail poster design and printing. Features offline support, auto-sync, and ML-powered background removal.",
+        desc: "Professional Android mobile application built for dynamic retail poster design and on-device printing. It empowers branch managers with studio-grade design tools, featuring C++ OpenCV operations and offline ML-powered background removal. With direct network printing protocols and robust offline sync, it completely eliminates the need for graphic design outsourcing across hundreds of retail branches.",
         stack: ["Kotlin", "Android Native", "ML Kit", "OpenCV"],
         details: {
           innovation: "Places studio-grade design and automated printing capabilities directly in the hands of branch managers via mobile platforms.",
@@ -164,7 +218,7 @@ const translations = {
         title: "InteractiveMap - Jardim Acapulco",
         logo: logoAcapulco,
         impact: "Map Interaction",
-        desc: "Immersive localized real estate map built with React. Features dynamic lot visualization, advanced querying, and real-time administrative moderation.",
+        desc: "Immersive and highly responsive localized real estate map developed with React and Vite. It replaces traditional static mapping with dynamic lot visualization, advanced interactive querying, and real-time administrative moderation. Leveraging Client-Side Rendering (CSR) and optimized Firebase payloads, it delivers a flawless 60fps experience that significantly boosts conversion rates among high-net-worth clients.",
         stack: ["React", "TypeScript", "Vite", "Firebase"],
         details: {
           innovation: "Fluid mapping interface replacing bulky traditional static maps, offering instantaneous feedback on lot statuses.",
@@ -178,7 +232,7 @@ const translations = {
         title: "Lead Webhook Monitor",
         logo: logoEmailMonitor,
         impact: "Marketing Tech",
-        desc: "A background pipeline capturing inbound email leads through IMAP parsing and immediately piping them into CRM Webhooks.",
+        desc: "Autonomous background pipeline designed for instant inbound lead capture via robust IMAP parsing. It utilizes complex regex patterns to extract structured data from unpredictable email formats, immediately piping high-value leads directly into CRM webhooks via Supabase row-level sync. This zero-latency routing guarantees a 100% capture rate, fully eliminating manual data entry and lead leakage.",
         stack: ["Python", "IMAP/SMTP", "Supabase", "Node"],
         details: {
           innovation: "Zero-latency lead routing converting raw asynchronous email data into actionable CRM database inserts immediately.",
@@ -200,13 +254,12 @@ const translations = {
       node: "Mobile Engineering (Android Native, Room, Flow)"
     },
     certs: [
-      { name: "Back-End: API REST with Kotlin & Spring Boot (Alura)", date: "2026" },
-      { name: "Data Engineering Foundations (Alura)", date: "2026" },
-      { name: "Data Science: Python for Data (Alura)", date: "2026" },
-      { name: "Programming Logic & JS Complete Track (Alura)", date: "2026" },
-      { name: "Angular Expert Architect (Loiane Training)", date: "2026" },
-      { name: "Power BI & Business English (Santander)", date: "2026" },
-      { name: "Storytelling for Marketing (UChicago)", date: "2026" }
+      { name: "Systems Analysis and Development (ADS) - FMU (In Progress)", date: "2026" },
+      { name: "Back-End Architecture: REST API with Kotlin & Spring Boot (Alura)", date: "2025" },
+      { name: "Advanced Data Engineering (Alura)", date: "2024" },
+      { name: "Database: Advanced SQL Modeling and Queries (Alura)", date: "2023" },
+      { name: "Angular Expert Architect (Loiane Training)", date: "2023" },
+      { name: "DevOps: Git and GitHub for Advanced Version Control (Alura)", date: "2022" }
     ],
     contact: {
       phone: "+55 (13) 99205-8836",
@@ -224,7 +277,7 @@ const translations = {
   pt: {
     hero: {
       greeting: "Bruno Giovani",
-      role: "Engenheiro de Software Sênior",
+      role: "Pleno/Senior Software Engineer",
       years: "6+ Anos de Engenharia Escalável",
       tagline: "Arquitetando ecossistemas digitais de altíssima performance. Especialista em Geo-Inteligência, Microsserviços Resilientes, Agentes Autônomos de IA e Arquiteturas Nativas.",
       cta: "Ver Trajetória"
@@ -238,7 +291,7 @@ const translations = {
     },
     experience: [
       { date: "Mar 2026 - Presente", role: "Front-End Lead Developer | PredictMed", desc: "Liderando o desenvolvimento de plataformas de saúde preditiva com foco em arquitetura de alta disponibilidade, Supabase e automação via IA." },
-      { date: "Jan 2024 - Presente", role: "Senior Software Engineer | Soo Tech", desc: "Liderança técnica em ecossistemas JVM, implementando microsserviços resilientes com Spring Boot e padrões de Clean Architecture." },
+      { date: "Jan 2024 - Presente", role: "Pleno/Senior Software Engineer | Soo Tech", desc: "Liderança técnica em ecossistemas JVM, implementando microsserviços resilientes com Spring Boot e padrões de Clean Architecture." },
       { date: "2023 - Presente", role: "Arquiteto & Fundador | GuaruGeo", desc: "Desenvolvendo infraestrutura GIS de alta precisão integrando PostGIS e protocolos OSINT para inteligência imobiliária avançada." }
     ],
     projects: {
@@ -246,7 +299,7 @@ const translations = {
         title: "PredictMed",
         logo: logoPredictMed,
         impact: "Ecossistema SaaS",
-        desc: "Predição de estoque empresarial via IA. Utilizando Gemini Vision para auditoria de ativos submétrica e reabastecimento automatizado na nuvem.",
+        desc: "Plataforma de predição de estoque empresarial guiada por IA para o setor de saúde. Utilizando Gemini Vision para auditoria de ativos físicos submétrica, correlaciona dados visuais com indicadores de mercado para fornecer reabastecimento automatizado e altamente preciso, mitigando drasticamente o risco de ruptura de medicamentos críticos.",
         stack: ["React 19", "Supabase", "Gemini AI", "Deno Edge", "TypeScript"],
         details: {
           innovation: "Motor preditivo proprietário utilizando Gemini Vision para analisar o estado físico dos estoques e correlacionar com indicadores de mercado.",
@@ -254,13 +307,37 @@ const translations = {
           architecture: "Arquitetura orientada a eventos usando Supabase Realtime e Deno Edge Functions para processamento de concorrência massiva.",
           businessImpact: "Reduziu o tempo de auditoria manual de estoque em 85% e minimizou drasticamente o risco de ruptura de medicamentos.",
           technicalChallenges: "Orquestrar inferências de IA de visão em tempo real mantendo compliance rigoroso e atualizações visuais em menos de um segundo."
-        }
+        },
+        codeLanguage: "typescript",
+        codeSnippet: `import { serve } from "https://deno.land/std@0.168.0/http/server.ts"
+import { GoogleGenerativeAI } from "npm:@google/genai"
+
+serve(async (req) => {
+  const { imageBase64, facilityId } = await req.json()
+  const ai = new GoogleGenerativeAI(Deno.env.get("GEMINI_API_KEY"))
+  
+  const model = ai.getGenerativeModel({ model: "gemini-1.5-pro-vision" })
+  const prompt = "Analyze this medical inventory shelf. Count the exact number of critical vials and identify impending stockouts based on visual density."
+  
+  const result = await model.generateContent([
+    prompt,
+    { inlineData: { data: imageBase64, mimeType: "image/jpeg" } }
+  ])
+  
+  const predictedDeficit = result.response.text()
+  
+  if (predictedDeficit.includes("STOCKOUT_RISK_HIGH")) {
+     await triggerAutomatedPurchaseOrder(facilityId, predictedDeficit)
+  }
+  
+  return new Response(JSON.stringify({ status: 'analyzed', deficit: predictedDeficit }))
+})`
       },
       guarugeo: {
         title: "GuaruGeo & Interactive Map",
         logo: logoGuarugeo,
         impact: "Geo-Inteligência",
-        desc: "Plataforma GIS de alta fidelidade e CRM para inteligência imobiliária. Integração de índices espaciais com extração autônoma OSINT.",
+        desc: "Sistema de Informação Geográfica (GIS) de alta fidelidade e CRM especializado para inteligência imobiliária. Integra indexação espacial complexa via PostGIS com pipelines de dados OSINT automatizados, entregando precisão submétrica. A plataforma unifica dados municipais, acelerando a consulta de propriedades e informações fiscais em 10x.",
         stack: ["PostGIS", "React 19", "Node.js", "JavaScript"],
         details: {
           innovation: "GIS full-stack alcançando precisão geométrica submétrica através de otimização em PostGIS aliada a data science automatizada.",
@@ -268,13 +345,43 @@ const translations = {
           architecture: "DBMS espacial central sustentado por um middleware NodeJS servindo payloads vetoriais diretamente ao React MapGL.",
           businessImpact: "Permitiu que imobiliárias consultassem dados espaciais e fiscais 10x mais rápido, unificando informações dispersas da prefeitura.",
           technicalChallenges: "Otimizar a renderização no navegador de mais de 18 mil polígonos ultra-detalhados sem congelar a thread principal do usuário."
-        }
+        },
+        codeLanguage: "javascript",
+        codeSnippet: `// Spatial High-Concurrency Intersect Query Engine
+async function getPropertiesInViewport(bounds) {
+  const { xMin, yMin, xMax, yMax } = bounds;
+  
+  // Using PostGIS ST_MakeEnvelope for sub-metric bounding box intersections
+  const query = \`
+    SELECT 
+      p.id, 
+      p.tax_id, 
+      ST_AsGeoJSON(ST_SimplifyPreserveTopology(p.geom, 0.0001)) as geojson,
+      t.assessed_value
+    FROM properties p
+    JOIN tax_records t ON p.tax_id = t.tax_id
+    WHERE p.geom && ST_MakeEnvelope($1, $2, $3, $4, 4326)
+      AND ST_Intersects(p.geom, ST_MakeEnvelope($1, $2, $3, $4, 4326))
+    LIMIT 5000;
+  \`;
+  
+  const client = await pool.connect();
+  try {
+    const res = await client.query(query, [xMin, yMin, xMax, yMax]);
+    return res.rows.map(row => ({
+      ...row,
+      geometry: JSON.parse(row.geojson) // Fast V8 parsing
+    }));
+  } finally {
+    client.release();
+  }
+}`
       },
       cimed_experience: {
         title: "Cimed Experience (Gamified PWA)",
         logo: logoCimed,
         impact: "Ecossistema Gamificado",
-        desc: "Progressive Web App (PWA) de alto impacto transformando influência orgânica em vendas de PDV através de Missões Gamificadas (Drive-to-Store).",
+        desc: "Progressive Web App (PWA) com comportamento nativo focado em converter influência orgânica da marca em vendas físicas reais (PDV). Orquestra campanhas globais Drive-to-Store através de um Social Hub interativo, rankings gamificados em tempo real e uma consultora de saúde IA, conectando o engajamento digital à visitação nas farmácias.",
         stack: ["React", "Supabase", "PWA", "Firebase", "Local AI"],
         details: {
           innovation: "Aplicativo web de comportamento nativo voltado a campanhas on-premise nas farmácias, guiado pela Inteligência Artificial Claud.ia.",
@@ -288,7 +395,7 @@ const translations = {
         title: "MetroMarGeo Data Engine",
         logo: logoMetromargeo,
         impact: "Engenharia de Dados",
-        desc: "Robô geospacial autônomo. Mapeia a Metrópole e o Litoral paulista normalizando WFS e portais tributários para inteligência imobiliária de massa.",
+        desc: "Motor robótico autônomo de extração e engenharia de dados geospaciais focado no litoral paulista. Captura, normaliza e cruza parâmetros WFS (GeoServer) com portais tributários municipais. Usando uma arquitetura híbrida com OCR via Machine Learning local, contorna facilmente captchas visuais para construir o maior banco de dados imobiliário proprietário da região.",
         stack: ["Python 3.11", "ddddOcr", "Pandas", "PostgreSQL"],
         details: {
           innovation: "Automação híbrida que une análise de tráfego HTTP com Machine Learning local (OCR) para dilacerar captchas governamentais de imagem.",
@@ -302,7 +409,7 @@ const translations = {
         title: "AutoScraper Core (UrbanIntelligence)",
         logo: logoAutoScraper,
         impact: "Automação Extrema",
-        desc: "Orquestrador distribuído de extração construído para navegar por WAFs complexos utilizando Modelos PyTorch customizados e rotatividade agressiva via Tor.",
+        desc: "Orquestrador de bots altamente distribuído, desenhado para extração resiliente de dados municipais em massa. Supera firewalls governamentais (WAFs) multiplexando threads no Tor com rotação dinâmica de IP. Aliado a modelos de OCR treinados em PyTorch, alcança paralelização extrema de mais de 100 mil registros por hora, reduzindo drasticamente os custos de aquisição.",
         stack: ["Python", "PyTorch", "Tor", "Selenium Grid"],
         details: {
           innovation: "Infraestrutura virtualizada que impede bans de IP através de multiplexação do daemon Tor isolando threads e solucionando captchas via treinamento PyTorch local.",
@@ -316,7 +423,7 @@ const translations = {
         title: "NidusCare",
         logo: logoNidusCare,
         impact: "Saúde Digital Nativa",
-        desc: "Ecossistema Android Nativo dedicado à gestão geriátrica e de cuidados. Fornece timeline vital, agendamento de clínica e lembretes de medicamento offline.",
+        desc: "Ecossistema nativo Android abrangente para gestão de saúde, dedicado a cuidadores e dependentes. Construído com arquitetura offline-first, assegura que lembretes críticos de medicamentos, agendamentos e timelines de atividades vitais nunca falhem, mesmo sem internet. A interface compartilhada em tempo real melhora significativamente a adesão aos tratamentos.",
         stack: ["Kotlin", "Android SDK", "Room", "Firebase"],
         details: {
           innovation: "Companheiro de saúde de alta resiliência que funciona no padrão 'Offline-First', assegurando que alarmes críticos de medicações nunca falhem mesmo sem rede.",
@@ -330,7 +437,7 @@ const translations = {
         title: "PharmaFlow Ecosystem",
         logo: logoPharmaFlow,
         impact: "Cadeia de Suprimentos",
-        desc: "Aglutinador logístico unindo um App Android de Motoboys com um Painel Administrativo React focando nas entregas ponta-a-ponta.",
+        desc: "Solução logística ponta-a-ponta sob medida para farmácias. Une perfeitamente um App Android Nativo para entregadores a um dashboard operacional Web em React. Capturando telemetria GPS de alta frequência quase em tempo real via Firebase, fornece atualizações de despacho com latência zero, otimiza rotas e automatiza baixas de estoque, elevando a capacidade de entrega em 30%.",
         stack: ["Kotlin", "Firebase Realtime", "React Web", "Vite"],
         details: {
           innovation: "Motor síncrono que transfere as coordenadas do dispositivo mobile em tempo quase-real (WebSocket) visualizadas numa dashboard administrativa.",
@@ -344,7 +451,7 @@ const translations = {
         title: "AutoJuris AI (Certidões App)",
         logo: logoCertibot,
         impact: "Robótica Jurídica",
-        desc: "Automação ponta-a-ponta focada em varrer portais judiciais e extrair certidões tributárias reduzindo fluxos de cartórios para meros segundos.",
+        desc: "Portal jurídico totalmente automatizado para extração ultra-rápida de certidões burocráticas. Navega por complexos registros imobiliários e fiscais usando uma mescla avançada de navegadores headless e engenharia reversa de APIs. O sistema reduz o tempo de emissão de documentos legais de vários dias para menos de 60 segundos por meio da preservação de estado e filas de processamento assíncrono.",
         stack: ["Deno", "Node.js", "Puppeteer", "Firebase"],
         details: {
           innovation: "Reverte engessamentos burocráticos de dias por chamadas puras de interface extraindo bases judiciais sem intervenção manual.",
@@ -358,7 +465,7 @@ const translations = {
         title: "MarketPoster",
         logo: logoMarketPoster,
         impact: "Varejo Operacional",
-        desc: "Aplicativo Android corporativo de Design em PDV. Remove backgrounds com Machine Learning em C e envia encartes comerciais direto à print network.",
+        desc: "Aplicativo móvel Android corporativo construído para design ágil de encartes no varejo e impressão no dispositivo. Capacita gerentes com ferramentas de design de nível profissional, operando remoção de fundo offline via ML e OpenCV em C++. Com protocolos diretos de impressão em rede, elimina completamente a necessidade de agências gráficas terceirizadas nas centenas de filiais.",
         stack: ["Kotlin", "Android Nativo", "ML Kit", "OpenCV"],
         details: {
           innovation: "Confere poderes de design profissional aos gerentes de farmácias com edição e despache à impressora on-device com aprendizado de máquina.",
@@ -372,7 +479,7 @@ const translations = {
         title: "InteractiveMap - Jardim Acapulco",
         logo: logoAcapulco,
         impact: "Interação Espacial",
-        desc: "Frontend React Vite consumindo metadados imobiliários. Projeta em tela uma UI avançada de lotes condominiais permitindo pesquisa rápida.",
+        desc: "Mapa imobiliário localizado, imersivo e altamente responsivo, desenvolvido com React e Vite. Substitui o mapeamento estático tradicional por visualização dinâmica de lotes, consultas interativas avançadas e moderação administrativa em tempo real. Utilizando renderização no cliente (CSR) e payloads otimizados do Firebase, entrega uma experiência impecável a 60fps que impulsiona as conversões de clientes de alto luxo.",
         stack: ["React", "TypeScript", "Vite", "Firebase"],
         details: {
           innovation: "Substituição fluida do geoprocessamento lento convencional por state-management afiado, injetando filtros live no portfólio físico.",
@@ -386,7 +493,7 @@ const translations = {
         title: "Lead Webhook Monitor",
         logo: logoEmailMonitor,
         impact: "Aquisição Automática",
-        desc: "Módulo invisível interceptor de e-mails em IMAP que varre, lê via regexes pesados e fomenta o CRM imobiliário automaticamente.",
+        desc: "Pipeline autônomo em background projetado para captação instantânea de leads via parsing robusto de IMAP. Utiliza expressões regulares (regex) complexas para extrair dados estruturados de e-mails imprevisíveis, injetando leads de alto valor imediatamente em webhooks do CRM via Supabase. Esse roteamento de latência zero garante 100% de captura, eliminando o vazamento de contatos e a digitação manual.",
         stack: ["Python", "IMAP/SMTP", "Supabase", "Node"],
         details: {
           innovation: "Zero intervenção humana na captação inicial: o código extrai nomes e números da formatação dos portais e injeta imediatamente no webhook/CRM.",
@@ -408,13 +515,12 @@ const translations = {
       node: "Engenharia Mobile Nativa (Arquiteturas Android, Room DB, Kotlin Flow)"
     },
     certs: [
-      { name: "Back-End: API REST com Kotlin & Spring Boot (Alura)", date: "2026" },
-      { name: "Sistemas em Escala: Engenharia de Dados (Alura)", date: "2026" },
-      { name: "Python para Exploração de Dados (Alura)", date: "2026" },
-      { name: "JavaScript / Lógica Avançada (Alura)", date: "2026" },
-      { name: "Especialista Arquiteto em Angular (Loiane Training)", date: "2026" },
-      { name: "Power BI & Business English Aplicado (Santander)", date: "2026" },
-      { name: "Marketing e Storytelling Avançado (UChicago)", date: "2026" }
+      { name: "Análise e Desenvolvimento de Sistemas (ADS) - FMU", date: "Em andamento" },
+      { name: "Arquitetura Back-End: API REST com Kotlin & Spring Boot (Alura)", date: "2025" },
+      { name: "Formação Avançada em Engenharia de Dados (Alura)", date: "2024" },
+      { name: "Banco de Dados: Modelagem e Consultas SQL Avançadas (Alura)", date: "2023" },
+      { name: "Especialista Arquiteto Angular (Loiane Training)", date: "2023" },
+      { name: "DevOps: Git e GitHub - Controle de Versão de Código (Alura)", date: "2022" }
     ],
     contact: {
       phone: "+55 (13) 99205-8836",
@@ -446,6 +552,8 @@ export interface Project {
     businessImpact?: string;
     technicalChallenges?: string;
   };
+  codeSnippet?: string;
+  codeLanguage?: string;
 }
 
 interface I18nContextProps {
