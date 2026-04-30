@@ -9,6 +9,9 @@ import logoMetromargeo from '../assets/logo_metromargeo.png'
 import logoAutoScraper from '../assets/logo_autoscraper.png'
 import logoMarketPoster from '../assets/logo_marketposter.png'
 import logoEmailMonitor from '../assets/logo_emailmonitor.png'
+import acapulco1 from '../assets/screenshots/interactivemap/acapulco_1.png'
+import acapulco2 from '../assets/screenshots/interactivemap/acapulco_2.png'
+import acapulco3 from '../assets/screenshots/interactivemap/acapulco_3.png'
 import data from '../portfolio.data.json'
 
 export const en = {
@@ -360,6 +363,11 @@ void processFrame(Mat& frame) {
       impact: "High-End Visualization",
       desc: "Immersive real estate map with dynamic lot visualization and real-time administrative moderation. Delivers a flawless 60fps experience for luxury clients.",
       stack: ["React", "TypeScript", "Vite", "Firebase"],
+      screenshots: [
+        acapulco1,
+        acapulco2,
+        acapulco3
+      ],
       details: {
         innovation: "Dynamic SVG-based mapping engine that replaces heavy GIS servers with lightweight reative layers for instant client feedback.",
         strongPoints: ["60fps Interaction Speed", "Real-time Lot Moderation", "Optimized CSR Performance"],

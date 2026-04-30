@@ -9,6 +9,9 @@ import logoMetromargeo from '../assets/logo_metromargeo.png'
 import logoAutoScraper from '../assets/logo_autoscraper.png'
 import logoMarketPoster from '../assets/logo_marketposter.png'
 import logoEmailMonitor from '../assets/logo_emailmonitor.png'
+import acapulco1 from '../assets/screenshots/interactivemap/acapulco_1.png'
+import acapulco2 from '../assets/screenshots/interactivemap/acapulco_2.png'
+import acapulco3 from '../assets/screenshots/interactivemap/acapulco_3.png'
 import data from '../portfolio.data.json'
 
 export const pt = {
@@ -360,6 +363,11 @@ void processFrame(Mat& frame) {
       impact: "Visualização de Alto Luxo",
       desc: "Mapa imobiliário imersivo com visualização dinâmica de lotes e moderação administrativa em tempo real. Entrega uma experiência impecável de 60fps para clientes de alto luxo.",
       stack: ["React", "TypeScript", "Vite", "Firebase"],
+      screenshots: [
+        acapulco1,
+        acapulco2,
+        acapulco3
+      ],
       details: {
         innovation: "Motor de mapeamento baseado em SVG dinâmico que substitui servidores GIS pesados por camadas reativas leves para feedback instantâneo.",
         strongPoints: ["Velocidade de Interação 60fps", "Moderação de Lotes Real-time", "Performance CSR Otimizada"],
