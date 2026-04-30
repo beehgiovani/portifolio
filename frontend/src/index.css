@@ -162,7 +162,9 @@ h4 {
   .grid-bento {
     grid-template-columns: 1fr;
   }
-  .card-span-2, .card-span-3 {
+
+  .card-span-2,
+  .card-span-3 {
     grid-column: span 1;
   }
 }
@@ -419,7 +421,7 @@ h4 {
 }
 
 .marquee-item {
-  font-size: 1.5rem;
+  font-size: 3rem;
   font-weight: 800;
   color: rgba(255, 255, 255, 0.2);
   text-transform: uppercase;
@@ -903,7 +905,7 @@ h4 {
 }
 
 .tech-marquee-wrapper {
-  padding: 3rem 0;
+  padding: 1rem 0;
   background: rgba(2, 6, 23, 0.5);
   border-top: 1px solid var(--border-glass);
   border-bottom: 1px solid var(--border-glass);
@@ -1174,7 +1176,7 @@ h4 {
 /* Metrics Component (LogoMarquee.tsx) */
 .metrics-section {
   width: 100%;
-  padding: 5rem 0;
+  padding: 2rem 0;
   position: relative;
   z-index: 2;
 }
