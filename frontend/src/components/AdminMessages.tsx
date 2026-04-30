@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Table, RefreshCcw, Mail, User, Calendar, MessageSquare } from 'lucide-react';
+import { Table, RefreshCcw, Mail, User, Calendar, MessageSquare, Phone } from 'lucide-react';
 import { useI18n } from '../hooks/useI18n';
 
 interface Contact {
   id: number;
   name: string;
   email: string;
+  phone: string;
   message: string;
   createdAt: string;
 }
@@ -111,6 +112,7 @@ export function AdminMessages({ onClose }: { onClose: () => void }) {
                     <th><Calendar size={14} /> {lang === 'en' ? 'Date' : 'Data'}</th>
                     <th><User size={14} /> {lang === 'en' ? 'Name' : 'Nome'}</th>
                     <th><Mail size={14} /> E-mail</th>
+                    <th><Phone size={14} /> {lang === 'en' ? 'Phone' : 'Telefone'}</th>
                     <th><MessageSquare size={14} /> {lang === 'en' ? 'Message' : 'Mensagem'}</th>
                   </tr>
                 </thead>
@@ -128,6 +130,7 @@ export function AdminMessages({ onClose }: { onClose: () => void }) {
                       </td>
                       <td className="td-name">{msg.name}</td>
                       <td className="td-email">{msg.email}</td>
+                      <td className="td-phone">{msg.phone}</td>
                       <td className="td-message">{msg.message}</td>
                     </motion.tr>
                   ))}

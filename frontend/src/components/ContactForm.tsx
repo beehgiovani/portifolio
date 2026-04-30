@@ -5,7 +5,7 @@ import { useI18n } from '../hooks/useI18n';
 
 export function ContactForm() {
   const { lang } = useI18n();
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [formData, setFormData] = useState({ name: '', email: '', phone: '', message: '' });
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
   const [responseMsg, setResponseMsg] = useState('');
 
@@ -37,7 +37,7 @@ export function ContactForm() {
         const data = await response.json();
         setResponseMsg(data.message);
         setStatus('success');
-        setFormData({ name: '', email: '', message: '' });
+        setFormData({ name: '', email: '', phone: '', message: '' });
       } else {
         setStatus('error');
       }
@@ -89,6 +89,19 @@ export function ContactForm() {
             value={formData.email}
             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
             placeholder="your@email.com"
+          />
+        </div>
+
+        <div className="form-group">
+          <label className="form-label">
+            {lang === 'en' ? 'Phone / WhatsApp' : 'Telefone / WhatsApp'}
+          </label>
+          <input
+            type="tel"
+            className="form-input"
+            value={formData.phone}
+            onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+            placeholder="+55 (11) 99999-9999"
           />
         </div>
 
