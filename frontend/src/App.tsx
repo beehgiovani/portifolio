@@ -144,7 +144,7 @@ function App() {
         <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
       )}
 
-      {showAdmin && (
+      {showAdmin && window.location.hostname === 'localhost' && (
         <AdminMessages onClose={() => setShowAdmin(false)} />
       )}
 

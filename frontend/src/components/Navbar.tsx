@@ -23,13 +23,15 @@ export function Navbar({ onShowAdmin }: { onShowAdmin: () => void }) {
             {lang === 'en' ? 'PT' : 'EN'}
           </button>
 
-          <button 
-            onClick={onShowAdmin}
-            className="navbar-lang-btn navbar-admin-btn"
-            title="Admin Messages"
-          >
-            <Settings size={16} />
-          </button>
+          {window.location.hostname === 'localhost' && (
+            <button 
+              onClick={onShowAdmin}
+              className="navbar-lang-btn navbar-admin-btn"
+              title="Admin Messages"
+            >
+              <Settings size={16} />
+            </button>
+          )}
         </div>
       </div>
     </nav>

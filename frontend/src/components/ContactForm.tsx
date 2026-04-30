@@ -13,6 +13,11 @@ export function ContactForm() {
     e.preventDefault();
     setStatus('sending');
 
+    // Fail-safe: Reset status after 15s if stuck
+    const failSafe = setTimeout(() => {
+      setStatus(prev => prev === 'sending' ? 'idle' : prev);
+    }, 15000);
+
     const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8080';
     try {
       const response = await fetch(`${apiUrl}/api/portfolio/contact`, {
@@ -21,6 +26,7 @@ export function ContactForm() {
         body: JSON.stringify(formData),
       });
 
+      clearTimeout(failSafe);
       if (response.ok) {
         const data = await response.json();
         setResponseMsg(data.message);
@@ -30,8 +36,11 @@ export function ContactForm() {
         setStatus('error');
       }
     } catch (error) {
+      clearTimeout(failSafe);
       console.error('Error submitting form:', error);
       setStatus('error');
+    } finally {
+      setTimeout(() => setStatus(prev => prev === 'error' ? 'idle' : prev), 3000);
     }
   };
 

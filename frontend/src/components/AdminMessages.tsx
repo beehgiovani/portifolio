@@ -18,9 +18,16 @@ export function AdminMessages({ onClose }: { onClose: () => void }) {
 
   const fetchMessages = async () => {
     setLoading(true);
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 15000);
+
     try {
       const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8080';
-      const response = await fetch(`${apiUrl}/api/portfolio/contact`);
+      const response = await fetch(`${apiUrl}/api/portfolio/contact`, { 
+        signal: controller.signal 
+      });
+      clearTimeout(timeoutId);
+      
       if (response.ok) {
         const data = await response.json();
         setMessages(data);
