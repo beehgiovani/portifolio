@@ -8,7 +8,6 @@ import com.brunogiovani.portfolio.model.Contact;
 
 @RestController
 @RequestMapping("/api/portfolio")
-@CrossOrigin(origins = "*", allowedHeaders = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.OPTIONS})
 public class PortfolioController {
 
     private final com.brunogiovani.portfolio.repository.ContactRepository contactRepository;
