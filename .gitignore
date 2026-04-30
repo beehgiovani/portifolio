@@ -53,3 +53,4 @@ refactor_*.js
 sync_*.js
 *bak
 *.cache
+*.firebase/
