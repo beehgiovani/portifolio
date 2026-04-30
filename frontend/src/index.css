@@ -2,21 +2,27 @@
 
 :root {
   /* Premium Slate Palette (Tailwind-inspired) */
-  --bg-dark-0: #020617; /* Slate 950 */
-  --bg-dark-1: #0f172a; /* Slate 900 */
-  --bg-card: rgba(15, 23, 42, 0.6); /* Slate 900 transparent */
-  
+  --bg-dark-0: #020617;
+  /* Slate 950 */
+  --bg-dark-1: #0f172a;
+  /* Slate 900 */
+  --bg-card: rgba(15, 23, 42, 0.6);
+  /* Slate 900 transparent */
+
   /* Accent Glows & Tones */
-  --primary-gold: #38bdf8; /* Switched from Gold to Sky 400 for a more tech-heavy look */
+  --primary-gold: #38bdf8;
+  /* Switched from Gold to Sky 400 for a more tech-heavy look */
   --primary-gold-dim: rgba(56, 189, 248, 0.1);
-  --primary-gold-bright: #818cf8; /* Indigo 400 */
-  
-  --accent-slate: #1e293b; /* Slate 800 */
+  --primary-gold-bright: #818cf8;
+  /* Indigo 400 */
+
+  --accent-slate: #1e293b;
+  /* Slate 800 */
   --text-main: #f8fafc;
   --text-muted: #94a3b8;
   --border-glass: rgba(255, 255, 255, 0.06);
   --border-hover: rgba(56, 189, 248, 0.4);
-  
+
   --radius-pro: 16px;
   --transition-fast: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
@@ -32,7 +38,7 @@
 
 body {
   background-color: var(--bg-dark-0);
-  background-image: 
+  background-image:
     radial-gradient(at 0% 0%, rgba(30, 64, 175, 0.12) 0px, transparent 50%),
     radial-gradient(at 100% 100%, rgba(129, 140, 248, 0.08) 0px, transparent 50%);
   color: var(--text-main);
@@ -110,7 +116,7 @@ h4 {
 
 .nav-link:hover {
   color: var(--text-main);
-  text-shadow: 0 0 10px rgba(255,255,255,0.3);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
 /* Layout Containers */
@@ -174,8 +180,11 @@ h4 {
 .card-masterpiece::before {
   content: '';
   position: absolute;
-  top: 0; left: 0; right: 0; height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
   opacity: 0.5;
 }
 
@@ -195,6 +204,7 @@ h4 {
   font-size: 0.75rem;
   font-weight: 600;
   display: inline-block;
+  -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
 }
 

@@ -6,7 +6,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/portfolio")
-@CrossOrigin(origins = "*") // Para facilitar o dev local com React
+@CrossOrigin(origins = "*") // Liberando o CORS pra não dar erro no React durante o dev
 public class PortfolioController {
 
     @GetMapping
@@ -41,7 +41,7 @@ public class PortfolioController {
 
     @PostMapping("/contact")
     public Map<String, String> submitContact(@RequestBody Map<String, String> contact) {
-        // Simulação de recebimento de contato
+        // Mock rápido pra simular o recebimento do formulário de contato
         String name = contact.get("name");
         return Map.of("message", "Obrigado, " + name + "! Recebi seu contato com sucesso.");
     }

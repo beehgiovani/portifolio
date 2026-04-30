@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useI18n, type Project } from './hooks/useI18n'
 
-// Modular Components
+// Importando nossos componentes modulares
 import { Navbar } from './components/Navbar'
 import { Hero } from './components/Hero'
 import { LogoMarquee } from './components/LogoMarquee'
@@ -11,7 +11,7 @@ import { ExperienceTimeline } from './components/ExperienceTimeline'
 import { CertificationSection } from './components/CertificationSection'
 import { LanguageDialog } from './components/LanguageDialog'
 
-// UI Core Behaviors (Moved inside App or specialized components)
+// Comportamentos visuais globais (Movidos para cá pra centralizar)
 function MouseGlow() {
   const [pos, setPos] = useState({ x: 0, y: 0 });
   
@@ -56,7 +56,7 @@ function App() {
 
         <CertificationSection />
 
-        {/* Technical Authority Section */}
+        {/* Seção de Autoridade Técnica (Skills) */}
         <section id="skills" style={{ paddingBottom: '8rem' }}>
           <span className="section-label">{t.sections.skills}</span>
           <div className="grid-bento" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', marginTop: '2rem' }}>
@@ -83,12 +83,12 @@ function App() {
         </section>
       </main>
 
-      {/* Project Detail Dialog */}
+      {/* Modal de Detalhes do Projeto */}
       {selectedProject && (
         <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
       )}
 
-      {/* Authority Footer */}
+      {/* Rodapé principal */}
       <footer style={{ padding: '8rem 0 4rem', textAlign: 'center', borderTop: '1px solid var(--border-glass)' }}>
         <h3 className="gradient-heading" style={{ fontSize: '2.5rem', marginBottom: '2rem' }}>{t.sections.contact}</h3>
         <p style={{ color: '#fff', fontSize: '1.2rem', fontWeight: 800, marginBottom: '0.5rem' }}>
