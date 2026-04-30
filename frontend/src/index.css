@@ -1695,4 +1695,179 @@ h4 {
     padding: 1.5rem;
     margin: 2rem 1rem;
   }
+
+  /* =============================================================
+   ADMIN MESSAGES & MODALS
+   ============================================================= */
+  .admin-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+
+  .admin-container {
+    width: 100%;
+    max-width: 1100px;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    padding: 0 !important;
+    border: 1px solid var(--primary-gold-dim);
+    overflow: hidden;
+  }
+
+  .admin-header {
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid var(--border-glass);
+  }
+
+  .admin-header-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .admin-header-title {
+    margin: 0;
+    font-size: 1.8rem;
+  }
+
+  .admin-header-actions {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .admin-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+  }
+
+  .admin-table-wrapper {
+    overflow-x: auto;
+  }
+
+  .admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+  }
+
+  .admin-table th {
+    text-align: left;
+    padding: 1rem;
+    color: var(--primary-gold);
+    border-bottom: 1px solid var(--border-glass);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .admin-table td {
+    padding: 1.2rem 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    color: #e2e8f0;
+  }
+
+  .td-date {
+    font-family: monospace;
+    color: var(--secondary-cyan);
+  }
+
+  .td-name {
+    font-weight: 700;
+  }
+
+  .td-message {
+    max-width: 400px;
+    opacity: 0.8;
+  }
+
+  .admin-btn-close {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+    line-height: 1;
+  }
+
+  .admin-btn-secondary {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-glass);
+    color: #fff;
+    padding: 0.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .admin-btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--primary-gold);
+  }
+
+  .admin-loading,
+  .admin-empty {
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #94a3b8;
+  }
+
+  .admin-empty-icon {
+    opacity: 0.2;
+    margin-bottom: 1rem;
+  }
+
+  .spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(255, 215, 0, 0.1);
+    border-top-color: var(--primary-gold);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 1rem;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .admin-footer {
+    padding: 1rem 2rem;
+    background: rgba(0, 0, 0, 0.2);
+    text-align: center;
+  }
+
+  .admin-footer-text {
+    font-size: 0.8rem;
+    opacity: 0.5;
+  }
+
+  /* Navbar Admin Adjustments */
+  .navbar-admin-btn {
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }

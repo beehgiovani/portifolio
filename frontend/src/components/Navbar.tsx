@@ -25,8 +25,7 @@ export function Navbar({ onShowAdmin }: { onShowAdmin: () => void }) {
 
           <button 
             onClick={onShowAdmin}
-            className="navbar-lang-btn"
-            style={{ marginLeft: '10px', display: 'flex', alignItems: 'center' }}
+            className="navbar-lang-btn navbar-admin-btn"
             title="Admin Messages"
           >
             <Settings size={16} />
