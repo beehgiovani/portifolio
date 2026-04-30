@@ -1,6 +1,7 @@
 import { useI18n } from '../hooks/useI18n'
+import { Settings } from 'lucide-react'
 
-export function Navbar() {
+export function Navbar({ onShowAdmin }: { onShowAdmin: () => void }) {
   const { lang, setLang, t } = useI18n();
 
   return (
@@ -19,7 +20,16 @@ export function Navbar() {
             onClick={() => setLang(lang === 'en' ? 'pt' : 'en')}
             className="navbar-lang-btn"
           >
-            {lang === 'en' ? 'Português' : 'English'}
+            {lang === 'en' ? 'PT' : 'EN'}
+          </button>
+
+          <button 
+            onClick={onShowAdmin}
+            className="navbar-lang-btn"
+            style={{ marginLeft: '10px', display: 'flex', alignItems: 'center' }}
+            title="Admin Messages"
+          >
+            <Settings size={16} />
           </button>
         </div>
       </div>

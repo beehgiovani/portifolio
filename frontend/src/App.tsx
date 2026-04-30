@@ -8,6 +8,7 @@ import {
   Network, Banknote, Globe2, Languages
 } from 'lucide-react'
 import { AnimatedIcon } from './components/AnimatedIcon'
+import { ContactForm } from './components/ContactForm'
 
 // Importando nossos componentes modulares
 import { Navbar } from './components/Navbar'
@@ -19,6 +20,7 @@ import { ExperienceTimeline } from './components/ExperienceTimeline'
 import { CertificationSection } from './components/CertificationSection'
 import { LanguageDialog } from './components/LanguageDialog'
 import { TechMarquee } from './components/TechMarquee'
+import { AdminMessages } from './components/AdminMessages'
 
 // Comportamentos visuais globais (Movidos para cá pra centralizar)
 function MouseGlow() {
@@ -43,6 +45,7 @@ function App() {
   const { t, lang, setLang } = useI18n();
   const [showDialog, setShowDialog] = useState(true);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [showAdmin, setShowAdmin] = useState(false);
 
   if (showDialog) {
     return <LanguageDialog onSelect={(l) => { setLang(l); setShowDialog(false); }} />;
@@ -52,7 +55,7 @@ function App() {
     <div className="container app-container">
       <MouseGlow />
 
-      <Navbar />
+      <Navbar onShowAdmin={() => setShowAdmin(true)} />
 
       <main className="app-main">
         <Hero />
@@ -141,6 +144,10 @@ function App() {
         <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
       )}
 
+      {showAdmin && (
+        <AdminMessages onClose={() => setShowAdmin(false)} />
+      )}
+
       {/* Rodapé principal */}
       <motion.footer
         initial={{ opacity: 0 }}
@@ -160,6 +167,8 @@ function App() {
           <a href={t.contact.linkedin} target="_blank" rel="noreferrer" className="nav-link">LinkedIn</a>
           <a href={t.contact.github} target="_blank" rel="noreferrer" className="nav-link">GitHub</a>
         </div>
+
+        <ContactForm />
 
         <div className="footer-details-box">
           <h4 className="footer-details-title">{lang === 'en' ? 'Professional Details' : 'Detalhes Profissionais'}</h4>

@@ -436,14 +436,14 @@ void processFrame(Mat& frame) {
     }
   },
   skills: {
-    java: "Java/Kotlin (JVM, Clean Architecture, Spring Boot)",
-    react: "React 19 / TypeScript (State Sync, PWA)",
-    python: "Python (AI, PyTorch, OSINT, Scraping)",
-    spring: "Data Engineering (PostgreSQL, PostGIS, Pandas)",
-    cloud: "Edge/Serverless (Deno, Supabase, Firebase, AWS)",
-    gis: "Geo-Intelligence (Spatial Indexing, GeoServer)",
-    arch: "Systems Architecture (Microservices, Resiliency)",
-    node: "Mobile Engineering (Android Native, Room, Flow)"
+    java: "Reactive JVM Systems (Java/Kotlin, Spring Boot 3, Hibernate, Micronaut, Clean Architecture, Design Patterns)",
+    react: "React 19 Ecosystem (TypeScript, Complex State Management, Next.js, Performance Optimization, High-Scale PWAs)",
+    spring: "Data Engineering & DBAs (Advanced PostgreSQL, PostGIS, Spatial Indexing, Pandas, Big Data Pipelines)",
+    python: "Artificial Intelligence & Automation (PyTorch, Custom OCR Models, OpenCV, Computer Vision, Headless Scrapers)",
+    cloud: "Cloud & Edge Architecture (Deno Edge Functions, Supabase Realtime, AWS S3/EC2, Firebase Serverless, CI/CD)",
+    gis: "Mission-Critical GIS Intelligence (GeoServer WFS/WMS, QGis Desktop/Server, GeoJSON, Leaflet Integration)",
+    arch: "Design Systems & Micro-frontends (Resilience, Horizontal Scalability, Storybook, Luxury UI/UX)",
+    node: "Native Mobile & Kotlin Flow (Android MVVM/MVI Architectures, Room DB, Coroutines, Jetpack Compose, BLE)",
   },
   certs: data.certifications_en,
   footer: {

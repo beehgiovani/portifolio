@@ -70,12 +70,14 @@ export function ProjectGrid({ onSelect }: { onSelect: (p: Project) => void }) {
       </motion.h2>
       <div className="grid-bento">
         {projectList.map((project: Project, idx: number) => {
-          // Custom Bento Layout Logic for 11 projects (Total slots: 15)
+          // Custom Bento Layout Logic
           let span: number | boolean = false;
           
-          if (idx === 0) span = 3; // PredictMed (Full Row)
-          if (idx === 1) span = 2; // GuaruGeo
-          if (idx === 2) span = 2; // Cimed Experience
+          // Lógica para 11 projetos fecharem 5 linhas perfeitas (15 slots)
+          if (idx === 0) span = 3; // PredictMed (Linha 1 completa)
+          if (idx === 1) span = 2; // GuaruGeo (Linha 2)
+          if (idx === 2) span = 2; // Cimed Experience (Linha 3)
+          // Os outros 8 projetos ocupam 1 slot cada, preenchendo os buracos
           
           return (
             <ProjectCard

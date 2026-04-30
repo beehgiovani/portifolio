@@ -436,14 +436,14 @@ void processFrame(Mat& frame) {
     }
   },
   skills: {
-    java: "Java/Kotlin (Máquina Virtual JVM, Clean Architecture, Spring Boot)",
-    react: "React 19 / TypeScript (Gerenciamento de Estado Avançado, PWA)",
-    python: "Python (Machine Learning, PyTorch, Modelos OCR, Automação)",
-    spring: "Engenharia de Dados (PostgreSQL DBMS, PostGIS Spatial, Pandas)",
-    cloud: "Cloud & Edge (Deno Edge Functions, Supabase Realtime, AWS, Firebase)",
-    gis: "Geo-Inteligência (GeoServer WFS, QGis Integrado)",
-    arch: "Design System & Micro-arquiteturas (Resiliência, Escalabilidade)",
-    node: "Engenharia Mobile Nativa (Arquiteturas Android, Room DB, Kotlin Flow)"
+    java: "Sistemas Reativos JVM (Java/Kotlin, Spring Boot 3, Hibernate, Micronaut, Clean Architecture, Design Patterns)",
+    react: "Ecossistema React 19 (TypeScript, State Management Complexo, Next.js, Performance Optimization, PWAs de alta escala)",
+    spring: "Engenharia de Dados & DBAs (PostgreSQL Avançado, PostGIS, Indexação Espacial, Pandas, Big Data Pipelines)",
+    python: "Inteligência Artificial & Automação (PyTorch, Modelos OCR Customizados, OpenCV, Visão Computacional, Scrapers Headless)",
+    cloud: "Arquitetura Cloud & Edge (Deno Edge Functions, Supabase Realtime, AWS S3/EC2, Firebase Serverless, CI/CD)",
+    gis: "Geo-Inteligência de Missão Crítica (GeoServer WFS/WMS, QGis Desktop/Server, GeoJSON, Leaflet Integration)",
+    arch: "Design Systems & Micro-frontends (Resiliência, Escalabilidade Horizontal, Storybook, UI/UX de Alto Luxo)",
+    node: "Mobile Nativo & Kotlin Flow (Arquiteturas Android MVVM/MVI, Room DB, Coroutines, Jetpack Compose, Bluetooth Low Energy)"
   },
   certs: data.certifications,
   footer: {
