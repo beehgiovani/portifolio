@@ -12,11 +12,17 @@ export function ContactForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('sending');
+    setResponseMsg('');
 
-    // Fail-safe: Reset status after 15s if stuck
-    const failSafe = setTimeout(() => {
-      setStatus(prev => prev === 'sending' ? 'idle' : prev);
-    }, 15000);
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 60000); // 60s for cold start
+
+    // Mostrar aviso de cold start após 5 segundos
+    const coldStartTimer = setTimeout(() => {
+      if (status === 'sending') {
+        setResponseMsg(lang === 'en' ? 'Server is waking up, please wait...' : 'O servidor está acordando, por favor aguarde...');
+      }
+    }, 5000);
 
     const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8080';
     try {
@@ -24,9 +30,9 @@ export function ContactForm() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
+        signal: controller.signal
       });
 
-      clearTimeout(failSafe);
       if (response.ok) {
         const data = await response.json();
         setResponseMsg(data.message);
@@ -35,12 +41,19 @@ export function ContactForm() {
       } else {
         setStatus('error');
       }
-    } catch (error) {
-      clearTimeout(failSafe);
+    } catch (error: unknown) {
       console.error('Error submitting form:', error);
+      if (error instanceof Error && error.name === 'AbortError') {
+        setResponseMsg(lang === 'en' ? 'Request timed out. The server might be slow.' : 'Tempo esgotado. O servidor pode estar lento.');
+      }
       setStatus('error');
     } finally {
-      setTimeout(() => setStatus(prev => prev === 'error' ? 'idle' : prev), 3000);
+      clearTimeout(timeoutId);
+      clearTimeout(coldStartTimer);
+      // Mantém a mensagem de sucesso, mas reseta erro após 5s
+      if (status !== 'success') {
+        setTimeout(() => setStatus(prev => prev === 'error' ? 'idle' : prev), 5000);
+      }
     }
   };
 

@@ -16,31 +16,45 @@ export function AdminMessages({ onClose }: { onClose: () => void }) {
   const [messages, setMessages] = useState<Contact[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const fetchMessages = async () => {
+  const fetchMessages = async (signal?: AbortSignal) => {
     setLoading(true);
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 15000);
-
     try {
       const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8080';
       const response = await fetch(`${apiUrl}/api/portfolio/contact`, { 
-        signal: controller.signal 
+        signal: signal 
       });
-      clearTimeout(timeoutId);
       
       if (response.ok) {
         const data = await response.json();
         setMessages(data);
+      } else {
+        console.error('Response not ok:', response.status);
       }
-    } catch (error) {
-      console.error('Error fetching messages:', error);
+    } catch (error: unknown) {
+      if (error instanceof Error && error.name === 'AbortError') {
+        console.log('Fetch aborted');
+      } else {
+        console.error('Error fetching messages:', error);
+      }
     } finally {
       setLoading(false);
     }
   };
 
   useEffect(() => {
-    fetchMessages();
+    const controller = new AbortController();
+    
+    // Timer para timeout de 60s (acomodar cold start do Render)
+    const timeoutId = setTimeout(() => {
+      controller.abort();
+    }, 60000);
+
+    fetchMessages(controller.signal).finally(() => clearTimeout(timeoutId));
+
+    return () => {
+      controller.abort();
+      clearTimeout(timeoutId);
+    };
   }, []);
 
   return (
@@ -60,7 +74,7 @@ export function AdminMessages({ onClose }: { onClose: () => void }) {
 
           <div className="admin-header-actions">
             <button
-              onClick={fetchMessages}
+              onClick={() => fetchMessages()}
               className="admin-btn-secondary"
               title={lang === 'en' ? 'Refresh Messages' : 'Atualizar Mensagens'}
               aria-label={lang === 'en' ? 'Refresh Messages' : 'Atualizar Mensagens'}
