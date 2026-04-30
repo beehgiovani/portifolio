@@ -17,6 +17,11 @@ public class PortfolioController {
         this.contactRepository = contactRepository;
     }
 
+    @GetMapping("/healthz")
+    public String health() {
+        return "OK";
+    }
+
     @GetMapping
     public Map<String, String> getProfile() {
         return Map.of(
