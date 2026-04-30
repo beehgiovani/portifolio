@@ -1262,9 +1262,15 @@ h4 {
   display: flex;
   gap: 1.5rem;
   overflow-x: auto;
-  padding-bottom: 1.5rem;
+  padding: 0 2rem 1.5rem;
   scroll-behavior: smooth;
-  justify-content: center;
+}
+
+/* Centers items when they fit, allows scrolling to start when they overflow */
+.pm-screenshots-grid::before,
+.pm-screenshots-grid::after {
+  content: "";
+  margin: auto;
 }
 
 .pm-screenshots-grid::-webkit-scrollbar {
