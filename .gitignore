@@ -52,3 +52,4 @@ portfolio.data.json
 refactor_*.js
 sync_*.js
 *bak
+*.cache
