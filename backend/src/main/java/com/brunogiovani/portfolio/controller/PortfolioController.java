@@ -8,7 +8,7 @@ import com.brunogiovani.portfolio.model.Contact;
 
 @RestController
 @RequestMapping("/api/portfolio")
-@CrossOrigin(origins = "*") // Liberando o CORS pra não dar erro no React durante o dev
+@CrossOrigin(origins = "*", allowedHeaders = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.OPTIONS})
 public class PortfolioController {
 
     private final com.brunogiovani.portfolio.repository.ContactRepository contactRepository;
