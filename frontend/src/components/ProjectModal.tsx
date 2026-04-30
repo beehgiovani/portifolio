@@ -3,6 +3,10 @@ import { useState } from 'react'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism'
 import type { Project } from '../types/project.ts'
+import { 
+  Network, Target, Lightbulb, Zap, Settings, Camera, CheckCircle2
+} from 'lucide-react'
+import { AnimatedIcon } from './AnimatedIcon'
 
 const codeCustomStyle = { margin: 0, padding: '1.5rem', fontSize: '0.9rem' };
 
@@ -60,7 +64,8 @@ export function ProjectModal({ project, onClose }: { project: Project, onClose: 
               <div className="card-masterpiece pm-bento-full pm-arch-section">
                 <div className="pm-arch-header">
                   <h4 className="pm-h4">
-                    🌐 {lang === 'en' ? 'Architecture Topology' : 'Topologia da Arquitetura'}
+                    <AnimatedIcon icon={Network} size={20} animation="float" />
+                    {lang === 'en' ? 'Architecture Topology' : 'Topologia da Arquitetura'}
                   </h4>
                   {project.details.url && (
                     <a href={project.details.url} target="_blank" rel="noopener noreferrer" className="pm-live-btn">
@@ -77,7 +82,8 @@ export function ProjectModal({ project, onClose }: { project: Project, onClose: 
               {project.details.businessImpact && (
                 <div className="card-masterpiece pm-bento-full">
                   <h4 className="pm-h4">
-                    🎯 {lang === 'en' ? 'Business Impact' : 'Impacto de Negócio'}
+                    <AnimatedIcon icon={Target} size={20} animation="pulse" />
+                    {lang === 'en' ? 'Business Impact' : 'Impacto de Negócio'}
                   </h4>
                   <p className="pm-p">{project.details.businessImpact}</p>
                 </div>
@@ -86,7 +92,8 @@ export function ProjectModal({ project, onClose }: { project: Project, onClose: 
               {/* Inovação */}
               <div className="card-masterpiece pm-bento-item">
                 <h4 className="pm-h4">
-                  💡 {lang === 'en' ? 'Core Innovation' : 'Inovação Principal'}
+                  <AnimatedIcon icon={Lightbulb} size={20} animation="float" />
+                  {lang === 'en' ? 'Core Innovation' : 'Inovação Principal'}
                 </h4>
                 <p className="pm-p-sm">{project.details.innovation}</p>
               </div>
@@ -94,12 +101,14 @@ export function ProjectModal({ project, onClose }: { project: Project, onClose: 
               {/* Pontos Fortes */}
               <div className="card-masterpiece pm-bento-item">
                 <h4 className="pm-h4">
-                  ⚡ {lang === 'en' ? 'Strong Points' : 'Pontos Fortes'}
+                  <AnimatedIcon icon={Zap} size={20} animation="pulse" />
+                  {lang === 'en' ? 'Strong Points' : 'Pontos Fortes'}
                 </h4>
                 <ul className="pm-ul">
                   {project.details.strongPoints.map((point: string, i: number) => (
                     <li key={i} className="pm-li">
-                      <span className="text-gold">✔</span> {point}
+                      <AnimatedIcon icon={CheckCircle2} size={14} color="var(--primary-gold)" />
+                      {point}
                     </li>
                   ))}
                 </ul>
@@ -109,7 +118,8 @@ export function ProjectModal({ project, onClose }: { project: Project, onClose: 
               {project.details.technicalChallenges && (
                 <div className="card-masterpiece pm-bento-item">
                   <h4 className="pm-h4">
-                    ⚙️ {lang === 'en' ? 'Technical Challenges Overcome' : 'Desafios Técnicos Superados'}
+                    <AnimatedIcon icon={Settings} size={20} animation="spin" />
+                    {lang === 'en' ? 'Technical Challenges Overcome' : 'Desafios Técnicos Superados'}
                   </h4>
                   <p className="pm-p-sm">{project.details.technicalChallenges}</p>
                 </div>
@@ -162,7 +172,8 @@ export function ProjectModal({ project, onClose }: { project: Project, onClose: 
           {project.screenshots && project.screenshots.length > 0 && (
             <div className="pm-screenshots-container">
               <h4 className="pm-h4">
-                📸 {lang === 'en' ? 'Project Screenshots' : 'Telas do Sistema'}
+                <AnimatedIcon icon={Camera} size={20} animation="float" />
+                {lang === 'en' ? 'Project Screenshots' : 'Telas do Sistema'}
               </h4>
               <div className="pm-screenshots-grid">
                 {project.screenshots.map((img, idx) => (

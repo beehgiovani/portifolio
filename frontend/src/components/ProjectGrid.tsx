@@ -4,7 +4,7 @@ import type { Project } from '../types/project.ts'
 import { motion } from 'framer-motion'
 
 
-export function ProjectCard({ project, onSelect, span = false }: { project: Project, onSelect: (p: Project) => void, span?: boolean }) {
+export function ProjectCard({ project, onSelect, span = false }: { project: Project, onSelect: (p: Project) => void, span?: number | boolean }) {
   const cardRef = useRef<HTMLDivElement>(null);
 
   const handleMouseMove = (e: React.MouseEvent) => {
@@ -26,7 +26,7 @@ export function ProjectCard({ project, onSelect, span = false }: { project: Proj
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`card-masterpiece cursor-pointer ${span ? 'card-span-2' : ''}`}
+      className={`card-masterpiece cursor-pointer ${span === 2 ? 'card-span-2' : span === 3 ? 'card-span-3' : ''}`}
       onMouseMove={handleMouseMove}
       onMouseLeave={reset}
       onClick={() => onSelect(project)}
@@ -69,14 +69,23 @@ export function ProjectGrid({ onSelect }: { onSelect: (p: Project) => void }) {
         {t.sections.projects}
       </motion.h2>
       <div className="grid-bento">
-        {projectList.map((project: Project, idx: number) => (
-          <ProjectCard
-            key={idx}
-            project={project}
-            onSelect={onSelect}
-            span={idx === 0 || idx === 3}
-          />
-        ))}
+        {projectList.map((project: Project, idx: number) => {
+          // Custom Bento Layout Logic for 11 projects (Total slots: 15)
+          let span: number | boolean = false;
+          
+          if (idx === 0) span = 3; // PredictMed (Full Row)
+          if (idx === 1) span = 2; // GuaruGeo
+          if (idx === 2) span = 2; // Cimed Experience
+          
+          return (
+            <ProjectCard
+              key={idx}
+              project={project}
+              onSelect={onSelect}
+              span={span}
+            />
+          );
+        })}
       </div>
     </section>
   );

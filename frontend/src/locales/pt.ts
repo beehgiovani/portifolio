@@ -438,7 +438,7 @@ void processFrame(Mat& frame) {
   skills: {
     java: "Java/Kotlin (Máquina Virtual JVM, Clean Architecture, Spring Boot)",
     react: "React 19 / TypeScript (Gerenciamento de Estado Avançado, PWA)",
-    python: "Python Extremo (Machine Learning, PyTorch, Modelos OCR, Automação)",
+    python: "Python (Machine Learning, PyTorch, Modelos OCR, Automação)",
     spring: "Engenharia de Dados (PostgreSQL DBMS, PostGIS Spatial, Pandas)",
     cloud: "Cloud & Edge (Deno Edge Functions, Supabase Realtime, AWS, Firebase)",
     gis: "Geo-Inteligência (GeoServer WFS, QGis Integrado)",

@@ -2,6 +2,12 @@ import { useState, useEffect, useRef } from 'react'
 import { useI18n } from './hooks/useI18n.ts'
 import type { Project } from './types/project.ts'
 import { motion } from 'framer-motion'
+import { 
+  Zap, Code2, Atom, Database, Brain, 
+  Cloud, Map, Layers, Smartphone, 
+  Network, Banknote, Globe2, Languages
+} from 'lucide-react'
+import { AnimatedIcon } from './components/AnimatedIcon'
 
 // Importando nossos componentes modulares
 import { Navbar } from './components/Navbar'
@@ -72,12 +78,27 @@ function App() {
               transition={{ duration: 0.5 }}
               className="card-masterpiece skills-card"
             >
-              <h4 className="skills-h4">Expert Tech Stack</h4>
+              <h4 className="skills-h4">
+                <AnimatedIcon icon={Code2} />
+                Expert Tech Stack
+              </h4>
               <ul className="skills-ul">
-                <li className="skills-li">⚡ {t.skills.java}</li>
-                <li className="skills-li">⚡ {t.skills.react}</li>
-                <li className="skills-li">⚡ {t.skills.spring}</li>
-                <li className="skills-li">⚡ {t.skills.python}</li>
+                <li className="skills-li">
+                  <AnimatedIcon icon={Zap} animation="pulse" />
+                  {t.skills.java}
+                </li>
+                <li className="skills-li">
+                  <AnimatedIcon icon={Atom} animation="spin" />
+                  {t.skills.react}
+                </li>
+                <li className="skills-li">
+                  <AnimatedIcon icon={Database} animation="pulse" />
+                  {t.skills.spring}
+                </li>
+                <li className="skills-li">
+                  <AnimatedIcon icon={Brain} animation="float" />
+                  {t.skills.python}
+                </li>
               </ul>
             </motion.div>
 
@@ -88,12 +109,27 @@ function App() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="card-masterpiece skills-card"
             >
-              <h4 className="skills-h4-white">Ecosystem Authority</h4>
+              <h4 className="skills-h4-white">
+                <AnimatedIcon icon={Network} color="#fff" />
+                Ecosystem Authority
+              </h4>
               <ul className="skills-ul">
-                <li className="skills-li">☁️ {t.skills.cloud}</li>
-                <li className="skills-li">🗺️ {t.skills.gis}</li>
-                <li className="skills-li">🏛️ {t.skills.arch}</li>
-                <li className="skills-li">🤖 AI & Computer Vision</li>
+                <li className="skills-li">
+                  <AnimatedIcon icon={Cloud} animation="float" />
+                  {t.skills.cloud}
+                </li>
+                <li className="skills-li">
+                  <AnimatedIcon icon={Map} animation="bounce" />
+                  {t.skills.gis}
+                </li>
+                <li className="skills-li">
+                  <AnimatedIcon icon={Layers} animation="float" />
+                  {t.skills.arch}
+                </li>
+                <li className="skills-li">
+                  <AnimatedIcon icon={Smartphone} animation="pulse" />
+                  {t.skills.node}
+                </li>
               </ul>
             </motion.div>
           </div>
@@ -129,7 +165,7 @@ function App() {
           <h4 className="footer-details-title">{lang === 'en' ? 'Professional Details' : 'Detalhes Profissionais'}</h4>
           <div className="footer-details-grid">
             <div className="footer-detail-item">
-              <span className="footer-detail-icon">💰</span>
+              <AnimatedIcon icon={Banknote} animation="pulse" />
               <div className="footer-detail-content">
                 <div className="footer-topic">
                   <span className="topic-label">PJ (B2B):</span>
@@ -143,7 +179,7 @@ function App() {
             </div>
 
             <div className="footer-detail-item">
-              <span className="footer-detail-icon">🌍</span>
+              <AnimatedIcon icon={Globe2} animation="spin" />
               <div className="footer-detail-content">
                 <div className="footer-topic">
                   <span className="topic-label">{lang === 'en' ? 'MODEL' : 'MODELO'}:</span>
@@ -157,7 +193,7 @@ function App() {
             </div>
 
             <div className="footer-detail-item">
-              <span className="footer-detail-icon">🗣️</span>
+              <AnimatedIcon icon={Languages} animation="float" />
               <div className="footer-detail-content">
                 <div className="footer-topic">
                   <span className="topic-label">{lang === 'en' ? 'NATIVE' : 'NATIVO'}:</span>
