@@ -1,5 +1,5 @@
 import { useI18n } from '../hooks/useI18n.ts'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism'
 import type { Project } from '../types/project.ts'
@@ -13,6 +13,13 @@ const codeCustomStyle = { margin: 0, padding: '1.5rem', fontSize: '0.9rem' };
 export function ProjectModal({ project, onClose }: { project: Project, onClose: () => void }) {
   const { lang } = useI18n();
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   if (!project) return null;
 
@@ -33,12 +40,12 @@ export function ProjectModal({ project, onClose }: { project: Project, onClose: 
   return (
     <>
       <div className="modal-overlay pm-overlay" onClick={onClose}>
-        <div className="card-masterpiece animate-reveal pm-card" onClick={(e) => e.stopPropagation()}>
+        <div className={`card-masterpiece animate-reveal pm-card ${isMobile ? 'pm-mobile' : ''}`} onClick={(e) => e.stopPropagation()}>
           {/* Header */}
           <div className="pm-header">
             <div className="pm-logo-wrapper">
               {project.logo && (
-                <img src={project.logo} alt={project.title} className="pm-logo" />
+                <img src={project.logo} alt={project.title} className="pm-logo" loading="lazy" />
               )}
               <div>
                 <span className="section-label pm-label">{project.impact}</span>
@@ -182,6 +189,7 @@ export function ProjectModal({ project, onClose }: { project: Project, onClose: 
                     src={img}
                     alt={`Screenshot ${idx + 1}`}
                     className="pm-screenshot-img"
+                    loading="lazy"
                     onClick={() => setActiveIndex(idx)}
                   />
                 ))}

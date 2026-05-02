@@ -37,7 +37,7 @@ export function ProjectCard({ project, onSelect, span = false }: { project: Proj
           <h3 className="project-card-title">{project.title}</h3>
         </div>
         {project.logo && (
-          <img src={project.logo} alt={project.title} className="project-card-logo" />
+          <img src={project.logo} alt={project.title} className="project-card-logo" loading="lazy" />
         )}
       </div>
       <p className="project-card-desc">{project.desc}</p>

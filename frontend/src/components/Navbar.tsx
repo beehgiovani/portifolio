@@ -1,5 +1,5 @@
 import { useI18n } from '../hooks/useI18n'
-import { Settings } from 'lucide-react'
+import { Settings, Globe2 } from 'lucide-react'
 
 export function Navbar({ onShowAdmin }: { onShowAdmin: () => void }) {
   const { lang, setLang, t } = useI18n();
@@ -19,8 +19,10 @@ export function Navbar({ onShowAdmin }: { onShowAdmin: () => void }) {
           <button 
             onClick={() => setLang(lang === 'en' ? 'pt' : 'en')}
             className="navbar-lang-btn"
+            title={lang === 'en' ? 'Switch to Portuguese' : 'Mudar para Inglês'}
           >
-            {lang === 'en' ? 'PT' : 'EN'}
+            <Globe2 size={16} className="mr-05" />
+            <span>{lang === 'en' ? 'EN' : 'PT'}</span>
           </button>
 
           {window.location.hostname === 'localhost' && (

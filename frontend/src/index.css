@@ -19,7 +19,7 @@
   --accent-slate: #1e293b;
   /* Slate 800 */
   --text-main: #f8fafc;
-  --text-muted: #94a3b8;
+  --text-muted: #cbd5e1;
   --border-glass: rgba(255, 255, 255, 0.06);
   --border-hover: rgba(56, 189, 248, 0.4);
 
@@ -35,6 +35,11 @@
   padding: 0;
   box-sizing: border-box;
   scroll-behavior: smooth;
+}
+
+:focus-visible {
+  outline: 2px solid var(--primary-gold);
+  outline-offset: 4px;
 }
 
 body {
@@ -129,6 +134,37 @@ h4 {
 .nav-link:hover {
   color: var(--text-main);
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.navbar-lang-btn {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-glass);
+  color: var(--text-main);
+  padding: 0.4rem 0.8rem;
+  border-radius: 99px;
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-weight: 700;
+  transition: var(--transition-fast);
+  margin-left: 1.5rem;
+}
+
+.navbar-lang-btn:hover {
+  background: rgba(56, 189, 248, 0.1);
+  border-color: var(--primary-gold);
+  color: var(--primary-gold);
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
+}
+
+.navbar-admin-btn {
+  padding: 0.4rem;
+  margin-left: 0.5rem;
+}
+
+.mr-05 {
+  margin-right: 0.5rem;
 }
 
 /* Layout Containers */
@@ -728,16 +764,18 @@ h4 {
 }
 
 .pm-header {
+  position: relative;
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 2rem;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
 }
 
 .pm-logo-wrapper {
   display: flex;
-  gap: 2rem;
-  align-items: center;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: flex-start;
 }
 
 .pm-logo {
@@ -766,12 +804,28 @@ h4 {
 }
 
 .pm-close-btn {
-  background: transparent;
-  border: none;
+  position: absolute;
+  top: -1rem;
+  right: -1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-glass);
   color: #fff;
-  font-size: 2rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
   cursor: pointer;
-  padding: 0 1rem;
+  transition: all 0.3s;
+  z-index: 10;
+}
+
+.pm-close-btn:hover {
+  background: var(--primary-gold);
+  color: #000;
+  transform: rotate(90deg);
 }
 
 .pm-tags-container {
@@ -788,11 +842,14 @@ h4 {
 .pm-bento-grid {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1.5rem;
+  grid-auto-rows: auto;
+  align-items: start;
 }
 
 .pm-bento-item {
   padding: 2rem;
   justify-content: flex-start;
+  height: fit-content;
 }
 
 .pm-bento-full {
@@ -800,6 +857,7 @@ h4 {
   border: 1px solid var(--primary-gold);
   grid-column: 1 / -1;
   justify-content: flex-start;
+  height: fit-content;
 }
 
 .pm-h4 {
@@ -1559,6 +1617,39 @@ h4 {
 
   .pm-h4 {
     font-size: 1.1rem;
+  }
+
+  .pm-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .pm-logo-wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .pm-title {
+    font-size: 1.8rem;
+    line-height: 1.1;
+  }
+
+  .pm-desc {
+    font-size: 1rem;
+  }
+
+  .pm-close-btn {
+    position: absolute;
+    top: 1.5rem;
+    right: 1rem;
+    font-size: 2.5rem;
+  }
+
+  .pm-card {
+    position: relative;
+    padding: 2rem 1.5rem;
   }
 
   /* Footer Details */

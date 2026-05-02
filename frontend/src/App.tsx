@@ -18,7 +18,6 @@ import { ProjectGrid } from './components/ProjectGrid'
 import { ProjectModal } from './components/ProjectModal'
 import { ExperienceTimeline } from './components/ExperienceTimeline'
 import { CertificationSection } from './components/CertificationSection'
-import { LanguageDialog } from './components/LanguageDialog'
 import { TechMarquee } from './components/TechMarquee'
 import { AdminMessages } from './components/AdminMessages'
 
@@ -42,14 +41,9 @@ function MouseGlow() {
 }
 
 function App() {
-  const { t, lang, setLang } = useI18n();
-  const [showDialog, setShowDialog] = useState(true);
+  const { t, lang } = useI18n();
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [showAdmin, setShowAdmin] = useState(false);
-
-  if (showDialog) {
-    return <LanguageDialog onSelect={(l) => { setLang(l); setShowDialog(false); }} />;
-  }
 
   return (
     <div className="container app-container">

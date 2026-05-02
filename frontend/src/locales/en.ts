@@ -17,7 +17,7 @@ import data from '../portfolio.data.json'
 export const en = {
   hero: {
     greeting: "Bruno Giovani",
-    role: "Principal Systems Architect | Senior Software Engineer",
+    role: "Principal Systems Architect | Pleno/Senior Software Engineer",
     years: "6+ Years of High-Stakes Engineering",
     tagline: "Architecting massive-scale digital ecosystems with a focus on zero-latency, absolute resilience, and strategic AI integration. Specialist in Geo-Intelligence, Resilient Microservices, and Native Mobile Performance.",
     cta: "View Executive Trajectory"
@@ -31,7 +31,7 @@ export const en = {
   },
   experience: [
     { date: "Mar 2026 - Present", role: "Front-End Lead Developer | PredictMed", desc: "Orchestrating the development of AI-driven predictive health platforms. Implementing high-availability architectures using Supabase, Deno Edge, and Gemini Vision AI for automated inventory auditing." },
-    { date: "Jan 2024 - Present", role: "Senior Software Engineer | Soo Tech", desc: "Technical leadership in complex JVM ecosystems. Specialized in implementing resilient microservices with Spring Boot, ensuring high throughput and strict compliance through Clean Architecture." },
+    { date: "Jan 2024 - Present", role: "Pleno/Senior Software Engineer | Soo Tech", desc: "Technical leadership in complex JVM ecosystems. Specialized in implementing resilient microservices with Spring Boot, ensuring high throughput and strict compliance through Clean Architecture." },
     { date: "2023 - Present", role: "Architect & Founder | GuaruGeo", desc: "Developing a sovereign GIS infrastructure. Integrating PostGIS spatial indexing with automated OSINT pipelines to deliver sub-metric real estate intelligence." }
   ],
   projects: {
