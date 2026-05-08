@@ -1004,26 +1004,35 @@ h4 {
 
 .topic-label {
   color: var(--primary-gold);
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  opacity: 0.8;
+  letter-spacing: 0.1em;
+  margin-bottom: 4px;
 }
 
 .topic-value {
-  color: #f1f5f9;
-  font-size: 0.9rem;
-  line-height: 1.3;
+  color: #f8fafc;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.4;
 }
 
 .topic-subvalue {
-  display: block;
   color: var(--primary-gold);
-  font-size: 0.8rem;
-  font-weight: 700;
-  opacity: 0.8;
-  margin-top: 2px;
+  font-size: 0.75rem;
+  opacity: 0.7;
+  font-weight: 500;
+}
+
+.topic-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 8px;
+}
+
+.topic-group:last-child {
+  margin-bottom: 0;
 }
 
 @media (max-width: 1200px) {

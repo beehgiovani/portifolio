@@ -2,9 +2,9 @@ import { useState, useEffect, useRef } from 'react'
 import { useI18n } from './hooks/useI18n.ts'
 import type { Project } from './types/project.ts'
 import { motion } from 'framer-motion'
-import { 
-  Zap, Code2, Atom, Database, Brain, 
-  Cloud, Map, Layers, Smartphone, 
+import {
+  Zap, Code2, Atom, Database, Brain,
+  Cloud, Map, Layers, Smartphone,
   Network, Banknote, Globe2, Languages
 } from 'lucide-react'
 import { AnimatedIcon } from './components/AnimatedIcon'
@@ -52,11 +52,11 @@ function App() {
     const checkAuth = async () => {
       const isLocal = window.location.hostname === 'localhost';
       const hasStoredToken = localStorage.getItem('admin_authorized') === 'true';
-      
+
       const urlParams = new URLSearchParams(window.location.search);
       const accessKey = urlParams.get('access_key');
-      
-      const ADMIN_HASH = 'fc79fc22787172c45089fdfec21c03161980c8ccbc2979ca24bcfaaf607d3349'; 
+
+      const ADMIN_HASH = 'fc79fc22787172c45089fdfec21c03161980c8ccbc2979ca24bcfaaf607d3349';
 
       const hashKey = async (key: string) => {
         try {
@@ -79,8 +79,8 @@ function App() {
           window.history.replaceState({}, document.title, window.location.pathname);
           return;
         }
-      } 
-      
+      }
+
       if (isLocal || hasStoredToken) {
         setIsAdminAuthorized(true);
       }
@@ -93,9 +93,9 @@ function App() {
     <div className="container app-container">
       <MouseGlow />
 
-      <Navbar 
-        onShowAdmin={() => setShowAdmin(true)} 
-        onShowResume={() => setShowResume(true)} 
+      <Navbar
+        onShowAdmin={() => setShowAdmin(true)}
+        onShowResume={() => setShowResume(true)}
         isAdmin={isAdminAuthorized}
       />
 
@@ -216,14 +216,21 @@ function App() {
               <div className="footer-detail-content">
                 <div className="footer-topic">
                   <span className="topic-label">PJ (B2B):</span>
-                  <span className="topic-value">$ 4,000 - 6,500 USD | R$ 10k - 12k</span>
-                  <span className="topic-subvalue">
-                    {lang === 'en' ? '($ 25 - 45/h | R$ 60 - 75/h)' : '(R$ 60 - 75/h | $ 25 - 45/h)'}
-                  </span>
+                  <div className="topic-group">
+                    <span className="topic-value">$ 4,000 - 6,500 USD</span>
+                    <span className="topic-subvalue">($ 25 - 45/h)</span>
+                  </div>
+                  <div className="topic-group">
+                    <span className="topic-value">R$ 10.000 - 12.000</span>
+                    <span className="topic-subvalue">(R$ 60 - 75/h)</span>
+                  </div>
                 </div>
                 <div className="footer-topic">
                   <span className="topic-label">CLT:</span>
-                  <span className="topic-value">R$ 8,000 - 9,500 (+ Ben.)</span>
+                  <div className="topic-group">
+                    <span className="topic-value">R$ 8,000 - 9,500</span>
+                    <span className="topic-subvalue">(+ Benefícios)</span>
+                  </div>
                 </div>
               </div>
             </div>

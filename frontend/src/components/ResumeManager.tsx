@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import {
   X, Printer, FileText,
@@ -11,6 +11,15 @@ interface ResumeManagerProps {
   onClose: () => void;
 }
 
+const renderMultiLine = (text: string) => {
+  if (!text) return null;
+  return text.split('|').map((part, index) => (
+    <div key={index} className="multi-line-item">
+      {part.trim()}
+    </div>
+  ));
+};
+
 export function ResumeManager({ onClose }: ResumeManagerProps) {
   const [selectedResume, setSelectedResume] = useState<keyof typeof resumeData>('javascript');
   const [lang, setLang] = useState<'pt' | 'en'>('pt');
@@ -18,6 +27,25 @@ export function ResumeManager({ onClose }: ResumeManagerProps) {
   const [editedData, setEditedData] = useState(JSON.parse(JSON.stringify(resumeData)));
 
   const currentData = editedData[selectedResume][lang];
+
+  useEffect(() => {
+    const originalTitle = document.title;
+    const date = new Date().toLocaleDateString('pt-BR').replace(/\//g, '-');
+
+    const fileNames: Record<string, string> = {
+      javascript: 'FullStack_React_Node',
+      java: 'Software_Engineer_Java_Spring',
+      kotlin: 'Software_Engineer_Kotlin_Mobile',
+      python: 'Data_Engineer_AI_Python'
+    };
+
+    const roleName = fileNames[selectedResume] || selectedResume;
+    document.title = `Curriculo_Bruno_Giovani_${roleName}_${date}`;
+
+    return () => {
+      document.title = originalTitle;
+    };
+  }, [selectedResume, lang]);
 
   const handlePrint = () => {
     window.print();
@@ -57,15 +85,25 @@ export function ResumeManager({ onClose }: ResumeManagerProps) {
           <div className="sidebar-section">
             <label>Template</label>
             <div className="template-selector">
-              {(Object.keys(resumeData) as Array<keyof typeof resumeData>).map((key) => (
-                <button
-                  key={key}
-                  onClick={() => setSelectedResume(key)}
-                  className={`template-btn ${selectedResume === key ? 'active' : ''}`}
-                >
-                  {key.charAt(0).toUpperCase() + key.slice(1)}
-                </button>
-              ))}
+              {(Object.keys(resumeData) as Array<keyof typeof resumeData>).map((key) => {
+                const descriptions = {
+                  javascript: lang === 'en' ? 'Full Stack / Frontend (React/Node)' : 'Full Stack / Frontend (React/Node)',
+                  java: lang === 'en' ? 'Corporate Backend (Spring Boot)' : 'Backend Corporativo (Spring Boot)',
+                  kotlin: lang === 'en' ? 'Modern Backend / Mobile (Ktor/Compose)' : 'Backend Moderno / Mobile (Ktor/Compose)',
+                  python: lang === 'en' ? 'Data / Automation / AI (Scrapers/Data)' : 'Dados / Automação / IA (Scrapers/Dados)'
+                };
+
+                return (
+                  <button
+                    key={key}
+                    className={`template-btn ${selectedResume === key ? 'active' : ''}`}
+                    onClick={() => setSelectedResume(key)}
+                  >
+                    <span className="btn-label">{key.charAt(0).toUpperCase() + key.slice(1)}</span>
+                    <span className="btn-description">{descriptions[key]}</span>
+                  </button>
+                );
+              })}
             </div>
           </div>
 
@@ -127,17 +165,18 @@ export function ResumeManager({ onClose }: ResumeManagerProps) {
                 {currentData.subtitle}
               </div>
               <div className="resume-contact">
-                <span
+                <div
                   contentEditable={isEditing}
                   onBlur={(e) => handleEdit('contactInfo', null, '', e.currentTarget.innerText)}
                   suppressContentEditableWarning
                 >
-                  {currentData.contactInfo}
-                </span>
-                <br />
-                <a href={currentData.linkedin}>{currentData.linkedin.replace('https://', '')}</a> |
-                <a href={currentData.github}>{currentData.github.replace('https://', '')}</a> |
-                <a href="https://brunodevs.com">brunodevs.com</a>
+                  {renderMultiLine(currentData.contactInfo)}
+                </div>
+                <div className="resume-links">
+                  <a href={currentData.linkedin} target="_blank" rel="noopener noreferrer">{currentData.linkedin.replace('https://', '')}</a>
+                  <a href={currentData.github} target="_blank" rel="noopener noreferrer">{currentData.github.replace('https://', '')}</a>
+                  <a href="https://brunodevs.com" target="_blank" rel="noopener noreferrer">brunodevs.com</a>
+                </div>
               </div>
             </header>
 
@@ -229,7 +268,7 @@ export function ResumeManager({ onClose }: ResumeManagerProps) {
                   onBlur={(e) => handleEdit('salaryB2B', null, '', e.currentTarget.innerText)}
                   suppressContentEditableWarning
                 >
-                  {currentData.salaryB2B}
+                  {renderMultiLine(currentData.salaryB2B)}
                 </div>
                 <div
                   className="grid-subvalue"
@@ -237,7 +276,7 @@ export function ResumeManager({ onClose }: ResumeManagerProps) {
                   onBlur={(e) => handleEdit('salaryB2BSub', null, '', e.currentTarget.innerText)}
                   suppressContentEditableWarning
                 >
-                  {currentData.salaryB2BSub}
+                  {renderMultiLine(currentData.salaryB2BSub)}
                 </div>
 
                 <div className="grid-label">{lang === 'en' ? 'Full-Time Salary (CLT):' : 'Pretensão Salarial CLT:'}</div>
@@ -247,7 +286,7 @@ export function ResumeManager({ onClose }: ResumeManagerProps) {
                   onBlur={(e) => handleEdit('salaryCLT', null, '', e.currentTarget.innerText)}
                   suppressContentEditableWarning
                 >
-                  {currentData.salaryCLT}
+                  {renderMultiLine(currentData.salaryCLT)}
                 </div>
                 <div
                   className="grid-subvalue"
@@ -255,7 +294,7 @@ export function ResumeManager({ onClose }: ResumeManagerProps) {
                   onBlur={(e) => handleEdit('salaryCLTSub', null, '', e.currentTarget.innerText)}
                   suppressContentEditableWarning
                 >
-                  {currentData.salaryCLTSub}
+                  {renderMultiLine(currentData.salaryCLTSub)}
                 </div>
               </div>
 
@@ -267,7 +306,7 @@ export function ResumeManager({ onClose }: ResumeManagerProps) {
                   onBlur={(e) => handleEdit('workModel', null, '', e.currentTarget.innerText)}
                   suppressContentEditableWarning
                 >
-                  {currentData.workModel}
+                  {renderMultiLine(currentData.workModel)}
                 </div>
                 <div className="resume-spacer"></div>
 
@@ -278,7 +317,7 @@ export function ResumeManager({ onClose }: ResumeManagerProps) {
                   onBlur={(e) => handleEdit('mobility', null, '', e.currentTarget.innerText)}
                   suppressContentEditableWarning
                 >
-                  {currentData.mobility}
+                  {renderMultiLine(currentData.mobility)}
                 </div>
               </div>
 
@@ -290,7 +329,7 @@ export function ResumeManager({ onClose }: ResumeManagerProps) {
                   onBlur={(e) => handleEdit('nativeLang', null, '', e.currentTarget.innerText)}
                   suppressContentEditableWarning
                 >
-                  {currentData.nativeLang}
+                  {renderMultiLine(currentData.nativeLang)}
                 </div>
                 <div className="resume-spacer"></div>
 
@@ -301,13 +340,13 @@ export function ResumeManager({ onClose }: ResumeManagerProps) {
                   onBlur={(e) => handleEdit('secondLang', null, '', e.currentTarget.innerText)}
                   suppressContentEditableWarning
                 >
-                  {currentData.secondLang}
+                  {renderMultiLine(currentData.secondLang)}
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </motion.div>
+          </div >
+        </div >
+      </div >
+    </motion.div >
   );
 }

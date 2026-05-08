@@ -73,11 +73,10 @@ export function ProjectGrid({ onSelect }: { onSelect: (p: Project) => void }) {
           // Custom Bento Layout Logic
           let span: number | boolean = false;
           
-          // Lógica para 11 projetos fecharem 5 linhas perfeitas (15 slots)
-          if (idx === 0) span = 3; // PredictMed (Linha 1 completa)
-          if (idx === 1) span = 2; // GuaruGeo (Linha 2)
-          if (idx === 2) span = 2; // Cimed Experience (Linha 3)
-          // Os outros 8 projetos ocupam 1 slot cada, preenchendo os buracos
+          // Lógica para 12 projetos fecharem 6 linhas perfeitas (18 slots)
+          if (idx === 0) span = 3; // PredictMed (Linha 1)
+          if (idx >= 1 && idx <= 4) span = 2; // Lúmen, GuaruGeo, Cimed, MetroMarGeo (Início das Linhas 2, 3, 4, 5)
+          // Os outros 7 projetos ocupam 1 slot cada, preenchendo as linhas 2-5 e a linha 6 completa
           
           return (
             <ProjectCard

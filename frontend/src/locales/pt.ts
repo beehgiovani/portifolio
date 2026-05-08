@@ -9,6 +9,7 @@ import logoMetromargeo from '../assets/logo_metromargeo.png'
 import logoAutoScraper from '../assets/logo_autoscraper.png'
 import logoMarketPoster from '../assets/logo_marketposter.png'
 import logoEmailMonitor from '../assets/logo_emailmonitor.png'
+import logoLumen from '../assets/logo_lumen.png'
 import acapulco1 from '../assets/screenshots/interactivemap/acapulco_1.png'
 import acapulco2 from '../assets/screenshots/interactivemap/acapulco_2.png'
 import acapulco3 from '../assets/screenshots/interactivemap/acapulco_3.png'
@@ -76,6 +77,42 @@ serve(async (req) => {
   }
   return new Response(JSON.stringify({ status: 'analyzed' }))
 })`
+        }
+      ]
+    },
+    lumen: {
+      title: "LÚMEN | Spatial Drawing Engine",
+      logo: logoLumen,
+      impact: "Visão Computacional & Arte Imersiva",
+      desc: "Motor de desenho espacial e síntese sonora em tempo real. Utiliza MediaPipe Vision para rastreio de mãos em 3D, transformando gestos complexos em traços neon e áudio procedimental. Arquitetura de baixíssima latência focada em feedback tátil-sonoro instantâneo.",
+      stack: ["React 19", "MediaPipe Vision", "WebGL", "Sound Synthesis"],
+      details: {
+        innovation: "Algoritmo de estabilização de traço (Stability Ref) que utiliza velocidade e densidade de pontos para simular física de pincéis reais via visão computacional.",
+        strongPoints: ["Rastreio Gestual de Baixa Latência", "Sintetizador Sonoro Procedimental", "Efeitos Visuais Bloom & Neon WebGL"],
+        architecture: "Pipeline reativo de processamento de imagem que utiliza workers para inferência de IA e WebGL para renderização de alta fidelidade a 60fps.",
+        businessImpact: "Explora novas fronteiras de IHC (Interação Humano-Computador), eliminando a barreira física do mouse/touch. Aplicável em museus interativos, ferramentas de design imersivo e reabilitação motora através da gamificação artística.",
+        technicalChallenges: "Orquestrar o processamento de landmarks de IA em tempo real com a síntese de áudio contínua sem causar frames drops ou jitter sonoro.",
+        topology: "MediaPipe (HandLandmarker) -> React 19 -> WebAudio Engine -> WebGL Canvas",
+      },
+      codeSnippets: [
+        {
+          title: "Processamento de Gestos & Suavização",
+          language: "typescript",
+          code: `// Algoritmo de suavização adaptativa para rastreio gestual
+const processHandTracking = (landmarks, canvas) => {
+  const rawX = (1 - landmarks[8].x) * canvas.width;
+  const rawY = landmarks[8].y * canvas.height;
+  
+  const dist = Math.hypot(rawX - lastX, rawY - lastY);
+  const velocity = clamp(dist / 30, 0, 1);
+  
+  // Fator de suavização dinâmico baseado na velocidade do gesto
+  const smoothFactor = stability * (1 - (velocity * 0.85));
+  const fx = (rawX * (1 - smoothFactor)) + (lastX * smoothFactor);
+  const fy = (rawY * (1 - smoothFactor)) + (lastY * smoothFactor);
+  
+  return { fx, fy, pressure: 1 - velocity };
+}`
         }
       ]
     },

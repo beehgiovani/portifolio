@@ -9,6 +9,7 @@ import logoMetromargeo from '../assets/logo_metromargeo.png'
 import logoAutoScraper from '../assets/logo_autoscraper.png'
 import logoMarketPoster from '../assets/logo_marketposter.png'
 import logoEmailMonitor from '../assets/logo_emailmonitor.png'
+import logoLumen from '../assets/logo_lumen.png'
 import acapulco1 from '../assets/screenshots/interactivemap/acapulco_1.png'
 import acapulco2 from '../assets/screenshots/interactivemap/acapulco_2.png'
 import acapulco3 from '../assets/screenshots/interactivemap/acapulco_3.png'
@@ -76,6 +77,42 @@ serve(async (req) => {
   }
   return new Response(JSON.stringify({ status: 'analyzed' }))
 })`
+        }
+      ]
+    },
+    lumen: {
+      title: "LÚMEN | Spatial Drawing Engine",
+      logo: logoLumen,
+      impact: "Computer Vision & Immersive Art",
+      desc: "Real-time spatial drawing and sound synthesis engine. Uses MediaPipe Vision for 3D hand tracking, transforming complex gestures into neon strokes and procedural audio. Ultra-low latency architecture focused on instantaneous tactile-sound feedback.",
+      stack: ["React 19", "MediaPipe Vision", "WebGL", "Sound Synthesis"],
+      details: {
+        innovation: "Stroke stabilization algorithm (Stability Ref) that uses point density and velocity to simulate real brush physics via computer vision.",
+        strongPoints: ["Low-Latency Gestural Tracking", "Procedural Sound Synthesizer", "WebGL Bloom & Neon Visual Effects"],
+        architecture: "Reactive image processing pipeline utilizing workers for AI inference and WebGL for high-fidelity rendering at 60fps.",
+        businessImpact: "Explores new frontiers of HCI (Human-Computer Interaction), removing the physical barrier of mouse/touch. Applicable in interactive museums, immersive design tools, and motor rehabilitation through artistic gamification.",
+        technicalChallenges: "Orchestrating real-time AI landmark processing with continuous audio synthesis without causing frame drops or audio jitter.",
+        topology: "MediaPipe (HandLandmarker) -> React 19 -> WebAudio Engine -> WebGL Canvas",
+      },
+      codeSnippets: [
+        {
+          title: "Gesture Processing & Smoothing",
+          language: "typescript",
+          code: `// Adaptive smoothing algorithm for gestural tracking
+const processHandTracking = (landmarks, canvas) => {
+  const rawX = (1 - landmarks[8].x) * canvas.width;
+  const rawY = landmarks[8].y * canvas.height;
+  
+  const dist = Math.hypot(rawX - lastX, rawY - lastY);
+  const velocity = clamp(dist / 30, 0, 1);
+  
+  // Dynamic smoothing factor based on gesture velocity
+  const smoothFactor = stability * (1 - (velocity * 0.85));
+  const fx = (rawX * (1 - smoothFactor)) + (lastX * smoothFactor);
+  const fy = (rawY * (1 - smoothFactor)) + (lastY * smoothFactor);
+  
+  return { fx, fy, pressure: 1 - velocity };
+}`
         }
       ]
     },
