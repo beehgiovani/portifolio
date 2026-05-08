@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Table, RefreshCcw, Mail, User, Calendar, MessageSquare, Phone } from 'lucide-react';
 import { useI18n } from '../hooks/useI18n';
+import './AdminMessages.css';
 
 interface Contact {
   id: number;

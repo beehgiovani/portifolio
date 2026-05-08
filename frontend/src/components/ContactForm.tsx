@@ -127,7 +127,7 @@ export function ContactForm() {
             lang === 'en' ? 'Sending...' : 'Enviando...'
           ) : (
             <>
-              <Send size={18} style={{ marginRight: '8px' }} />
+              <Send size={18} className="mr-05" />
               {lang === 'en' ? 'Send Message' : 'Enviar Mensagem'}
             </>
           )}
@@ -142,7 +142,7 @@ export function ContactForm() {
             exit={{ opacity: 0, height: 0 }}
             className="form-success-msg"
           >
-            <CheckCircle size={20} style={{ marginBottom: '8px' }} />
+            <CheckCircle size={20} className="mb-05" />
             <p>{responseMsg}</p>
           </motion.div>
         )}
@@ -150,8 +150,7 @@ export function ContactForm() {
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
-            className="form-success-msg"
-            style={{ color: '#ef4444', borderColor: '#ef4444', background: 'rgba(239, 68, 68, 0.1)' }}
+            className="form-error-msg"
           >
             <p>{lang === 'en' ? 'Error sending message. Please try again.' : 'Erro ao enviar. Tente novamente.'}</p>
           </motion.div>

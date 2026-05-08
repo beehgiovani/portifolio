@@ -1,6 +1,7 @@
 import { useI18n } from '../hooks/useI18n'
 import profilePic from '../assets/profile.jpg'
 import { motion } from 'framer-motion'
+import './Hero.css'
 
 export function Hero() {
   const { t } = useI18n();

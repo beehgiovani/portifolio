@@ -20,6 +20,7 @@ import { ExperienceTimeline } from './components/ExperienceTimeline'
 import { CertificationSection } from './components/CertificationSection'
 import { TechMarquee } from './components/TechMarquee'
 import { AdminMessages } from './components/AdminMessages'
+import { ResumeManager } from './components/ResumeManager'
 
 // Comportamentos visuais globais (Movidos para cá pra centralizar)
 function MouseGlow() {
@@ -44,12 +45,59 @@ function App() {
   const { t, lang } = useI18n();
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [showAdmin, setShowAdmin] = useState(false);
+  const [showResume, setShowResume] = useState(false);
+  const [isAdminAuthorized, setIsAdminAuthorized] = useState(false);
+
+  useEffect(() => {
+    const checkAuth = async () => {
+      const isLocal = window.location.hostname === 'localhost';
+      const hasStoredToken = localStorage.getItem('admin_authorized') === 'true';
+      
+      const urlParams = new URLSearchParams(window.location.search);
+      const accessKey = urlParams.get('access_key');
+      
+      const ADMIN_HASH = 'fc79fc22787172c45089fdfec21c03161980c8ccbc2979ca24bcfaaf607d3349'; 
+
+      const hashKey = async (key: string) => {
+        try {
+          const encoder = new TextEncoder();
+          const data = encoder.encode(key);
+          const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+          const hashArray = Array.from(new Uint8Array(hashBuffer));
+          return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        } catch (e) {
+          console.error('Hash error:', e);
+          return '';
+        }
+      };
+
+      if (accessKey) {
+        const hashedInput = await hashKey(accessKey);
+        if (hashedInput === ADMIN_HASH) {
+          localStorage.setItem('admin_authorized', 'true');
+          setIsAdminAuthorized(true);
+          window.history.replaceState({}, document.title, window.location.pathname);
+          return;
+        }
+      } 
+      
+      if (isLocal || hasStoredToken) {
+        setIsAdminAuthorized(true);
+      }
+    };
+
+    checkAuth();
+  }, []);
 
   return (
     <div className="container app-container">
       <MouseGlow />
 
-      <Navbar onShowAdmin={() => setShowAdmin(true)} />
+      <Navbar 
+        onShowAdmin={() => setShowAdmin(true)} 
+        onShowResume={() => setShowResume(true)} 
+        isAdmin={isAdminAuthorized}
+      />
 
       <main className="app-main">
         <Hero />
@@ -138,10 +186,6 @@ function App() {
         <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
       )}
 
-      {showAdmin && window.location.hostname === 'localhost' && (
-        <AdminMessages onClose={() => setShowAdmin(false)} />
-      )}
-
       {/* Rodapé principal */}
       <motion.footer
         initial={{ opacity: 0 }}
@@ -165,18 +209,21 @@ function App() {
         <ContactForm />
 
         <div className="footer-details-box">
-          <h4 className="footer-details-title">{lang === 'en' ? 'Professional Details' : 'Detalhes Profissionais'}</h4>
+          <h4 className="footer-details-title">{lang === 'en' ? 'Professional Details (Mid/Senior)' : 'Detalhes Profissionais (Pleno/Sênior)'}</h4>
           <div className="footer-details-grid">
             <div className="footer-detail-item">
               <AnimatedIcon icon={Banknote} animation="pulse" />
               <div className="footer-detail-content">
                 <div className="footer-topic">
                   <span className="topic-label">PJ (B2B):</span>
-                  <span className="topic-value">R$ 10k - 12k (R$ 60-75/h)</span>
+                  <span className="topic-value">$ 4,000 - 6,500 USD | R$ 10k - 12k</span>
+                  <span className="topic-subvalue">
+                    {lang === 'en' ? '($ 25 - 45/h | R$ 60 - 75/h)' : '(R$ 60 - 75/h | $ 25 - 45/h)'}
+                  </span>
                 </div>
                 <div className="footer-topic">
-                  <span className="topic-label">CLT (Full-Time):</span>
-                  <span className="topic-value">R$ 8k - 9.5k (+ Ben.)</span>
+                  <span className="topic-label">CLT:</span>
+                  <span className="topic-value">R$ 8,000 - 9,500 (+ Ben.)</span>
                 </div>
               </div>
             </div>
@@ -186,11 +233,11 @@ function App() {
               <div className="footer-detail-content">
                 <div className="footer-topic">
                   <span className="topic-label">{lang === 'en' ? 'MODEL' : 'MODELO'}:</span>
-                  <span className="topic-value">Remoto, Híbrido ou Presencial</span>
+                  <span className="topic-value">{lang === 'en' ? 'Remote, Hybrid or On-site' : 'Remoto, Híbrido ou Presencial'}</span>
                 </div>
                 <div className="footer-topic">
                   <span className="topic-label">{lang === 'en' ? 'MOBILITY' : 'MOBILIDADE'}:</span>
-                  <span className="topic-value">Disponível para viagens</span>
+                  <span className="topic-value">{lang === 'en' ? 'Fully available for travel' : 'Total disponibilidade para viagens'}</span>
                 </div>
               </div>
             </div>
@@ -200,23 +247,27 @@ function App() {
               <div className="footer-detail-content">
                 <div className="footer-topic">
                   <span className="topic-label">{lang === 'en' ? 'NATIVE' : 'NATIVO'}:</span>
-                  <span className="topic-value">Português (Nativo)</span>
+                  <span className="topic-value">{lang === 'en' ? 'Portuguese (Native)' : 'Português (Nativo)'}</span>
                 </div>
                 <div className="footer-topic">
                   <span className="topic-label">{lang === 'en' ? 'SECOND' : 'SEGUNDO'}:</span>
-                  <span className="topic-value">Inglês (Intermediário B1/B2)</span>
+                  <span className="topic-value">{lang === 'en' ? 'English (Intermediate B2)' : 'Inglês (Intermediário B2)'}</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <p className="footer-copyright">
-          Precision Engineering. © 2026 Bruno Giovani Pereira
-        </p>
       </motion.footer>
+
+      {showAdmin && isAdminAuthorized && (
+        <AdminMessages onClose={() => setShowAdmin(false)} />
+      )}
+
+      {showResume && isAdminAuthorized && (
+        <ResumeManager onClose={() => setShowResume(false)} />
+      )}
     </div>
   );
 }
 
 export default App
-

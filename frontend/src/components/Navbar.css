@@ -1,0 +1,68 @@
+/* Navigation 2.0 - Responsive Sticky Bar */
+.nav-masterpiece {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem 5%;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-glass);
+  background: rgba(2, 6, 23, 0.65);
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.nav-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: var(--transition-fast);
+  cursor: pointer;
+  letter-spacing: 0.02em;
+}
+
+.nav-link:hover {
+  color: var(--text-main);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.navbar-lang-btn {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-glass);
+  color: var(--text-main);
+  padding: 0.4rem 0.8rem;
+  border-radius: 99px;
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-weight: 700;
+  transition: var(--transition-fast);
+  margin-left: 1.5rem;
+}
+
+.navbar-lang-btn:hover {
+  background: rgba(56, 189, 248, 0.1);
+  border-color: var(--primary-gold);
+  color: var(--primary-gold);
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
+}
+
+.navbar-admin-btn {
+  padding: 0.4rem;
+  margin-left: 0.5rem;
+}
+
+.mr-05 {
+  margin-right: 0.5rem;
+}

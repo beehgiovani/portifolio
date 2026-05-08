@@ -1,7 +1,8 @@
 import { useI18n } from '../hooks/useI18n'
-import { Settings, Globe2 } from 'lucide-react'
+import { Settings, Globe2, FileText } from 'lucide-react'
+import './Navbar.css'
 
-export function Navbar({ onShowAdmin }: { onShowAdmin: () => void }) {
+export function Navbar({ onShowAdmin, onShowResume, isAdmin }: { onShowAdmin: () => void, onShowResume: () => void, isAdmin: boolean }) {
   const { lang, setLang, t } = useI18n();
 
   return (
@@ -25,14 +26,23 @@ export function Navbar({ onShowAdmin }: { onShowAdmin: () => void }) {
             <span>{lang === 'en' ? 'EN' : 'PT'}</span>
           </button>
 
-          {window.location.hostname === 'localhost' && (
-            <button 
-              onClick={onShowAdmin}
-              className="navbar-lang-btn navbar-admin-btn"
-              title="Admin Messages"
-            >
-              <Settings size={16} />
-            </button>
+          {isAdmin && (
+            <>
+              <button 
+                onClick={onShowResume}
+                className="navbar-lang-btn navbar-admin-btn"
+                title="Resume Manager"
+              >
+                <FileText size={16} />
+              </button>
+              <button 
+                onClick={onShowAdmin}
+                className="navbar-lang-btn navbar-admin-btn"
+                title="Admin Messages"
+              >
+                <Settings size={16} />
+              </button>
+            </>
           )}
         </div>
       </div>

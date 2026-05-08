@@ -25,7 +25,7 @@ export function AnimatedIcon({ icon: Icon, size = 24, color = "var(--primary-gol
   };
 
   return (
-    <motion.div animate={animation} variants={variants} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+    <motion.div animate={animation} variants={variants} className="flex-center">
       <Icon size={size} color={color} strokeWidth={2.5} />
     </motion.div>
   );
