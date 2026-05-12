@@ -12,6 +12,7 @@ export interface Project {
     architecture: string;
     topology?: string;
     url?: string;
+    github?: string;
     businessImpact?: string;
     technicalChallenges?: string;
   };

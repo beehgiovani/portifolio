@@ -79,6 +79,11 @@ export function ProjectModal({ project, onClose }: { project: Project, onClose: 
                       {lang === 'en' ? 'Live Project' : 'Ver Online'} ↗
                     </a>
                   )}
+                  {project.details.github && (
+                    <a href={project.details.github} target="_blank" rel="noopener noreferrer" className="pm-live-btn github-btn">
+                      GitHub ↗
+                    </a>
+                  )}
                 </div>
                 <div className="terminal-block pm-arch-block">
                   {project.details.topology || project.details.architecture}

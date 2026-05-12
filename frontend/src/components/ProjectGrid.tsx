@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 
 
 export function ProjectCard({ project, onSelect, span = false }: { project: Project, onSelect: (p: Project) => void, span?: number | boolean }) {
+  const { lang } = useI18n();
   const cardRef = useRef<HTMLDivElement>(null);
 
   const handleMouseMove = (e: React.MouseEvent) => {
@@ -48,7 +49,7 @@ export function ProjectCard({ project, onSelect, span = false }: { project: Proj
       </div>
 
       <div className="project-card-footer">
-        {useI18n().lang === 'en' ? 'Click for Strong Points →' : 'Ver Pontos Fortes →'}
+        {lang === 'en' ? 'Open technical case' : 'Abrir caso técnico'}
       </div>
     </motion.div>
   );
@@ -56,7 +57,24 @@ export function ProjectCard({ project, onSelect, span = false }: { project: Proj
 
 export function ProjectGrid({ onSelect }: { onSelect: (p: Project) => void }) {
   const { t } = useI18n();
-  const projectList: Project[] = Object.values(t.projects);
+  const seniorProjectKeys = [
+    'predictmed',
+    'guarugeo',
+    'lumen',
+    'metromargeo',
+    'cimed_experience',
+    'niduscare',
+    'pharmaflow',
+    'certidoesapp',
+    'automacao_scraper',
+    'interactivemap',
+    'emailmonitor',
+    'marketposter'
+  ];
+
+  const projectList: Project[] = seniorProjectKeys
+    .map((key) => t.projects[key as keyof typeof t.projects] as Project | undefined)
+    .filter((project): project is Project => project !== undefined);
 
   return (
     <section id="projects" className="projects-section">
@@ -70,14 +88,11 @@ export function ProjectGrid({ onSelect }: { onSelect: (p: Project) => void }) {
       </motion.h2>
       <div className="grid-bento">
         {projectList.map((project: Project, idx: number) => {
-          // Custom Bento Layout Logic
           let span: number | boolean = false;
-          
-          // Lógica para 12 projetos fecharem 6 linhas perfeitas (18 slots)
-          if (idx === 0) span = 3; // PredictMed (Linha 1)
-          if (idx >= 1 && idx <= 4) span = 2; // Lúmen, GuaruGeo, Cimed, MetroMarGeo (Início das Linhas 2, 3, 4, 5)
-          // Os outros 7 projetos ocupam 1 slot cada, preenchendo as linhas 2-5 e a linha 6 completa
-          
+
+          if (idx === 0) span = 3;
+          if (idx >= 1 && idx <= 4) span = 2;
+
           return (
             <ProjectCard
               key={idx}

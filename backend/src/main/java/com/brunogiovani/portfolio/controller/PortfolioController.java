@@ -1,62 +1,82 @@
 package com.brunogiovani.portfolio.controller;
 
-import org.springframework.web.bind.annotation.*;
-import org.springframework.lang.NonNull;
-import java.util.Map;
-import java.util.List;
+import com.brunogiovani.portfolio.dto.AdminContactResponse;
+import com.brunogiovani.portfolio.dto.ContactRequest;
+import com.brunogiovani.portfolio.dto.ContactResponse;
+import com.brunogiovani.portfolio.dto.ProfileResponse;
+import com.brunogiovani.portfolio.dto.SpecialtyResponse;
 import com.brunogiovani.portfolio.model.Contact;
+import com.brunogiovani.portfolio.service.ContactService;
+import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/portfolio")
 public class PortfolioController {
 
-    private final com.brunogiovani.portfolio.repository.ContactRepository contactRepository;
+    private final ContactService contactService;
+    private final String adminToken;
 
-    public PortfolioController(com.brunogiovani.portfolio.repository.ContactRepository contactRepository) {
-        this.contactRepository = contactRepository;
+    public PortfolioController(
+            ContactService contactService,
+            @Value("${portfolio.admin-token:}") String adminToken
+    ) {
+        this.contactService = contactService;
+        this.adminToken = adminToken;
     }
 
-
     @GetMapping
-    public Map<String, String> getProfile() {
-        return Map.of(
-            "name", "Bruno Giovani",
-            "role", "Software Engineer Full-Stack & AI/Automations",
-            "bio_human", "Comecei pela necessidade de construir o que não existia. 'Builder' por natureza."
+    public ProfileResponse getProfile() {
+        return new ProfileResponse(
+                "Bruno Giovani",
+                "Software Engineer Full-Stack & AI/Automations",
+                "Comecei pela necessidade de construir o que nao existia. Builder por natureza."
         );
     }
 
     @GetMapping("/specialties")
-    public List<Map<String, Object>> getSpecialties() {
+    public List<SpecialtyResponse> getSpecialties() {
         return List.of(
-            Map.of(
-                "title", "GIS Intelligence",
-                "core_tech", "React, Node.js, Leaflet, PostGIS",
-                "impact", "Creator of GuaruGeo - real-time real estate GIS."
-            ),
-            Map.of(
-                "title", "AI & Computer Vision",
-                "core_tech", "Gemini Vision API, PyTorch, OCR models",
-                "impact", "Automated pharma stock intelligence & CAPTCHA solving."
-            ),
-            Map.of(
-                "title", "Native Mobile (Kotlin)",
-                "core_tech", "Kotlin, MVVM, Hilt, Coroutines",
-                "impact", "Scalable apps like NidusCare for elderly health management."
-            )
+                new SpecialtyResponse(
+                        "GIS Intelligence",
+                        "React, Node.js, Leaflet, PostGIS",
+                        "Criacao de sistemas geoespaciais para leitura de mercado e operacao imobiliaria."
+                ),
+                new SpecialtyResponse(
+                        "AI & Computer Vision",
+                        "Gemini Vision API, PyTorch, OCR models",
+                        "Automacoes para leitura de documentos, triagem operacional e apoio a decisao."
+                ),
+                new SpecialtyResponse(
+                        "Native Mobile (Kotlin)",
+                        "Kotlin, MVVM, Hilt, Coroutines",
+                        "Aplicativos Android com arquitetura por camadas, estado reativo e persistencia local."
+                )
         );
     }
 
     @PostMapping("/contact")
-    public Map<String, String> submitContact(@RequestBody @NonNull com.brunogiovani.portfolio.model.Contact contact) {
-        com.brunogiovani.portfolio.model.Contact saved = contactRepository.save(contact);
-        return Map.of(
-            "message", "Olá, " + saved.getName() + "! Mensagem recebida com sucesso. Entrarei em contato em breve — obrigado pela atenção! 🚀"
+    public ContactResponse submitContact(@Valid @RequestBody ContactRequest request) {
+        Contact saved = contactService.save(request);
+        return new ContactResponse(
+                saved.getId(),
+                "Ola, " + saved.getName() + "! Mensagem recebida com sucesso. Entrarei em contato em breve."
         );
     }
 
     @GetMapping("/contact")
-    public List<Contact> getContacts() {
-        return contactRepository.findAll();
+    public List<AdminContactResponse> getContacts(
+            @RequestHeader(value = "X-Admin-Token", required = false) String requestToken
+    ) {
+        if (adminToken.isBlank() || !adminToken.equals(requestToken)) {
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Admin token invalido");
+        }
+
+        return contactService.findAllForAdmin();
     }
 }

@@ -47,15 +47,19 @@ function App() {
   const [showAdmin, setShowAdmin] = useState(false);
   const [showResume, setShowResume] = useState(false);
   const [isAdminAuthorized, setIsAdminAuthorized] = useState(false);
+  const [adminToken, setAdminToken] = useState('');
 
+  // Lógica de Autenticação Admin (Foco em segurança via Hash)
   useEffect(() => {
     const checkAuth = async () => {
+      // Se tiver rodando local ou já tiver logado antes, libera direto
       const isLocal = window.location.hostname === 'localhost';
-      const hasStoredToken = localStorage.getItem('admin_authorized') === 'true';
+      const storedAccessKey = sessionStorage.getItem('admin_access_key') || '';
 
       const urlParams = new URLSearchParams(window.location.search);
       const accessKey = urlParams.get('access_key');
 
+      // Hash SHA-256 pra não deixar a chave exposta no código
       const ADMIN_HASH = 'fc79fc22787172c45089fdfec21c03161980c8ccbc2979ca24bcfaaf607d3349';
 
       const hashKey = async (key: string) => {
@@ -66,22 +70,32 @@ function App() {
           const hashArray = Array.from(new Uint8Array(hashBuffer));
           return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
         } catch (e) {
-          console.error('Hash error:', e);
+          console.error('Erro no hash:', e);
           return '';
         }
       };
 
+      // Se passou a chave via URL, eu comparo o hash e guardo no storage
       if (accessKey) {
         const hashedInput = await hashKey(accessKey);
         if (hashedInput === ADMIN_HASH) {
           localStorage.setItem('admin_authorized', 'true');
+          sessionStorage.setItem('admin_access_key', accessKey);
+          setAdminToken(accessKey);
           setIsAdminAuthorized(true);
           window.history.replaceState({}, document.title, window.location.pathname);
           return;
         }
       }
 
-      if (isLocal || hasStoredToken) {
+      if (storedAccessKey && await hashKey(storedAccessKey) === ADMIN_HASH) {
+        setAdminToken(storedAccessKey);
+        setIsAdminAuthorized(true);
+        return;
+      }
+
+      if (isLocal) {
+        setAdminToken(import.meta.env.VITE_ADMIN_TOKEN || '');
         setIsAdminAuthorized(true);
       }
     };
@@ -267,7 +281,7 @@ function App() {
       </motion.footer>
 
       {showAdmin && isAdminAuthorized && (
-        <AdminMessages onClose={() => setShowAdmin(false)} />
+        <AdminMessages onClose={() => setShowAdmin(false)} adminToken={adminToken} />
       )}
 
       {showResume && isAdminAuthorized && (

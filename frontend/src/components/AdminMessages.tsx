@@ -13,29 +13,41 @@ interface Contact {
   createdAt: string;
 }
 
-export function AdminMessages({ onClose }: { onClose: () => void }) {
+interface AdminMessagesProps {
+  onClose: () => void;
+  adminToken?: string;
+}
+
+export function AdminMessages({ onClose, adminToken = '' }: AdminMessagesProps) {
   const { lang } = useI18n();
   const [messages, setMessages] = useState<Contact[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
 
   const fetchMessages = async (signal?: AbortSignal) => {
     setLoading(true);
+    setError('');
     try {
       const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8080';
       const response = await fetch(`${apiUrl}/api/portfolio/contact`, { 
-        signal: signal 
+        signal: signal,
+        headers: adminToken ? { 'X-Admin-Token': adminToken } : undefined
       });
       
       if (response.ok) {
         const data = await response.json();
         setMessages(data);
+      } else if (response.status === 403) {
+        setError(lang === 'en' ? 'Admin token is missing or invalid.' : 'Token administrativo ausente ou invalido.');
       } else {
+        setError(lang === 'en' ? 'Unable to load messages.' : 'Nao foi possivel carregar as mensagens.');
         console.error('Response not ok:', response.status);
       }
     } catch (error: unknown) {
       if (error instanceof Error && error.name === 'AbortError') {
         console.log('Fetch aborted');
       } else {
+        setError(lang === 'en' ? 'Unable to load messages.' : 'Nao foi possivel carregar as mensagens.');
         console.error('Error fetching messages:', error);
       }
     } finally {
@@ -57,7 +69,7 @@ export function AdminMessages({ onClose }: { onClose: () => void }) {
       controller.abort();
       clearTimeout(timeoutId);
     };
-  }, []);
+  }, [adminToken, lang]);
 
   return (
     <motion.div
@@ -98,7 +110,12 @@ export function AdminMessages({ onClose }: { onClose: () => void }) {
           {loading ? (
             <div className="admin-loading">
               <div className="spinner"></div>
-              <p>Fetching Authority Data...</p>
+              <p>{lang === 'en' ? 'Loading messages...' : 'Carregando mensagens...'}</p>
+            </div>
+          ) : error ? (
+            <div className="admin-empty">
+              <Mail size={48} className="admin-empty-icon" />
+              <p>{error}</p>
             </div>
           ) : messages.length === 0 ? (
             <div className="admin-empty">
@@ -143,7 +160,7 @@ export function AdminMessages({ onClose }: { onClose: () => void }) {
 
         <div className="admin-footer">
           <p className="admin-footer-text">
-            {lang === 'en' ? 'Secured by Spring Boot 3.4 & Authority Middleware' : 'Protegido por Spring Boot 3.4 & Authority Middleware'}
+            {lang === 'en' ? 'Protected by Spring Boot 3.4 validation and admin token' : 'Protegido por validacao Spring Boot 3.4 e token administrativo'}
           </p>
         </div>
       </div>
