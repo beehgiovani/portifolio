@@ -60,7 +60,7 @@ function App() {
       const accessKey = urlParams.get('access_key');
 
       // Hash SHA-256 pra não deixar a chave exposta no código
-      const ADMIN_HASH = 'fc79fc22787172c45089fdfec21c03161980c8ccbc2979ca24bcfaaf607d3349';
+      const ADMIN_HASH = 'baa93941b068ab3d4d6031d2825fe2f5aeac1ba3083a212c0a37edd3f614ab7b';
 
       const hashKey = async (key: string) => {
         try {
