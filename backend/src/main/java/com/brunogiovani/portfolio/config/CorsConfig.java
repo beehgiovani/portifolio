@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.lang.NonNull;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
- 
+
 @Configuration
 public class CorsConfig {
 
@@ -28,6 +28,10 @@ public class CorsConfig {
     }
 
     private String[] parseOrigins() {
-        return allowedOrigins.split("\\s*,\\s*");
+        if (allowedOrigins == null || allowedOrigins.trim().isEmpty()) {
+            return new String[] { "http://localhost:5173", "http://127.0.0.1:5173" };
+        }
+
+        return allowedOrigins.trim().split("\\s*,\\s*");
     }
 }
