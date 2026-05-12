@@ -28,4 +28,5 @@ This guide outlines the recommended "Premium" deployment for your full-stack por
 ---
 ### Local Development Cheat Sheet
 - **Frontend**: `cd frontend && npm install && npm run dev`
-- **Backend**: Open the `backend/` folder in IntelliJ or Android Studio and run `PortfolioApplication`.
+- **Backend**: Open the `backend/` folder in IntelliJ or Android Studio and run `PortfolioApplication` with the `local` profile enabled.
+- **Local admin token**: the frontend uses `frontend/.env.local` and the backend uses `application-local.properties`; both default to `local-admin` for local-only access.
