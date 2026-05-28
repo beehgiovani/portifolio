@@ -10,6 +10,7 @@ import logoAutoScraper from '../assets/logo_autoscraper.png'
 import logoMarketPoster from '../assets/logo_marketposter.png'
 import logoEmailMonitor from '../assets/logo_emailmonitor.png'
 import logoLumen from '../assets/logo_lumen.png'
+import logoFarmaDelivery from '../assets/logo_farmadelivery.png'
 import acapulco1 from '../assets/screenshots/interactivemap/acapulco_1.png'
 import acapulco2 from '../assets/screenshots/interactivemap/acapulco_2.png'
 import acapulco3 from '../assets/screenshots/interactivemap/acapulco_3.png'
@@ -36,6 +37,76 @@ export const en = {
     { date: "2023 - Present", role: "Architect & Founder | GuaruGeo", desc: "Built a sovereign GIS infrastructure from scratch. Integrated PostGIS with data miners to deliver real estate intelligence with centimeter-level precision." }
   ],
   projects: {
+    farmadelivery: {
+      title: "FarmaDelivery",
+      logo: logoFarmaDelivery,
+      impact: "Full-Stack Operations Ecosystem",
+      desc: "A real pharmaceutical delivery platform with web admin, online API, Android app, and courier PWA. I consolidated database, RLS, realtime, live GPS, notifications, photo proof, reporting, routing, Docker, Vercel, and Firebase Hosting into a monorepo validated for operation outside the local network.",
+      stack: ["React 19", "Fastify", "Prisma", "Supabase Storage", "Kotlin Compose", "PWA", "Vercel", "Firebase Hosting/FCM"],
+      screenshots: [
+        "/assets/screenshots/farmadelivery/farmadelivery-admin.png",
+        "/assets/screenshots/farmadelivery/farmadelivery-motoboy-pwa.png"
+      ],
+      details: {
+        innovation: "Operational architecture with shared contracts across admin, API, Android, and PWA, combining Supabase REST fallback, unified canonical SQL, Server-Sent Events for live updates, and automated validation across multiple surfaces.",
+        strongPoints: ["Multi-app monorepo", "Vercel-hosted API", "Admin and PWA on Firebase Hosting", "Documented RLS, realtime and storage", "Live GPS and auditable photo proof"],
+        architecture: "TypeScript/Kotlin monorepo with Fastify API packaged for Vercel Serverless, Prisma/Supabase, PostgreSQL with RLS, Supabase Storage, React admin, React PWA, Compose Android app, Firebase Messaging, and Docker Compose for development.",
+        businessImpact: "Turned manual dispatch into a traceable workflow available outside the local network: delivery creation, accept, pickup, route, completion, proof, history, reporting, alerts, and audit in one ecosystem. The design reduces operational error, improves store/courier visibility, and prepares the system for governed expansion.",
+        technicalChallenges: "Adapting a traditional Fastify API to Vercel Serverless, solving ESM/Prisma packaging for Linux with the right binary target, aligning contracts across four clients, preserving secret hygiene, keeping real app data without leaking it in public docs, and validating Android/PWA/Admin/API in the same cycle.",
+        topology: "Firebase Hosting (Admin/PWA) -> Vercel Fastify API -> Prisma + Supabase REST fallback -> PostgreSQL/RLS/Realtime/Storage -> Kotlin Android + Firebase Messaging",
+        url: "https://drogstoantonio.web.app",
+        github: "https://github.com/beehgiovani/FarmaDelivery"
+      },
+      codeSnippets: [
+        {
+          title: "Fastify serverless handler on Vercel",
+          language: "javascript",
+          code: `let appPromise = null;
+
+async function getApp() {
+  if (!appPromise) {
+    const { createApp } = await import("../dist/app.js");
+    appPromise = createApp({ logger: false }).then(async (app) => {
+      await app.ready();
+      return app;
+    });
+  }
+
+  return appPromise;
+}
+
+module.exports = async function handler(request, response) {
+  const app = await getApp();
+  app.server.emit("request", request, response);
+};`
+        },
+        {
+          title: "Canonical SQL contract with documented RLS",
+          language: "sql",
+          code: `COMMENT ON TABLE public."Delivery" IS
+'Operational deliveries consumed by API, admin, PWA, and Android.
+RLS enabled; clients access data through authenticated API and realtime policies.
+Care: preserve history, store scope, delivery proof, and personal data.';
+
+DROP POLICY IF EXISTS "Authenticated delivery read" ON public."Delivery";
+CREATE POLICY "Authenticated delivery read"
+  ON public."Delivery" FOR SELECT
+  TO authenticated
+  USING (true);`
+        },
+        {
+          title: "Route parity between PWA and Android",
+          language: "kotlin",
+          code: `fun buildGoogleMapsRouteUrl(stops: List<RouteStop>): String? {
+  val navigableStops = stops.filter { it.hasAddressOrCoordinates() }
+  if (navigableStops.isEmpty()) return null
+
+  val segment = navigableStops.take(MAX_GOOGLE_MAPS_STOPS)
+  return GoogleMapsUrlBuilder.fromSegment(segment)
+}`
+        }
+      ]
+    },
     predictmed: {
       title: "PredictMed",
       logo: logoPredictMed,

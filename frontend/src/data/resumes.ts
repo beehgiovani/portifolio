@@ -52,15 +52,26 @@ export const resumeData: Record<string, Record<'pt' | 'en', ResumeTemplate>> = {
       summary: "Arquiteto Full-Stack Pleno/Sênior especializado na construção de interfaces de alto impacto e backends escaláveis utilizando o ecossistema TypeScript. Expertise profunda em React 19, Next.js, Node.js e Tailwind CSS. Especialista em performance frontend (Vite, Web-vitals), Clean Architecture e sistemas offline-first. Forte histórico na entrega de MVPs rápidos e escaláveis, liderando a convergência entre Design System, UX e escalabilidade técnica para maximizar o ROI e a retenção de usuários.",
       skills: [
         "<strong>Frontend:</strong> React 19, TypeScript, Redux Toolkit, Framer Motion, Tailwind CSS, Sass.",
-        "<strong>Backend:</strong> Node.js, NestJS, Express, Prisma ORM, Deno, Edge Functions.",
+        "<strong>Backend:</strong> Node.js, Fastify, NestJS, Express, Prisma ORM, Deno, Edge Functions.",
         "<strong>Mobile:</strong> React Native, Kotlin (Android Nativo), Jetpack Compose.",
         "<strong>Dados:</strong> PostgreSQL (PostGIS), MongoDB, Supabase, Firebase Realtime DB.",
         "<strong>Infra & DevOps:</strong> AWS, Vercel, Docker, CI/CD (GitHub Actions), Supabase Edge Functions."
       ],
       experience: [
         {
+          role: "Arquiteto Full-Stack | FarmaDelivery",
+          date: "Maio 2026 — Presente",
+          link: "https://github.com/beehgiovani/FarmaDelivery",
+          bullets: [
+            "Arquitetura de monorepo operacional com React 19, Fastify, Prisma/Supabase, PWA e Android Kotlin.",
+            "Consolidação de SQL canônico com schema, seeds, RLS, realtime e comentários de governança para reduzir risco de scripts duplicados.",
+            "Publicação da API Fastify na Vercel com handler serverless, Prisma preparado para Linux e frontends em Firebase Hosting.",
+            "Validação ponta a ponta com testes em API, admin, PWA e Android, preservando segurança de secrets antes do GitHub."
+          ]
+        },
+        {
           role: "Pleno/Sênior Full-Stack Developer | PredictMed",
-          date: "Março 2026 — Outubro 2026",
+          date: "Março 2026 — Presente",
           link: "https://github.com/beehgiovani/predictmed",
           bullets: [
             "Liderando o desenvolvimento de Edge Functions para processar IA em tempo real com baixa latência.",
@@ -116,15 +127,26 @@ export const resumeData: Record<string, Record<'pt' | 'en', ResumeTemplate>> = {
       summary: "Mid/Senior Full-Stack Architect specialized in building high-impact interfaces and scalable backends using the TypeScript ecosystem. Deep expertise in React 19, Next.js, Node.js, and Tailwind CSS. Specialist in frontend performance (Vite, Web-vitals), Clean Architecture, and offline-first systems. Proven track record in delivering fast and scalable MVPs, leading the convergence between Design System, UX, and technical scalability to maximize ROI and user retention.",
       skills: [
         "<strong>Frontend:</strong> React 19, TypeScript, Redux Toolkit, Framer Motion, Tailwind CSS, Sass.",
-        "<strong>Backend:</strong> Node.js, NestJS, Express, Prisma ORM, Deno, Edge Functions.",
+        "<strong>Backend:</strong> Node.js, Fastify, NestJS, Express, Prisma ORM, Deno, Edge Functions.",
         "<strong>Mobile:</strong> React Native, Kotlin (Android Native), Jetpack Compose.",
         "<strong>Data:</strong> PostgreSQL (PostGIS), MongoDB, Supabase, Firebase Realtime DB.",
         "<strong>Infra & DevOps:</strong> AWS, Vercel, Docker, CI/CD (GitHub Actions), Supabase Edge Functions."
       ],
       experience: [
         {
+          role: "Full-Stack Architect | FarmaDelivery",
+          date: "May 2026 — Present",
+          link: "https://github.com/beehgiovani/FarmaDelivery",
+          bullets: [
+            "Architected an operations monorepo with React 19, Fastify, Prisma/Supabase, PWA, and Kotlin Android.",
+            "Consolidated canonical SQL with schema, seeds, RLS, realtime, and governance comments to reduce duplicated script risk.",
+            "Deployed the Fastify API to Vercel with a serverless handler, Linux-ready Prisma, and Firebase-hosted frontends.",
+            "Validated API, admin, PWA, and Android flows while preserving secret hygiene before GitHub publication."
+          ]
+        },
+        {
           role: "Mid/Senior Full-Stack Developer | PredictMed",
-          date: "March 2026 — October 2026",
+          date: "March 2026 — Present",
           link: "https://github.com/beehgiovani/predictmed",
           bullets: [
             "Leading the development of Edge Functions to process real-time AI with low latency.",
@@ -182,12 +204,23 @@ export const resumeData: Record<string, Record<'pt' | 'en', ResumeTemplate>> = {
       summary: "Engenheiro de Software Pleno/Sênior especializado no ecossistema Java e Spring Boot, com sólida expertise em arquitetura de sistemas de alta performance e processamento assíncrono. Forte atuação em ambientes de missão crítica, projetando microsserviços escaláveis, implementando Clean Architecture e garantindo alta cobertura de testes automatizados (TDD/BDD). Profundo conhecimento em otimização de bancos de dados relacionais (PostgreSQL) e integração robusta com plataformas cloud (AWS/Azure).",
       skills: [
         "<strong>Linguagens:</strong> Java (11 a 21), Kotlin, SQL.",
-        "<strong>Frameworks:</strong> Spring Boot 3, Spring Security, Spring Data JPA, Hibernate.",
+        "<strong>Frameworks:</strong> Spring Boot 3, Spring Security, Spring Data JPA, Hibernate, Fastify/Node em integrações full-stack.",
         "<strong>Arquitetura:</strong> Clean Architecture, SOLID, Microsserviços, Event-Driven Architecture (EDA).",
         "<strong>Dados & Messaging:</strong> PostgreSQL, Redis, Kafka, RabbitMQ, AWS SQS/SNS.",
         "<strong>Qualidade:</strong> JUnit 5, Mockito, Testcontainers, SonarQube, TDD."
       ],
       experience: [
+        {
+          role: "Backend & Database Architect | FarmaDelivery",
+          date: "Maio 2026 — Presente",
+          link: "https://github.com/beehgiovani/FarmaDelivery",
+          bullets: [
+            "Modelagem de contratos backend, permissões e validações HTTP para operação logística com PostgreSQL/Supabase.",
+            "Unificação de schema, RLS, realtime e comentários SQL em arquivo canônico preparado para execução manual segura.",
+            "Adaptação de Fastify/Prisma para Vercel Serverless, incluindo build ESM, healthcheck público e CORS para apps externos.",
+            "Cobertura de testes de permissões, relatórios, comprovantes, rotas e fallbacks REST antes de acesso a banco/serviços externos."
+          ]
+        },
         {
           role: "Pleno/Sênior Software Engineer (Java) | Soo Tech (Híbrido)",
           date: "Janeiro 2024 — Presente",
@@ -227,15 +260,26 @@ export const resumeData: Record<string, Record<'pt' | 'en', ResumeTemplate>> = {
       summary: "Mid/Senior Software Engineer specialized in the Java and Spring Boot ecosystem, with solid expertise in high-performance system architecture and asynchronous processing. Strong background in mission-critical environments, designing scalable microservices, implementing Clean Architecture, and ensuring high automated test coverage (TDD/BDD). Deep knowledge in relational database optimization (PostgreSQL) and robust integration with cloud platforms (AWS/Azure).",
       skills: [
         "<strong>Languages:</strong> Java (11 to 21), Kotlin, SQL.",
-        "<strong>Frameworks:</strong> Spring Boot 3, Spring Security, Spring Data JPA, Hibernate.",
+        "<strong>Frameworks:</strong> Spring Boot 3, Spring Security, Spring Data JPA, Hibernate, Fastify/Node in full-stack integrations.",
         "<strong>Architecture:</strong> Clean Architecture, SOLID, Microservices, Event-Driven Architecture (EDA).",
         "<strong>Data & Messaging:</strong> PostgreSQL, Redis, Kafka, RabbitMQ, AWS SQS/SNS.",
         "<strong>Quality:</strong> JUnit 5, Mockito, Testcontainers, SonarQube, TDD."
       ],
       experience: [
         {
+          role: "Backend & Database Architect | FarmaDelivery",
+          date: "May 2026 — Present",
+          link: "https://github.com/beehgiovani/FarmaDelivery",
+          bullets: [
+            "Designed backend contracts, permissions, and HTTP validation for logistics operations with PostgreSQL/Supabase.",
+            "Unified schema, RLS, realtime, and SQL comments into a canonical file for safe manual database execution.",
+            "Adapted Fastify/Prisma for Vercel Serverless, including ESM build handling, public health checks, and CORS for external apps.",
+            "Expanded tests for permissions, reports, proofs, routes, and REST fallbacks before database/external service access."
+          ]
+        },
+        {
           role: "Back-End Engineer | PredictMed",
-          date: "March 2026 — October 2026",
+          date: "March 2026 — Present",
           link: "https://github.com/beehgiovani/predictmed",
           bullets: [
             "Architecture of asynchronous integration layers for B2B predictive health SaaS.",
@@ -283,12 +327,23 @@ export const resumeData: Record<string, Record<'pt' | 'en', ResumeTemplate>> = {
       summary: "Arquiteto Pleno/Sênior especializado em ecossistema Kotlin, com forte atuação em desenvolvimento Android Nativo e Backend escalável. Expert em Kotlin Coroutines, Flow e Ktor. Sólida experiência na construção de aplicações offline-first com alta complexidade de dados e interfaces reativas (Jetpack Compose). Especialista em Clean Architecture e SOLID, focado na entrega de software resiliente e de alta performance.",
       skills: [
         "<strong>Linguagens:</strong> Kotlin (Avançado), Java, SQL.",
-        "<strong>Mobile Android:</strong> Jetpack Compose, ViewModels, Room DB, Retrofit, WorkManager, Hilt/Koin.",
+        "<strong>Mobile Android:</strong> Jetpack Compose, ViewModels, DataStore, Retrofit/OkHttp, WorkManager, FCM.",
         "<strong>Backend Kotlin:</strong> Spring Boot 3, Ktor, Hibernate, Exposed ORM.",
         "<strong>Arquitetura:</strong> Clean Architecture, MVVM, MVI, SOLID, Design Patterns.",
         "<strong>Infra:</strong> Docker, AWS, Firebase, CI/CD (GitHub Actions)."
       ],
       experience: [
+        {
+          role: "Kotlin Android & PWA Architect | FarmaDelivery",
+          date: "Maio 2026 — Presente",
+          link: "https://github.com/beehgiovani/FarmaDelivery",
+          bullets: [
+            "Evolução do app Android de motoboy com Jetpack Compose, Retrofit, DataStore, FCM, GPS e comprovante fotográfico.",
+            "Paridade operacional entre Android e PWA para entregas, rotas, disponibilidade, última atualização e labels de campo.",
+            "Configuração de Android e PWA para consumir a API pública da Vercel durante testes fora da rede local.",
+            "Testes unitários Kotlin cobrindo use cases, rotas, formatação operacional e contratos compartilhados com a API."
+          ]
+        },
         {
           role: "Kotlin Specialist | Lúmen Web",
           date: "2025 — Fevereiro 2026",
@@ -337,12 +392,23 @@ export const resumeData: Record<string, Record<'pt' | 'en', ResumeTemplate>> = {
       summary: "Mid/Senior Architect specialized in the Kotlin ecosystem, with strong focus on Native Android development and scalable Backend. Expert in Kotlin Coroutines, Flow, and Ktor. Solid experience building offline-first applications with high data complexity and reactive interfaces (Jetpack Compose). Specialist in Clean Architecture and SOLID, focused on delivering resilient, high-performance software.",
       skills: [
         "<strong>Languages:</strong> Kotlin (Advanced), Java, SQL.",
-        "<strong>Mobile Android:</strong> Jetpack Compose, ViewModels, Room DB, Retrofit, WorkManager, Hilt/Koin.",
+        "<strong>Mobile Android:</strong> Jetpack Compose, ViewModels, DataStore, Retrofit/OkHttp, WorkManager, FCM.",
         "<strong>Backend Kotlin:</strong> Spring Boot 3, Ktor, Hibernate, Exposed ORM.",
         "<strong>Architecture:</strong> Clean Architecture, MVVM, MVI, SOLID, Design Patterns.",
         "<strong>Infra:</strong> Docker, AWS, Firebase, CI/CD (GitHub Actions)."
       ],
       experience: [
+        {
+          role: "Kotlin Android & PWA Architect | FarmaDelivery",
+          date: "May 2026 — Present",
+          link: "https://github.com/beehgiovani/FarmaDelivery",
+          bullets: [
+            "Evolved the courier Android app with Jetpack Compose, Retrofit, DataStore, FCM, GPS, and photo delivery proof.",
+            "Kept Android and PWA operational flows aligned for deliveries, routes, availability, last-sync copy, and field labels.",
+            "Configured Android and PWA clients to consume the public Vercel API during testing outside the local network.",
+            "Added Kotlin unit coverage for use cases, routing, operational formatting, and contracts shared with the API."
+          ]
+        },
         {
           role: "Kotlin Specialist | Lúmen Web",
           date: "2025 — February 2026",

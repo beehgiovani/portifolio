@@ -58,6 +58,7 @@ export function ProjectCard({ project, onSelect, span = false }: { project: Proj
 export function ProjectGrid({ onSelect }: { onSelect: (p: Project) => void }) {
   const { t } = useI18n();
   const seniorProjectKeys = [
+    'farmadelivery',
     'predictmed',
     'guarugeo',
     'lumen',

@@ -10,6 +10,7 @@ import logoAutoScraper from '../assets/logo_autoscraper.png'
 import logoMarketPoster from '../assets/logo_marketposter.png'
 import logoEmailMonitor from '../assets/logo_emailmonitor.png'
 import logoLumen from '../assets/logo_lumen.png'
+import logoFarmaDelivery from '../assets/logo_farmadelivery.png'
 import acapulco1 from '../assets/screenshots/interactivemap/acapulco_1.png'
 import acapulco2 from '../assets/screenshots/interactivemap/acapulco_2.png'
 import acapulco3 from '../assets/screenshots/interactivemap/acapulco_3.png'
@@ -36,6 +37,76 @@ export const pt = {
     { date: "2023 - Presente", role: "Arquiteto & Fundador | GuaruGeo", desc: "Criei do zero uma infraestrutura GIS soberana. Integrei PostGIS com mineradores de dados pra entregar inteligência imobiliária com precisão de centímetros." }
   ],
   projects: {
+    farmadelivery: {
+      title: "FarmaDelivery",
+      logo: logoFarmaDelivery,
+      impact: "Ecossistema Operacional Full-Stack",
+      desc: "Plataforma real de entregas farmacêuticas com painel web, API online, app Android e PWA para motoboys. Eu consolidei banco, RLS, realtime, GPS ao vivo, notificações, comprovante fotográfico, relatórios, rotas, Docker, Vercel e Firebase Hosting em um monorepo validado para operação fora do ambiente local.",
+      stack: ["React 19", "Fastify", "Prisma", "Supabase Storage", "Kotlin Compose", "PWA", "Vercel", "Firebase Hosting/FCM"],
+      screenshots: [
+        "/assets/screenshots/farmadelivery/farmadelivery-admin.png",
+        "/assets/screenshots/farmadelivery/farmadelivery-motoboy-pwa.png"
+      ],
+      details: {
+        innovation: "Arquitetura operacional com contratos compartilhados entre painel, API, Android e PWA, mantendo fallback Supabase REST, SQL canônico unificado, Server-Sent Events para atualização ao vivo e validações automatizadas em múltiplas superfícies.",
+        strongPoints: ["Monorepo multi-app", "API online na Vercel", "Admin e PWA publicados no Firebase", "RLS, realtime e storage documentados", "GPS ao vivo e comprovante fotográfico"],
+        architecture: "Monorepo TypeScript/Kotlin com API Fastify empacotada para Vercel Serverless, Prisma/Supabase, PostgreSQL com RLS, Supabase Storage, painel React, PWA React, app Android Compose, Firebase Messaging e Docker Compose para desenvolvimento.",
+        businessImpact: "Transformou um fluxo manual de despacho em uma operação rastreável e acessível fora da rede local: criação de entrega, aceite, coleta, rota, conclusão, prova, histórico, relatórios, alertas e auditoria em um único ecossistema. O desenho reduz erro operacional, melhora visibilidade de loja/motoboy e prepara a base para expansão com governança de dados.",
+        technicalChallenges: "Adaptar uma API Fastify tradicional para deploy serverless na Vercel, resolver empacotamento ESM/Prisma para Linux com binary target correto, alinhar contratos entre quatro clientes, preservar segurança de secrets, manter dados reais sem vazamento em documentação pública e validar Android/PWA/Admin/API no mesmo ciclo.",
+        topology: "Firebase Hosting (Admin/PWA) -> Vercel Fastify API -> Prisma + Supabase REST fallback -> PostgreSQL/RLS/Realtime/Storage -> Kotlin Android + Firebase Messaging",
+        url: "https://drogstoantonio.web.app",
+        github: "https://github.com/beehgiovani/FarmaDelivery"
+      },
+      codeSnippets: [
+        {
+          title: "Handler serverless Fastify na Vercel",
+          language: "javascript",
+          code: `let appPromise = null;
+
+async function getApp() {
+  if (!appPromise) {
+    const { createApp } = await import("../dist/app.js");
+    appPromise = createApp({ logger: false }).then(async (app) => {
+      await app.ready();
+      return app;
+    });
+  }
+
+  return appPromise;
+}
+
+module.exports = async function handler(request, response) {
+  const app = await getApp();
+  app.server.emit("request", request, response);
+};`
+        },
+        {
+          title: "Contrato SQL canônico com RLS comentada",
+          language: "sql",
+          code: `COMMENT ON TABLE public."Delivery" IS
+'Entregas operacionais consumidas por API, admin, PWA e Android.
+RLS habilitada; clientes finais acessam via API autenticada e realtime segue policies.
+Cuidados: preservar histórico, escopo de loja, comprovantes e dados pessoais.';
+
+DROP POLICY IF EXISTS "Authenticated delivery read" ON public."Delivery";
+CREATE POLICY "Authenticated delivery read"
+  ON public."Delivery" FOR SELECT
+  TO authenticated
+  USING (true);`
+        },
+        {
+          title: "Paridade de rota entre PWA e Android",
+          language: "kotlin",
+          code: `fun buildGoogleMapsRouteUrl(stops: List<RouteStop>): String? {
+  val navigableStops = stops.filter { it.hasAddressOrCoordinates() }
+  if (navigableStops.isEmpty()) return null
+
+  val segment = navigableStops.take(MAX_GOOGLE_MAPS_STOPS)
+  return GoogleMapsUrlBuilder.fromSegment(segment)
+}`
+        }
+      ]
+    },
     predictmed: {
       title: "PredictMed",
       logo: logoPredictMed,
