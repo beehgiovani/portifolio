@@ -90,12 +90,12 @@ export function ProjectModal({ project, onClose }: { project: Project, onClose: 
                 </div>
               </div>
 
-              {/* Impacto / Business Impact */}
+              {/* Aprendizados / Results */}
               {project.details.businessImpact && (
                 <div className="card-masterpiece pm-bento-full">
                   <h4 className="pm-h4">
                     <AnimatedIcon icon={Target} size={20} animation="pulse" />
-                    {lang === 'en' ? 'Business Impact' : 'Impacto de Negócio'}
+                    {lang === 'en' ? 'Learning Results' : 'Aprendizados e Resultados'}
                   </h4>
                   <p className="pm-p">{project.details.businessImpact}</p>
                 </div>

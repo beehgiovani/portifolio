@@ -277,7 +277,7 @@ export function ResumeManager({ onClose }: ResumeManagerProps) {
                     </section>
 
                     <section className="resume-section">
-                      <h2>{lang === 'en' ? 'Technical Expertise' : 'Expertise Técnica'}</h2>
+                      <h2>{lang === 'en' ? 'Technical Skills' : 'Competências Técnicas'}</h2>
                       <ul>
                         {currentData.skills.map((skill: string, i: number) => (
                           <li
@@ -292,7 +292,7 @@ export function ResumeManager({ onClose }: ResumeManagerProps) {
                     </section>
 
                     <section className="resume-section">
-                      <h2>{lang === 'en' ? 'Professional Experience' : 'Experiência Profissional'}</h2>
+                      <h2>{lang === 'en' ? 'Projects and Practical Experience' : 'Projetos e Experiência Prática'}</h2>
                       {currentData.experience.map((exp: ResumeTemplate['experience'][0], i: number) => (
                         <div key={i} className="experience-item">
                           <div className="role-header" style={{ display: 'flex', alignItems: 'center', gap: '8pt' }}>

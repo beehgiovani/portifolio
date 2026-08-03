@@ -19,29 +19,29 @@ import data from '../portfolio.data.json'
 export const en = {
   hero: {
     greeting: "Bruno Giovani",
-    role: "Software Engineer (Mid/Senior) | Solutions Architect",
-    years: "6+ Years of High-Availability Engineering",
-    tagline: "I architect high-scale digital ecosystems focused on availability, low latency, and measurable business impact. From geo-intelligence and microservices to applied AI, I connect technical architecture with operational outcomes.",
+    role: "Software Engineer (Junior/Mid) | Full-Stack Developer",
+    years: "Complete personal projects + informal B2B work at Agili",
+    tagline: "I build full-stack projects focused on organized code, useful interfaces, well-structured APIs, and continuous learning. I have hands-on practice with geo-intelligence, microservices, automation, and applied AI, and I am looking for a Junior/Mid opportunity to contribute and grow with a team.",
     cta: "Explore my journey"
   },
   sections: {
-    projects: "Projects & Real Cases",
+    projects: "Practical Projects & Studies",
     skills: "My Stack & Skills",
-    experience: "My Journey",
+    experience: "Projects and Practical Experience",
     certifications: "Certifications",
     contact: "Let's connect?"
   },
   experience: [
-    { date: "Mar 2026 - Present", role: "Front-End Lead Developer | PredictMed", desc: "Leading front-end development for AI-driven healthcare platforms. I design and implement fault-tolerant architectures using Supabase and Gemini Vision to automate mission-critical inventory audits." },
-    { date: "Jan 2024 - Present", role: "Software Engineer (Mid/Senior) | Soo Tech", desc: "Focused on complex JVM ecosystems. I develop resilient microservices with Spring Boot, ensuring the system handles high data volumes without losing performance." },
-    { date: "2023 - Present", role: "Architect & Founder | GuaruGeo", desc: "Built a sovereign GIS infrastructure from scratch. Integrated PostGIS with data miners to deliver real estate intelligence with centimeter-level precision." }
+    { date: "Current", role: "Personal Full-Stack Projects", desc: "Building my own applications with React, TypeScript, Node/Fastify, Spring Boot, Kotlin, Supabase, Firebase, and PostgreSQL to practice complete product flows." },
+    { date: "Informal B2B", role: "Developer | Agili", desc: "On-demand support with adjustments, maintenance, bug fixes, and small features, without a formal employment relationship or fixed contract." },
+    { date: "Continuous study", role: "Learning and guided practice", desc: "Ongoing development through ADS, REST APIs, databases, Android, automations, testing, and code organization." }
   ],
   projects: {
     farmadelivery: {
       title: "FarmaDelivery",
       logo: logoFarmaDelivery,
-      impact: "Full-Stack Operations Ecosystem",
-      desc: "A real pharmaceutical delivery platform with web admin, online API, Android app, and courier PWA. I consolidated database, RLS, realtime, live GPS, notifications, photo proof, reporting, routing, Docker, Vercel, and Firebase Hosting into a monorepo validated for operation outside the local network.",
+      impact: "Personal Full-Stack Project",
+      desc: "Personal pharmaceutical delivery project with web admin, online API, Android app, and courier PWA. I used database, RLS, realtime, live GPS, notifications, photo proof, reporting, routing, Docker, Vercel, and Firebase Hosting to practice a complete application flow.",
       stack: ["React 19", "Fastify", "Prisma", "Supabase Storage", "Kotlin Compose", "PWA", "Vercel", "Firebase Hosting/FCM"],
       screenshots: [
         "/assets/screenshots/farmadelivery/farmadelivery-admin.png",
@@ -51,8 +51,8 @@ export const en = {
         innovation: "Operational architecture with shared contracts across admin, API, Android, and PWA, combining Supabase REST fallback, unified canonical SQL, Server-Sent Events for live updates, and automated validation across multiple surfaces.",
         strongPoints: ["Multi-app monorepo", "Vercel-hosted API", "Admin and PWA on Firebase Hosting", "Documented RLS, realtime and storage", "Live GPS and auditable photo proof"],
         architecture: "TypeScript/Kotlin monorepo with Fastify API packaged for Vercel Serverless, Prisma/Supabase, PostgreSQL with RLS, Supabase Storage, React admin, React PWA, Compose Android app, Firebase Messaging, and Docker Compose for development.",
-        businessImpact: "Turned manual dispatch into a traceable workflow available outside the local network: delivery creation, accept, pickup, route, completion, proof, history, reporting, alerts, and audit in one ecosystem. The design reduces operational error, improves store/courier visibility, and prepares the system for governed expansion.",
-        technicalChallenges: "Adapting a traditional Fastify API to Vercel Serverless, solving ESM/Prisma packaging for Linux with the right binary target, aligning contracts across four clients, preserving secret hygiene, keeping real app data without leaking it in public docs, and validating Android/PWA/Admin/API in the same cycle.",
+        businessImpact: "Project used to practice requirements analysis, data modeling, integrations, interface states, and complete flow validation without implying formal professional employment.",
+        technicalChallenges: "Adapting a Fastify API to Vercel Serverless, solving ESM/Prisma packaging for Linux, aligning contracts across project clients, preserving secret hygiene, and validating Android/PWA/Admin/API in the same cycle.",
         topology: "Firebase Hosting (Admin/PWA) -> Vercel Fastify API -> Prisma + Supabase REST fallback -> PostgreSQL/RLS/Realtime/Storage -> Kotlin Android + Firebase Messaging",
         url: "https://drogstoantonio.web.app",
         github: "https://github.com/beehgiovani/FarmaDelivery"
@@ -111,7 +111,7 @@ CREATE POLICY "Authenticated delivery read"
       title: "PredictMed",
       logo: logoPredictMed,
       impact: "High-Availability SaaS Ecosystem",
-      desc: "An enterprise-grade inventory prediction solution for the healthcare sector. I leveraged Gemini Vision to build an autonomous auditing engine: it analyzes shelf density and reconciles with logical data, automating replenishment and eliminating stockouts.",
+      desc: "A personal inventory prediction prototype for the healthcare sector. I leveraged Gemini Vision to build an autonomous auditing engine: it analyzes shelf density and reconciles with logical data, automating replenishment and eliminating stockouts.",
       stack: ["React 19", "Supabase", "Gemini AI", "Deno Edge", "TypeScript"],
       screenshots: [
         "/assets/screenshots/PredictMed/predictmed (1).png",
@@ -120,9 +120,9 @@ CREATE POLICY "Authenticated delivery read"
       ],
       details: {
         innovation: "Computer vision auditing engine designed to support inventory checks and reduce repetitive manual verification.",
-        strongPoints: ["98% Stockout Prevention Accuracy", "Sub-second Real-time Synchronization", "Edge-native Serverless Infrastructure"],
-        architecture: "Event-driven architecture built on Supabase Realtime and Deno Edge Functions, designed for low latency and incremental scalability.",
-        businessImpact: "I managed to reduce replenishment latency by 92%. The idea was to automate shelf monitoring, which generated an estimated gross saving of $40k/year per unit, allowing pharmacists to focus on patients rather than counting vials.",
+        strongPoints: ["Stock workflow validation", "Real-time synchronization study", "Deno Edge personal project"],
+        architecture: "Event-driven study architecture built on Supabase Realtime and Deno Edge Functions for incremental project evolution.",
+        businessImpact: "Project used to practice requirements analysis, data modeling, integrations, interface states, and complete flow validation without implying formal professional employment.",
         technicalChallenges: "Orchestrating computer-vision inference with data safety, state consistency, and predictable operating cost.",
         topology: "React 19 -> Supabase Edge (Deno) -> Gemini Vision AI API -> PostgreSQL Realtime",
         url: "https://predictmed.web.app/",
@@ -219,13 +219,13 @@ const queue = sortedFiles.map(file => ({
       title: "LÚMEN | Spatial Drawing Engine",
       logo: logoLumen,
       impact: "Computer Vision & Immersive Experience",
-      desc: "A spatial drawing and audio engine utilizing real-time 3D hand tracking. I leveraged MediaPipe to transform gestures into neon art with procedural sound synthesis, optimized for ultra-low latency to ensure a natural user experience.",
+      desc: "A spatial drawing and audio study using real-time 3D hand tracking. I used MediaPipe to transform gestures into neon art with procedural sound synthesis and practiced browser-based interaction tuning.",
       stack: ["React 19", "MediaPipe Vision", "WebGL", "Sound Synthesis"],
       details: {
         innovation: "Stroke stabilization algorithm (Stability Ref) that uses point density and velocity to simulate real brush physics via computer vision.",
-        strongPoints: ["Low-Latency Gestural Tracking", "Procedural Sound Synthesizer", "WebGL Bloom & Neon Visual Effects"],
+        strongPoints: ["Gestural Tracking Study", "Procedural Sound Synthesizer", "WebGL Bloom & Neon Visual Effects"],
         architecture: "Reactive image processing pipeline utilizing workers for AI inference and WebGL for high-fidelity rendering at 60fps.",
-        businessImpact: "Explores new frontiers of HCI (Human-Computer Interaction), removing the physical barrier of mouse/touch. Applicable in interactive museums, immersive design tools, and motor rehabilitation through artistic gamification.",
+        businessImpact: "Project used to practice requirements analysis, data modeling, integrations, interface states, and complete flow validation without implying formal professional employment.",
         technicalChallenges: "Orchestrating real-time AI landmark processing with continuous audio synthesis without causing frame drops or audio jitter.",
         topology: "MediaPipe (HandLandmarker) -> React 19 -> WebAudio Engine -> WebGL Canvas",
         github: "https://github.com/beehgiovani/lumen"
@@ -344,7 +344,7 @@ const smoothPoint = (raw, last, stability) => {
         innovation: "Sub-metric GIS precision achieved through custom PostGIS spatial intersection engines and automated taxpayer data cross-referencing.",
         strongPoints: ["Advanced Spatial Indexing", "Real-time Vector Geometry Rendering", "Unified Data Sovereignty"],
         architecture: "Decoupled architecture with a PostGIS spatial backbone and a high-performance NodeJS middleware serving vector tiles to a reative React MapGL frontend.",
-        businessImpact: "The result was a 60% cut in prospecting time. Having all tax and property data unified gave a massive boost in accuracy when deciding where to invest.",
+        businessImpact: "Project used to practice requirements analysis, data modeling, integrations, interface states, and complete flow validation without implying formal professional employment.",
         technicalChallenges: "Optimizing browser rendering for 18,000+ detailed polygons while maintaining a flawless 60fps interaction on standard devices.",
         topology: "Next.js (Edge) -> Supabase -> PostGIS -> Python OSINT Crawlers",
         url: "https://guarujainterativo.com.br/",
@@ -391,7 +391,7 @@ LIMIT 100;`
         innovation: "Global Drive-to-Store engine utilizing Geo-Fencing and QR-validation to reward brand advocacy with tangible real-world benefits.",
         strongPoints: ["Real-time Leaderboards", "Secure Geo-validation Missions", "AI Health Consultant Implementation"],
         architecture: "Hybrid real-time architecture utilizing Firebase for social hub interactions and Supabase for mission persistence and validation.",
-        businessImpact: "Maximized consumer LTV through a gamified journey that converted 35% of the digital audience into qualified foot traffic for physical POS. AI-driven personalized health consulting integration generated a 22% increase in average ticket size during active campaigns.",
+        businessImpact: "Project used to practice requirements analysis, data modeling, integrations, interface states, and complete flow validation without implying formal professional employment.",
         technicalChallenges: "Maintaining seamless offline-to-online state transitions and preventing validation spoofing in remote high-traffic retail environments.",
         topology: "React (PWA) -> Firebase Cloud Functions -> Supabase Realtime",
         url: "https://cimedexperience.web.app/onboarding",
@@ -419,7 +419,7 @@ if (distance <= 300) {
         innovation: "Hybrid pipeline combining HTTP extraction, geospatial normalization, and automated validation to consolidate public data with traceability.",
         strongPoints: ["Geospatial normalization", "Batch WFS extraction", "Tax-property cross-linking"],
         architecture: "Multi-phase asynchronous extraction pipeline. Utilizes Python's Scrapy and custom ML models for high-throughput data normalization.",
-        businessImpact: "Unlocked access to 'dark' government data assets, creating the state's largest structured coastal intelligence dataset. This data infrastructure enabled automated real estate due diligence, slashing external auditing costs by 75% and accelerating complex contract closures.",
+        businessImpact: "Project used to practice requirements analysis, data modeling, integrations, interface states, and complete flow validation without implying formal professional employment.",
         technicalChallenges: "Standardizing unstable public sources, handling heterogeneous geospatial formats, and preserving consistency across incremental runs.",
         topology: "Python (AsyncIO) -> Data validation -> PostgreSQL Data Lake",
         github: "https://github.com/beehgiovani/SpLitoralScraping"
@@ -455,15 +455,15 @@ if (distance <= 300) {
     automacao_scraper: {
       title: "AutoScraper Core",
       logo: logoAutoScraper,
-      impact: "High-Scale Automation",
-      desc: "Distributed bot orchestrator for massive municipal data extraction. Bypasses WAFs via Tor IP multiplexing and self-trained PyTorch OCR models, achieving over 100k records per hour.",
+      impact: "Practical Automation",
+      desc: "Personal automation study project for municipal data extraction, using Playwright, OCR experiments, and IP rotation concepts to practice resilient scraping flows.",
       stack: ["Python", "PyTorch", "Tor", "Playwright"],
       details: {
-        innovation: "Master-worker orchestration layer that multiplexes Tor execution threads to defeat rate-limiting and IP-based firewalls.",
-        strongPoints: ["Tor Network IP Rotation", "Self-trained OCR Accuracy", "100k+ Records/Hr Capacity"],
-        architecture: "Distributed system with isolated Tor port configurations and async worker threads pushing to a central persistence layer.",
-        businessImpact: "Scaled market monitoring capacity by 500%, processing massive volumes of distributed data with 99.9% uptime. Intelligent proxy rotation and local neural OCR eliminated external provider dependencies, reducing data acquisition OPEX by 90%.",
-        technicalChallenges: "Maintaining pipeline throughput despite Tor network latency and managing complex session states across rotated proxies.",
+        innovation: "Automation flow that uses Playwright workers, OCR experiments, and IP rotation concepts to practice robust data collection.",
+        strongPoints: ["IP rotation concepts", "OCR experimentation", "Data validation workflow"],
+        architecture: "Study architecture with isolated scraping workers, validation steps, and a central persistence layer.",
+        businessImpact: "Project used to practice requirements analysis, data modeling, integrations, interface states, and complete flow validation without implying formal professional employment.",
+        technicalChallenges: "Managing session state across scraping workers, OCR experiments, and rotated proxy concepts while keeping data validation understandable.",
         topology: "Playwright -> Tor Cluster -> AsyncIO Dispatcher",
         github: "https://github.com/beehgiovani/crawler---dados-publicos"
       },
@@ -551,7 +551,7 @@ def get_stats(self):
         innovation: "Local-first health management system that guarantees alarm delivery and medication adherence without constant internet reliance.",
         strongPoints: ["Offline-first Persistence", "Complex Alarm Scheduling", "Caregiver Real-time Sharing"],
         architecture: "MVVM Clean Architecture using Kotlin Flow for reactive state management and Room for reliable local persistence.",
-        businessImpact: "Established a new security standard in home care, achieving 100% adherence to critical medication protocols via offline-resilient architecture. Collected data precision enabled a 15% reduction in hospital readmissions due to medication management errors.",
+        businessImpact: "Project used to practice requirements analysis, data modeling, integrations, interface states, and complete flow validation without implying formal professional employment.",
         technicalChallenges: "Implementing high-priority alarms that remain active through device reboots and aggressive OS battery optimizations.",
         topology: "Android Native (Kotlin) -> Room DB -> Firebase Cloud Sync",
         github: "https://github.com/beehgiovani/NidusCare"
@@ -631,13 +631,13 @@ return when {
       title: "PharmaFlow Ecosystem",
       logo: logoPharmaFlow,
       impact: "Supply Chain Optimization",
-      desc: "Logistical solution for the pharmaceutical sector. Merges native Android telemetry with a React operations dashboard for real-time delivery tracking and inventory management.",
+      desc: "Personal logistics project for pharmaceutical-sector studies. Merges native Android telemetry with a React operations dashboard for real-time delivery tracking and inventory management.",
       stack: ["Kotlin", "Firebase Realtime", "React Web"],
       details: {
-        innovation: "High-frequency GPS telemetry pipeline that synchronizes driver coordinates with low latency to a web-based dispatch hub.",
+        innovation: "GPS telemetry study that synchronizes driver coordinates with a web-based dispatch hub for realtime delivery tracking practice.",
         strongPoints: ["Real-time Fleet Tracking", "Automated Inventory Deduction", "Cross-platform Data Sync"],
         architecture: "Event-driven architecture where mobile clients push coordinate updates to Firebase, immediately reflected in the React dispatcher.",
-        businessImpact: "Optimized last-mile logistics with total supply chain visibility, reducing average delivery time by 25% and zeroing in-transit inventory discrepancies. Real-time telemetry enabled a 12% reduction in fuel and fleet maintenance costs through dynamic route optimization.",
+        businessImpact: "Project used to practice requirements analysis, data modeling, integrations, interface states, and complete flow validation without implying formal professional employment.",
         technicalChallenges: "Managing continuous GPS updates for hundreds of concurrent drivers without degrading mobile battery performance.",
         topology: "Kotlin Android -> Firebase Realtime DB -> React Dashboard",
         github: "https://github.com/beehgiovani/PharmaFlow"
@@ -687,7 +687,7 @@ COMMIT;`
         innovation: "Reverse-engineered public document infrastructures to transform manual bureaucratic processes into instantaneous API calls.",
         strongPoints: ["Headless Browser Automation", "Stateful Token Extraction", "Async Job Orchestration"],
         architecture: "Serverless backend (Deno) managing headless browser clusters that navigate legacy portals and return structured PDF data.",
-        businessImpact: "Democratized access to complex certificates, transforming 5-business-day processes into instantaneous 60-second transactions. This operational agility allowed real estate firms and banks to accelerate financing processes, unlocking millions in capital previously stalled by bureaucracy.",
+        businessImpact: "Project used to practice requirements analysis, data modeling, integrations, interface states, and complete flow validation without implying formal professional employment.",
         technicalChallenges: "Maintaining session stability, error handling, and traceability across unstable legacy portals.",
         topology: "Deno Deploy -> Headless Puppeteer -> Supabase Storage",
         github: "https://github.com/beehgiovani/CertidaoGuaru"
@@ -766,13 +766,13 @@ for (const [key, value] of Object.entries(params)) {
       title: "MarketPoster",
       logo: logoMarketPoster,
       impact: "Retail Empowerment",
-      desc: "Professional Android app for dynamic retail poster design. Features C++ OpenCV and offline ML background removal, eliminating the need for design outsourcing.",
+      desc: "Personal Android project for dynamic retail poster design. Features C++ OpenCV and offline ML background removal, eliminating the need for design outsourcing.",
       stack: ["Kotlin", "OpenCV", "ML Kit", "Android Native"],
       details: {
         innovation: "On-device AI background removal and professional graphic design capabilities localized for branch-level retail operations.",
         strongPoints: ["Offline ML Segmentation", "Native C++ OpenCV Integration", "Direct Network Printing"],
         architecture: "Resource-intensive native app leveraging ML Kit for image analysis and OpenCV C++ libraries for high-fidelity graphic rendering.",
-        businessImpact: "Decentralized creative production, saving hundreds of man-hours per month across 100+ retail units. Eliminating outsourcing costs and increasing response speed to POS price changes resulted in an 8% conversion boost for promotional items.",
+        businessImpact: "Project used to practice requirements analysis, data modeling, integrations, interface states, and complete flow validation without implying formal professional employment.",
         technicalChallenges: "Optimizing ML models and C++ image processing to run smoothly on mid-range Android tablets without UI lag.",
         topology: "Android Native -> ML Kit -> OpenCV C++ -> Network Print",
         github: "https://github.com/beehgiovani/MarketPoster"
@@ -813,7 +813,7 @@ void processFrame(Mat& frame) {
         innovation: "Dynamic SVG-based mapping engine that replaces heavy GIS servers with lightweight reative layers for instant client feedback.",
         strongPoints: ["60fps Interaction Speed", "Real-time Lot Moderation", "Optimized CSR Performance"],
         architecture: "Client-side mapping engine built on React and Leaflet, communicating via an optimized Firebase JSON state to skip heavy map servers.",
-        businessImpact: "Transformed the high-luxury asset sales experience, providing an immersive visualization tool that shortened the client decision cycle by 30%. Real-time data transparency eliminated lot reservation conflicts and bolstered premium investor confidence.",
+        businessImpact: "Project used to practice requirements analysis, data modeling, integrations, interface states, and complete flow validation without implying formal professional employment.",
         technicalChallenges: "Rendering hundreds of reactive GeoJSON overlays while maintaining high scroll and zoom performance in the browser.",
         topology: "React -> SVG/Leaflet Hybrid -> Firebase Realtime",
         github: "https://github.com/beehgiovani/InteractiveMap"
@@ -842,13 +842,13 @@ void processFrame(Mat& frame) {
       title: "Lead Webhook Monitor",
       logo: logoEmailMonitor,
       impact: "Automated Lead Capture",
-      desc: "Autonomous pipeline for inbound lead capture via IMAP parsing. Uses structured extraction rules to route leads into CRM webhooks with low latency.",
+      desc: "Personal automation project for inbound contact parsing via IMAP. Uses structured extraction rules to route messages into CRM-style webhooks.",
       stack: ["Python", "IMAP/SMTP", "Supabase", "Node"],
       details: {
-        innovation: "Low-latency data routing that converts unstructured email text into clean, structured CRM entries automatically.",
+        innovation: "Data routing study that converts unstructured email text into clean, structured CRM-style entries automatically.",
         strongPoints: ["Robust Regex Extractions", "Continuous IMAP Monitoring", "Supabase Webhook Integration"],
         architecture: "Independent Python watcher service processing email bodies and triggering real-time database synchronizations via Supabase.",
-        businessImpact: "Eradicated lead leakage by 100% by automating data capture from legacy sources (email) into modern CRMs. Instant response to new leads increased the successful contact rate by 40%, directly impacting the sales pipeline and marketing ROI.",
+        businessImpact: "Project used to practice requirements analysis, data modeling, integrations, interface states, and complete flow validation without implying formal professional employment.",
         technicalChallenges: "Maintaining stable IMAP connections with legacy providers and handling wildly inconsistent email body formats through regex.",
         topology: "Python (IMAP Listener) -> Supabase Sync -> CRM Webhook",
         github: "https://github.com/beehgiovani/guaruja-email-monitor"
@@ -916,11 +916,11 @@ if files_to_remove:
   },
   skills: {
     java: "Reactive JVM Systems (Java/Kotlin, Spring Boot 3, Hibernate, Micronaut, Clean Architecture, Design Patterns)",
-    react: "React 19 Ecosystem (TypeScript, Complex State Management, Next.js, Performance Optimization, High-Scale PWAs)",
+    react: "React 19 Ecosystem (TypeScript, Complex State Management, Next.js, Performance Optimization, Practical PWAs)",
     spring: "Data Engineering & DBAs (Advanced PostgreSQL, PostGIS, Spatial Indexing, Pandas, Big Data Pipelines)",
     python: "Artificial Intelligence & Automation (PyTorch, Custom OCR Models, OpenCV, Computer Vision, Headless Scrapers)",
     cloud: "Cloud & Edge Architecture (Deno Edge Functions, Supabase Realtime, AWS S3/EC2, Firebase Serverless, CI/CD)",
-    gis: "Mission-Critical GIS Intelligence (GeoServer WFS/WMS, QGis Desktop/Server, GeoJSON, Leaflet Integration)",
+    gis: "Applied GIS Intelligence (GeoServer WFS/WMS, QGis Desktop/Server, GeoJSON, Leaflet Integration)",
     arch: "Design Systems & Micro-frontends (Resilience, Horizontal Scalability, Storybook, Luxury UI/UX)",
     node: "Native Mobile & Kotlin Flow (Android MVVM/MVI Architectures, Room DB, Coroutines, Jetpack Compose, BLE)",
   },
@@ -937,8 +937,8 @@ if files_to_remove:
     github: "https://github.com/beehgiovani/"
   },
   dialog: {
-    title: "Executive Presentation",
-    message: "I architect scalable systems designed for absolute resilience. Select the localized executive summary for the region of interest.",
+    title: "Professional Presentation",
+    message: "I build projects with a focus on organization, security, practical learning, and continuous improvement. Select the localized professional summary for the region of interest.",
     btnEn: "Stay in English",
     btnPt: "Mudar para Português"
   }

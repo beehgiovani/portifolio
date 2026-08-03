@@ -1,4 +1,4 @@
-# 🚀 Bruno Giovani | Senior Software Engineer & Architect
+# 🚀 Bruno Giovani | Junior/Mid Software Engineer & Full-Stack Developer
 
 <div align="center">
 
@@ -12,14 +12,14 @@
 
 </div>
 
-> **Engenharia de Software Pleno/Senior focada em alta performance, ecossistemas digitais escaláveis e impacto real de negócios.**  
-> Especialista em Geo-Inteligência, Microserviços Resilientes (Java/Spring), Agentes Autônomos de IA (Python) e Arquiteturas Nativas.
+> **Engenharia de Software Júnior/Pleno focada em alta performance, ecossistemas digitais escaláveis e impacto real de negócios.**  
+> Desenvolvedor com prática em Geo-Inteligência, Microserviços Resilientes (Java/Spring), Agentes Autônomos de IA (Python), aplicações nativas e atuação PJ informal na Agili.
 
 ---
 
 ## 🎯 Sobre o Portfólio
 
-Este repositório não é apenas um site estático; é um **ecossistema full-stack arquitetado do zero** para demonstrar de forma tátil a minha filosofia de desenvolvimento de software.
+Este repositório não é apenas um site estático; é um **ecossistema full-stack desenvolvido do zero** para demonstrar de forma tátil a minha prática de desenvolvimento de software.
 
 Enquanto a maioria dos portfólios são templates prontos, este projeto utiliza **React 19, Vite, Framer Motion e TypeScript** no Frontend, servindo como prova técnica da minha capacidade em desenvolver Single Page Applications altamente performáticas, componentizadas, com suporte a i18n nativo e animações 3D otimizadas na GPU.
 
@@ -32,7 +32,7 @@ Enquanto a maioria dos portfólios são templates prontos, este projeto utiliza 
 
 ## 🏆 Projetos de Alto Impacto & Cases de Sucesso
 
-Durante a minha carreira, liderei e desenvolvi sistemas que geraram redução severa de custos e automação de escala em ambientes de produção. Alguns dos destaques arquitetônicos incluem:
+Durante a minha trajetória de estudos, projetos pessoais e atuação PJ informal, desenvolvi sistemas para praticar automação, APIs, dashboards, apps Android e organização de dados. Alguns dos destaques técnicos incluem:
 
 ### 1. GuaruGeo - Inteligência Imobiliária Geográfica
 - **Ecossistema:** Python, PostGIS, Geopandas.

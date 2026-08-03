@@ -139,7 +139,7 @@ function App() {
             >
               <h4 className="skills-h4">
                 <AnimatedIcon icon={Code2} />
-                Expert Tech Stack
+                {lang === 'en' ? 'Technical Stack' : 'Stack Técnica'}
               </h4>
               <ul className="skills-ul">
                 <li className="skills-li">
@@ -170,7 +170,7 @@ function App() {
             >
               <h4 className="skills-h4-white">
                 <AnimatedIcon icon={Network} color="#fff" />
-                Ecosystem Authority
+                {lang === 'en' ? 'Product Ecosystem' : 'Ecossistema de Produto'}
               </h4>
               <ul className="skills-ul">
                 <li className="skills-li">
@@ -223,7 +223,7 @@ function App() {
         <ContactForm />
 
         <div className="footer-details-box">
-          <h4 className="footer-details-title">{lang === 'en' ? 'Professional Details (Mid/Senior)' : 'Detalhes Profissionais (Pleno/Sênior)'}</h4>
+          <h4 className="footer-details-title">{lang === 'en' ? 'Professional Details (Junior/Mid)' : 'Detalhes Profissionais (Júnior/Pleno)'}</h4>
           <div className="footer-details-grid">
             <div className="footer-detail-item">
               <AnimatedIcon icon={Banknote} animation="pulse" />
@@ -231,18 +231,18 @@ function App() {
                 <div className="footer-topic">
                   <span className="topic-label">PJ (B2B):</span>
                   <div className="topic-group">
-                    <span className="topic-value">$ 4,000 - 6,500 USD</span>
-                    <span className="topic-subvalue">($ 25 - 45/h)</span>
+                    <span className="topic-value">$ 800 - 1,800 USD</span>
+                    <span className="topic-subvalue">($ 8 - 18/h)</span>
                   </div>
                   <div className="topic-group">
-                    <span className="topic-value">R$ 10.000 - 12.000</span>
-                    <span className="topic-subvalue">(R$ 60 - 75/h)</span>
+                    <span className="topic-value">R$ 3.000 - 5.500</span>
+                    <span className="topic-subvalue">(R$ 20 - 35/h)</span>
                   </div>
                 </div>
                 <div className="footer-topic">
                   <span className="topic-label">CLT:</span>
                   <div className="topic-group">
-                    <span className="topic-value">R$ 8,000 - 9,500</span>
+                    <span className="topic-value">R$ 2.500 - 4.500</span>
                     <span className="topic-subvalue">(+ Benefícios)</span>
                   </div>
                 </div>

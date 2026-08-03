@@ -19,29 +19,29 @@ import data from '../portfolio.data.json'
 export const pt = {
   hero: {
     greeting: "Bruno Giovani",
-    role: "Engenheiro de Software (Pleno/Sênior) | Arquiteto de Soluções",
-    years: "6+ Anos de Engenharia de Sistemas Críticos",
-    tagline: "Desenvolvo ecossistemas digitais de alta escala com foco em disponibilidade, baixa latência e impacto mensurável no negócio. Atuo de geo-inteligência e microsserviços a IA aplicada, sempre conectando arquitetura técnica com resultado operacional.",
+    role: "Desenvolvedor Full-Stack (Júnior/Pleno)",
+    years: "Projetos pessoais completos + PJ informal na Agili",
+    tagline: "Desenvolvo projetos full-stack com foco em código organizado, interfaces úteis, APIs bem estruturadas e aprendizado constante. Tenho prática com geo-inteligência, microsserviços, automações e IA aplicada, buscando uma oportunidade Júnior/Pleno para contribuir e evoluir em time.",
     cta: "Conheça minha jornada"
   },
   sections: {
-    projects: "Projetos & Casos Reais",
+    projects: "Projetos Práticos & Estudos",
     skills: "Minha Stack & O que eu domino",
-    experience: "Minha Jornada",
+    experience: "Projetos e Experiência Prática",
     certifications: "Certificados",
     contact: "Vamos conversar?"
   },
   experience: [
-    { date: "Mar 2026 - Presente", role: "Front-End Lead Developer | PredictMed", desc: "Liderando o front de plataformas de saúde que usam IA pra prever estoque. Aqui eu implemento arquiteturas que não falham, usando Supabase e Gemini Vision pra automatizar auditorias de inventário." },
-    { date: "Jan 2024 - Presente", role: "Engenheiro de Software (Pleno/Sênior) | Soo Tech", desc: "Foco total em ecossistemas JVM complexos. Desenvolvo microsserviços resilientes com Spring Boot, garantindo que o sistema aguente alto volume de dados sem perder a performance." },
-    { date: "2023 - Presente", role: "Arquiteto & Fundador | GuaruGeo", desc: "Criei do zero uma infraestrutura GIS soberana. Integrei PostGIS com mineradores de dados pra entregar inteligência imobiliária com precisão de centímetros." }
+    { date: "Atual", role: "Projetos pessoais Full-Stack", desc: "Criação de aplicações próprias com React, TypeScript, Node/Fastify, Spring Boot, Kotlin, Supabase, Firebase e PostgreSQL para praticar fluxos completos de produto." },
+    { date: "PJ informal", role: "Desenvolvedor | Agili", desc: "Apoio sob demanda em ajustes, manutenção, correções e pequenas funcionalidades, sem vínculo formal ou contrato fixo." },
+    { date: "Estudos contínuos", role: "Formação e prática orientada", desc: "Evolução constante em ADS, APIs REST, bancos de dados, Android, automações, testes e organização de código." }
   ],
   projects: {
     farmadelivery: {
       title: "FarmaDelivery",
       logo: logoFarmaDelivery,
-      impact: "Ecossistema Operacional Full-Stack",
-      desc: "Plataforma real de entregas farmacêuticas com painel web, API online, app Android e PWA para motoboys. Eu consolidei banco, RLS, realtime, GPS ao vivo, notificações, comprovante fotográfico, relatórios, rotas, Docker, Vercel e Firebase Hosting em um monorepo validado para operação fora do ambiente local.",
+      impact: "Projeto Pessoal Full-Stack",
+      desc: "Projeto pessoal de entregas farmacêuticas com painel web, API online, app Android e PWA para motoboys. Usei banco, RLS, realtime, GPS ao vivo, notificações, comprovante fotográfico, relatórios, rotas, Docker, Vercel e Firebase Hosting para praticar um fluxo completo de aplicação.",
       stack: ["React 19", "Fastify", "Prisma", "Supabase Storage", "Kotlin Compose", "PWA", "Vercel", "Firebase Hosting/FCM"],
       screenshots: [
         "/assets/screenshots/farmadelivery/farmadelivery-admin.png",
@@ -51,8 +51,8 @@ export const pt = {
         innovation: "Arquitetura operacional com contratos compartilhados entre painel, API, Android e PWA, mantendo fallback Supabase REST, SQL canônico unificado, Server-Sent Events para atualização ao vivo e validações automatizadas em múltiplas superfícies.",
         strongPoints: ["Monorepo multi-app", "API online na Vercel", "Admin e PWA publicados no Firebase", "RLS, realtime e storage documentados", "GPS ao vivo e comprovante fotográfico"],
         architecture: "Monorepo TypeScript/Kotlin com API Fastify empacotada para Vercel Serverless, Prisma/Supabase, PostgreSQL com RLS, Supabase Storage, painel React, PWA React, app Android Compose, Firebase Messaging e Docker Compose para desenvolvimento.",
-        businessImpact: "Transformou um fluxo manual de despacho em uma operação rastreável e acessível fora da rede local: criação de entrega, aceite, coleta, rota, conclusão, prova, histórico, relatórios, alertas e auditoria em um único ecossistema. O desenho reduz erro operacional, melhora visibilidade de loja/motoboy e prepara a base para expansão com governança de dados.",
-        technicalChallenges: "Adaptar uma API Fastify tradicional para deploy serverless na Vercel, resolver empacotamento ESM/Prisma para Linux com binary target correto, alinhar contratos entre quatro clientes, preservar segurança de secrets, manter dados reais sem vazamento em documentação pública e validar Android/PWA/Admin/API no mesmo ciclo.",
+        businessImpact: "Projeto usado para praticar levantamento de requisitos, modelagem de dados, integrações, estados de interface e validação de fluxos completos sem representar vínculo profissional formal.",
+        technicalChallenges: "Adaptar uma API Fastify para deploy serverless na Vercel, resolver empacotamento ESM/Prisma para Linux, alinhar contratos entre clientes do projeto, preservar segurança de secrets e validar Android/PWA/Admin/API no mesmo ciclo.",
         topology: "Firebase Hosting (Admin/PWA) -> Vercel Fastify API -> Prisma + Supabase REST fallback -> PostgreSQL/RLS/Realtime/Storage -> Kotlin Android + Firebase Messaging",
         url: "https://drogstoantonio.web.app",
         github: "https://github.com/beehgiovani/FarmaDelivery"
@@ -120,9 +120,9 @@ CREATE POLICY "Authenticated delivery read"
       ],
       details: {
         innovation: "Motor de auditoria com visão computacional para apoiar conferências de estoque e reduzir verificações manuais repetitivas.",
-        strongPoints: ["98% de precisão na prevenção de falta de itens", "Sincronia em tempo real (menos de 1s)", "Infra de alta performance no Edge (Deno)"],
+        strongPoints: ["Validação de fluxo de estoque", "Sincronia em tempo real para estudo", "Uso de Deno Edge em projeto pessoal"],
         architecture: "Arquitetura orientada a eventos com Supabase Realtime e Deno Edge, preparada para baixa latência e evolução incremental.",
-        businessImpact: "Consegui reduzir o atraso no ressuprimento em 92%. A ideia foi automatizar a visão das prateleiras, o que gerou uma economia bruta estimada de R$ 200k/ano por unidade, permitindo que os farmacêuticos foquem no que importa e não em contar frascos.",
+        businessImpact: "Projeto usado para praticar levantamento de requisitos, modelagem de dados, integrações, estados de interface e validação de fluxos completos sem representar vínculo profissional formal.",
         technicalChallenges: "Orquestrar inferências de visão computacional com consistência de estado, segurança de dados e custo previsível.",
         topology: "React 19 -> Supabase Edge (Deno) -> Gemini Vision AI API -> PostgreSQL Realtime",
         url: "https://predictmed.web.app/",
@@ -225,7 +225,7 @@ const queue = sortedFiles.map(file => ({
         innovation: "Algoritmo de estabilização de traço (Stability Ref) que utiliza velocidade e densidade de pontos para simular física de pincéis reais via visão computacional.",
         strongPoints: ["Rastreio Gestual de Baixa Latência", "Sintetizador Sonoro Procedimental", "Efeitos Visuais Bloom & Neon WebGL"],
         architecture: "Pipeline reativo de processamento de imagem que utiliza workers para inferência de IA e WebGL para renderização de alta fidelidade a 60fps.",
-        businessImpact: "Explora novas fronteiras de IHC (Interação Humano-Computador), eliminando a barreira física do mouse/touch. Aplicável em museus interativos, ferramentas de design imersivo e reabilitação motora através da gamificação artística.",
+        businessImpact: "Projeto usado para praticar levantamento de requisitos, modelagem de dados, integrações, estados de interface e validação de fluxos completos sem representar vínculo profissional formal.",
         technicalChallenges: "Orquestrar o processamento de landmarks de IA em tempo real com a síntese de áudio contínua sem causar frames drops ou jitter sonoro.",
         topology: "MediaPipe (HandLandmarker) -> React 19 -> WebAudio Engine -> WebGL Canvas",
         github: "https://github.com/beehgiovani/lumen"
@@ -344,7 +344,7 @@ const smoothPoint = (raw, last, stability) => {
         innovation: "Motor GIS com intersecção espacial em PostGIS e cruzamento automatizado de dados públicos para apoiar inteligência imobiliária.",
         strongPoints: ["Indexação espacial avançada", "Mapas vetoriais em tempo real", "Dados 100% unificados"],
         architecture: "PostGIS no coração do sistema com middleware em Node.js entregando tudo pro React MapGL a 60fps.",
-        businessImpact: "O resultado foi um corte de 60% no tempo de prospecção. Ter todos os dados tributários e de propriedade unificados deu uma assertividade absurda na hora de decidir onde investir.",
+        businessImpact: "Projeto usado para praticar levantamento de requisitos, modelagem de dados, integrações, estados de interface e validação de fluxos completos sem representar vínculo profissional formal.",
         technicalChallenges: "Otimizar a renderização no navegador de mais de 18.000 polígonos detalhados mantendo uma interação impecável a 60fps em dispositivos comuns.",
         topology: "Next.js (Edge) -> Supabase -> PostGIS -> Python OSINT Crawlers",
         url: "https://guarujainterativo.com.br/",
@@ -391,7 +391,7 @@ LIMIT 100;`
         innovation: "Motor Drive-to-Store global utilizando Geo-Fencing e validação por QR para recompensar a advocacia da marca com benefícios reais tangíveis.",
         strongPoints: ["Leaderboards em Tempo Real", "Missões com Geo-validação Segura", "Implementação de Consultora de Saúde por IA"],
         architecture: "Arquitetura híbrida real-time utilizando Firebase para interações sociais e Supabase para persistência e validação de missões.",
-        businessImpact: "Maximizou o LTV (Lifetime Value) dos consumidores através de uma jornada gamificada que converteu 35% da audiência digital em tráfego qualificado para pontos de venda físicos. A integração de IA para consultoria de saúde personalizada gerou um aumento de 22% no ticket médio durante as campanhas ativas.",
+        businessImpact: "Projeto usado para praticar levantamento de requisitos, modelagem de dados, integrações, estados de interface e validação de fluxos completos sem representar vínculo profissional formal.",
         technicalChallenges: "Manter transições de estado offline-online suaves e prevenir spoofing de validação em ambientes de varejo remotos com alto tráfego.",
         topology: "React (PWA) -> Firebase Cloud Functions -> Supabase Realtime",
         url: "https://cimedexperience.web.app/onboarding",
@@ -418,8 +418,8 @@ if (distance <= 300) {
       details: {
         innovation: "Pipeline híbrido que combina extração HTTP, normalização geoespacial e validações automatizadas para consolidar dados públicos com rastreabilidade.",
         strongPoints: ["Normalização geoespacial", "Extração WFS em lote", "Cruzamento tributário-dominial"],
-        architecture: "Pipeline de extração assíncrona multi-fase com Python, GeoPandas e PostgreSQL para normalização de dados em alto volume.",
-        businessImpact: "Desbloqueou o acesso a ativos de dados governamentais 'escuros', criando o maior dataset estruturado de inteligência costeira do estado. Esta infraestrutura de dados permitiu a automação de due diligence imobiliária, reduzindo custos de auditoria externa em 75% e acelerando o fechamento de contratos complexos.",
+        architecture: "Pipeline de estudo com Python, GeoPandas e PostgreSQL para extração, normalização e validação de dados.",
+        businessImpact: "Projeto usado para praticar levantamento de requisitos, modelagem de dados, integrações, estados de interface e validação de fluxos completos sem representar vínculo profissional formal.",
         technicalChallenges: "Padronizar fontes públicas instáveis, tratar formatos geográficos heterogêneos e preservar consistência entre coletas incrementais.",
         topology: "Python (AsyncIO) -> Validação de dados -> PostgreSQL Data Lake",
         github: "https://github.com/beehgiovani/SpLitoralScraping"
@@ -460,9 +460,9 @@ if (distance <= 300) {
       stack: ["Python", "PyTorch", "Tor", "Playwright"],
       details: {
         innovation: "Camada de orquestração master-worker que multiplexa threads de execução Tor para derrotar rate-limiting e firewalls baseados em IP.",
-        strongPoints: ["Rotação de IP via Rede Tor", "Precisão de OCR Treinado Nativo", "Capacidade de 100k+ Registros/Hora"],
+        strongPoints: ["Conceitos de rotação de IP", "Experimentos com OCR", "Fluxo de validação de dados"],
         architecture: "Sistema distribuído com configurações de portas Tor isoladas e threads de workers assíncronos enviando dados para uma camada central.",
-        businessImpact: "Escalou a capacidade de monitoramento de mercado em 500%, processando volumes massivos de dados distribuídos com 99.9% de uptime. A rotação inteligente de proxies e OCR neural local eliminou dependências de provedores externos, reduzindo o OPEX de aquisição de dados em 90%.",
+        businessImpact: "Projeto usado para praticar levantamento de requisitos, modelagem de dados, integrações, estados de interface e validação de fluxos completos sem representar vínculo profissional formal.",
         technicalChallenges: "Manter o throughput do pipeline apesar da latência da rede Tor e gerenciar estados de sessão complexos em proxies rotacionados.",
         topology: "Playwright -> Cluster Tor -> Despachante AsyncIO",
         github: "https://github.com/beehgiovani/crawler---dados-publicos"
@@ -551,7 +551,7 @@ def get_stats(self):
         innovation: "Sistema de gestão de saúde local-first que garante a entrega de alarmes e adesão medicamentosa sem dependência constante de internet.",
         strongPoints: ["Persistência Offline-first", "Agendamento de Alarmes Complexos", "Compartilhamento Real-time de Cuidadores"],
         architecture: "Clean Architecture MVVM usando Kotlin Flow para gestão de estado reativo e Room para persistência local confiável.",
-        businessImpact: "Estabeleceu um novo padrão de segurança em cuidados domiciliares, alcançando 100% de adesão a protocolos de medicação críticos via arquitetura offline-resiliente. A precisão dos dados coletados permitiu uma redução de 15% em reinternações hospitalares por erro de manejo medicamentoso.",
+        businessImpact: "Projeto usado para praticar levantamento de requisitos, modelagem de dados, integrações, estados de interface e validação de fluxos completos sem representar vínculo profissional formal.",
         technicalChallenges: "Implementar alarmes de alta prioridade que permanecem ativos após reinicializações e sob otimizações agressivas de bateria do SO.",
         topology: "Android Nativo (Kotlin) -> Room DB -> Sincronia Firebase Cloud",
         github: "https://github.com/beehgiovani/NidusCare"
@@ -631,13 +631,13 @@ return when {
       title: "PharmaFlow Ecosystem",
       logo: logoPharmaFlow,
       impact: "Otimização de Supply Chain",
-      desc: "Solução logística para o setor farmacêutico. Une telemetria Android nativa com um dashboard de operações React para rastreio de entregas e gestão de estoque em tempo real.",
+      desc: "Projeto pessoal de logística para estudo do setor farmacêutico. Une telemetria Android nativa com um dashboard de operações React para rastreio de entregas e gestão de estoque em tempo real.",
       stack: ["Kotlin", "Firebase Realtime", "React Web"],
       details: {
         innovation: "Pipeline de telemetria GPS de alta frequência para sincronizar coordenadas de motoristas com baixa latência no hub operacional.",
         strongPoints: ["Rastreio de Frota Real-time", "Dedução Automática de Estoque", "Sincronia de Dados Cross-platform"],
         architecture: "Arquitetura orientada a eventos onde clientes mobile enviam atualizações de coordenadas para o Firebase, refletidas instantaneamente no dashboard.",
-        businessImpact: "Otimizou a logística de última milha com visibilidade total do supply chain, reduzindo o tempo médio de entrega em 25% e zerando discrepâncias de estoque em trânsito. A telemetria real-time permitiu a redução de custos de combustível e manutenção de frota em 12% através da otimização de rotas dinâmica.",
+        businessImpact: "Projeto usado para praticar levantamento de requisitos, modelagem de dados, integrações, estados de interface e validação de fluxos completos sem representar vínculo profissional formal.",
         technicalChallenges: "Gerenciar atualizações GPS contínuas para centenas de motoristas simultâneos sem degradar a performance da bateria mobile.",
         topology: "Kotlin Android -> Firebase Realtime DB -> React Dashboard",
         github: "https://github.com/beehgiovani/PharmaFlow"
@@ -687,7 +687,7 @@ COMMIT;`
         innovation: "Engenharia reversa de infraestruturas públicas de documentos para transformar processos burocráticos manuais em chamadas de API instantâneas.",
         strongPoints: ["Automação com Headless Browser", "Extração de Tokens Stateful", "Orquestração de Jobs Async"],
         architecture: "Backend serverless (Deno) gerenciando clusters de navegadores headless que navegam em portais legados e retornam dados estruturados em PDF.",
-        businessImpact: "Democratizou o acesso a certidões complexas, transformando processos de 5 dias úteis em transações instantâneas de 60 segundos. Esta agilidade operacional permitiu a imobiliárias e bancos acelerarem processos de financiamento, desbloqueando milhões em capital estagnado por burocracia.",
+        businessImpact: "Projeto usado para praticar levantamento de requisitos, modelagem de dados, integrações, estados de interface e validação de fluxos completos sem representar vínculo profissional formal.",
         technicalChallenges: "Manter estabilidade de sessão, tratamento de erros e rastreabilidade em portais legados com comportamento instável.",
         topology: "Deno Deploy -> Headless Puppeteer -> Supabase Storage",
         github: "https://github.com/beehgiovani/CertidaoGuaru"
@@ -751,13 +751,13 @@ for (const [key, value] of Object.entries(params)) {
       title: "MarketPoster",
       logo: logoMarketPoster,
       impact: "Empoderamento no Varejo",
-      desc: "App Android profissional para design dinâmico de cartazes. Inclui OpenCV em C++ e remoção de fundo via ML offline, eliminando a necessidade de terceirização de design.",
+      desc: "Projeto pessoal Android para design dinâmico de cartazes. Inclui OpenCV em C++ e remoção de fundo via ML offline, eliminando a necessidade de terceirização de design.",
       stack: ["Kotlin", "OpenCV", "ML Kit", "Android Nativo"],
       details: {
         innovation: "Remoção de fundo por IA on-device e capacidades de design gráfico profissional localizadas para operações de varejo ao nível da filial.",
         strongPoints: ["Segmentação ML Offline", "Integração Nativa OpenCV C++", "Impressão Direta em Rede"],
         architecture: "App nativo de alta intensidade de recursos utilizando ML Kit para análise de imagem e bibliotecas OpenCV C++ para renderização gráfica de alta fidelidade.",
-        businessImpact: "Descentralizou a produção criativa, economizando centenas de horas-homem por mês em mais de 100 unidades de varejo. A eliminação de custos de outsourcing e a velocidade de resposta a mudanças de preço no PDV resultaram em um aumento de 8% na conversão de produtos em promoção.",
+        businessImpact: "Projeto usado para praticar levantamento de requisitos, modelagem de dados, integrações, estados de interface e validação de fluxos completos sem representar vínculo profissional formal.",
         technicalChallenges: "Otimizar modelos ML e processamento de imagem C++ para rodar suavemente em tablets Android sem lag na interface.",
         topology: "Android Nativo -> ML Kit -> OpenCV C++ -> Impressão em Rede",
         github: "https://github.com/beehgiovani/MarketPoster"
@@ -774,7 +774,7 @@ for (const [key, value] of Object.entries(params)) {
         {
           title: "Renderização Nativa com OpenCV",
           language: "cpp",
-          code: `// Processamento JNI para alta performance gráfica
+          code: `// Processamento JNI para renderizacao grafica
 void processFrame(Mat& frame) {
     cvtColor(frame, frame, COLOR_BGR2GRAY);
     GaussianBlur(frame, frame, Size(7,7), 1.5);
@@ -798,8 +798,8 @@ void processFrame(Mat& frame) {
         innovation: "Motor de mapeamento baseado em SVG dinâmico que substitui servidores GIS pesados por camadas reativas leves para feedback instantâneo.",
         strongPoints: ["Velocidade de Interação 60fps", "Moderação de Lotes Real-time", "Performance CSR Otimizada"],
         architecture: "Motor de mapeamento client-side construído em React e Leaflet, comunicando via estado JSON Firebase otimizado para pular servidores pesados.",
-        businessImpact: "Transformou a experiência de vendas de ativos de alto luxo, proporcionando uma ferramenta de visualização imersiva que reduziu o ciclo de decisão do cliente em 30%. A transparência de dados em tempo real eliminou conflitos de reserva de lotes e aumentou a confiança do investidor premium.",
-        technicalChallenges: "Renderizar centenas de overlays GeoJSON reativos mantendo alta performance de scroll e zoom no navegador.",
+        businessImpact: "Projeto usado para praticar levantamento de requisitos, modelagem de dados, integrações, estados de interface e validação de fluxos completos sem representar vínculo profissional formal.",
+        technicalChallenges: "Renderizar overlays GeoJSON reativos mantendo scroll e zoom estÃ¡veis no navegador.",
         topology: "React -> Híbrido SVG/Leaflet -> Firebase Realtime",
         github: "https://github.com/beehgiovani/InteractiveMap"
       },
@@ -833,7 +833,7 @@ void processFrame(Mat& frame) {
         innovation: "Roteamento de dados com baixa latência, convertendo texto de e-mail bruto em entradas limpas de CRM automaticamente.",
         strongPoints: ["Extrações Robustas com Regex", "Monitoramento Contínuo IMAP", "Integração de Webhooks Supabase"],
         architecture: "Serviço independente de monitoramento em Python processando corpos de e-mail e disparando sincronizações de banco em tempo real via Supabase.",
-        businessImpact: "Erradicou o vazamento de leads em 100% ao automatizar a captura de dados de fontes legadas (e-mail) para CRMs modernos. A resposta instantânea a novos leads aumentou a taxa de contato bem-sucedido em 40%, impactando diretamente o pipeline de vendas e o ROI de marketing.",
+        businessImpact: "Projeto usado para praticar levantamento de requisitos, modelagem de dados, integrações, estados de interface e validação de fluxos completos sem representar vínculo profissional formal.",
         technicalChallenges: "Manter conexões IMAP estáveis com provedores legados e lidar com formatos de e-mail inconsistentes através de regex.",
         topology: "Python (Ouvinte IMAP) -> Sync Supabase -> Webhook CRM",
         github: "https://github.com/beehgiovani/guaruja-email-monitor"
@@ -905,7 +905,7 @@ if files_to_remove:
     spring: "Engenharia de Dados & DBAs (PostgreSQL Avançado, PostGIS, Indexação Espacial, Pandas, Big Data Pipelines)",
     python: "Inteligência Artificial & Automação (PyTorch, Modelos OCR Customizados, OpenCV, Visão Computacional, Scrapers Headless)",
     cloud: "Arquitetura Cloud & Edge (Deno Edge Functions, Supabase Realtime, AWS S3/EC2, Firebase Serverless, CI/CD)",
-    gis: "Geo-Inteligência de Missão Crítica (GeoServer WFS/WMS, QGis Desktop/Server, GeoJSON, Leaflet Integration)",
+    gis: "Geo-Inteligência Aplicada (GeoServer WFS/WMS, QGis Desktop/Server, GeoJSON, Leaflet Integration)",
     arch: "Design Systems & Micro-frontends (Resiliência, Escalabilidade Horizontal, Storybook, UI/UX de Alto Luxo)",
     node: "Mobile Nativo & Kotlin Flow (Arquiteturas Android MVVM/MVI, Room DB, Coroutines, Jetpack Compose, Bluetooth Low Energy)"
   },
@@ -922,8 +922,8 @@ if files_to_remove:
     github: "https://github.com/beehgiovani/"
   },
   dialog: {
-    title: "Apresentação Executiva",
-    message: "Construo plataformas pautadas em escala, segurança e resiliência máxima. Selecione o resumo executivo localizado para a região de interesse.",
+    title: "Apresentação Profissional",
+    message: "Construo projetos com foco em organização, segurança, aprendizado prático e evolução constante. Selecione o resumo profissional localizado para a região de interesse.",
     btnEn: "Manter Inglês",
     btnPt: "Mudar para Português"
   }
