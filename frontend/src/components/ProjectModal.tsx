@@ -185,7 +185,7 @@ export function ProjectModal({ project, onClose }: { project: Project, onClose: 
             <div className="pm-screenshots-container">
               <h4 className="pm-h4">
                 <AnimatedIcon icon={Camera} size={20} animation="float" />
-                {lang === 'en' ? 'Project Screenshots' : 'Telas do Sistema'}
+                {lang === 'en' ? 'Project Images' : 'Imagens do Projeto'}
               </h4>
               <div className="pm-screenshots-grid">
                 {project.screenshots.map((img, idx) => (

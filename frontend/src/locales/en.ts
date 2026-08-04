@@ -11,6 +11,8 @@ import logoMarketPoster from '../assets/logo_marketposter.png'
 import logoEmailMonitor from '../assets/logo_emailmonitor.png'
 import logoLumen from '../assets/logo_lumen.png'
 import logoFarmaDelivery from '../assets/logo_farmadelivery.png'
+import logoCachetaBuraco from '../assets/logo_cachetaburaco.png'
+import logoLitoral from '../assets/logo_litoral.png'
 import acapulco1 from '../assets/screenshots/interactivemap/acapulco_1.png'
 import acapulco2 from '../assets/screenshots/interactivemap/acapulco_2.png'
 import acapulco3 from '../assets/screenshots/interactivemap/acapulco_3.png'
@@ -19,29 +21,29 @@ import data from '../portfolio.data.json'
 export const en = {
   hero: {
     greeting: "Bruno Giovani",
-    role: "Software Engineer (Junior/Mid) | Full-Stack Developer",
-    years: "Complete personal projects + informal B2B work at Agili",
-    tagline: "I build full-stack projects focused on organized code, useful interfaces, well-structured APIs, and continuous learning. I have hands-on practice with geo-intelligence, microservices, automation, and applied AI, and I am looking for a Junior/Mid opportunity to contribute and grow with a team.",
+    role: "Full-Stack Developer (Junior/Mid)",
+    years: "Complete personal projects + completed informal B2B work at Agili",
+    tagline: "I build full-stack projects focused on organized code, useful interfaces, well-structured APIs, and continuous learning. I have hands-on experience with geo-intelligence, microservices, automation, and applied AI, and I am looking for a Junior/Mid opportunity to contribute and grow with a team.",
     cta: "Explore my journey"
   },
   sections: {
-    projects: "Practical Projects & Studies",
+    projects: "Functional Personal Projects",
     skills: "My Stack & Skills",
     experience: "Projects and Practical Experience",
     certifications: "Certifications",
     contact: "Let's connect?"
   },
   experience: [
-    { date: "Current", role: "Personal Full-Stack Projects", desc: "Building my own applications with React, TypeScript, Node/Fastify, Spring Boot, Kotlin, Supabase, Firebase, and PostgreSQL to practice complete product flows." },
-    { date: "Informal B2B", role: "Developer | Agili", desc: "On-demand support with adjustments, maintenance, bug fixes, and small features, without a formal employment relationship or fixed contract." },
-    { date: "Continuous study", role: "Learning and guided practice", desc: "Ongoing development through ADS, REST APIs, databases, Android, automations, testing, and code organization." }
+    { date: "Completed projects", role: "Personal Full-Stack Projects", desc: "Building my own applications with React, TypeScript, Node/Fastify, Spring Boot, Kotlin, Supabase, Firebase, and PostgreSQL to build complete product flows." },
+    { date: "Informal B2B", role: "Developer | Agili", desc: "Technical contribution to feature evolution, code maintenance, bug fixes, and web integrations through completed informal B2B work." },
+    { date: "Continuous learning", role: "Learning and technical growth", desc: "Ongoing development through ADS, REST APIs, databases, Android, automations, testing, and code organization." }
   ],
   projects: {
     farmadelivery: {
       title: "FarmaDelivery",
       logo: logoFarmaDelivery,
       impact: "Personal Full-Stack Project",
-      desc: "Personal pharmaceutical delivery project with web admin, online API, Android app, and courier PWA. I used database, RLS, realtime, live GPS, notifications, photo proof, reporting, routing, Docker, Vercel, and Firebase Hosting to practice a complete application flow.",
+      desc: "Personal pharmaceutical delivery project with web admin, online API, Android app, and courier PWA. I used database, RLS, realtime, live GPS, notifications, photo proof, reporting, routing, Docker, Vercel, and Firebase Hosting to validate a complete application flow.",
       stack: ["React 19", "Fastify", "Prisma", "Supabase Storage", "Kotlin Compose", "PWA", "Vercel", "Firebase Hosting/FCM"],
       screenshots: [
         "/assets/screenshots/farmadelivery/farmadelivery-admin.png",
@@ -51,7 +53,7 @@ export const en = {
         innovation: "Operational architecture with shared contracts across admin, API, Android, and PWA, combining Supabase REST fallback, unified canonical SQL, Server-Sent Events for live updates, and automated validation across multiple surfaces.",
         strongPoints: ["Multi-app monorepo", "Vercel-hosted API", "Admin and PWA on Firebase Hosting", "Documented RLS, realtime and storage", "Live GPS and auditable photo proof"],
         architecture: "TypeScript/Kotlin monorepo with Fastify API packaged for Vercel Serverless, Prisma/Supabase, PostgreSQL with RLS, Supabase Storage, React admin, React PWA, Compose Android app, Firebase Messaging, and Docker Compose for development.",
-        businessImpact: "Project used to practice requirements analysis, data modeling, integrations, interface states, and complete flow validation without implying formal professional employment.",
+        businessImpact: "Functional personal project used to demonstrate requirements analysis, data modeling, integrations, interface states, and complete flow validation without implying formal professional employment.",
         technicalChallenges: "Adapting a Fastify API to Vercel Serverless, solving ESM/Prisma packaging for Linux, aligning contracts across project clients, preserving secret hygiene, and validating Android/PWA/Admin/API in the same cycle.",
         topology: "Firebase Hosting (Admin/PWA) -> Vercel Fastify API -> Prisma + Supabase REST fallback -> PostgreSQL/RLS/Realtime/Storage -> Kotlin Android + Firebase Messaging",
         url: "https://drogstoantonio.web.app",
@@ -110,8 +112,8 @@ CREATE POLICY "Authenticated delivery read"
     predictmed: {
       title: "PredictMed",
       logo: logoPredictMed,
-      impact: "High-Availability SaaS Ecosystem",
-      desc: "A personal inventory prediction prototype for the healthcare sector. I leveraged Gemini Vision to build an autonomous auditing engine: it analyzes shelf density and reconciles with logical data, automating replenishment and eliminating stockouts.",
+      impact: "Personal SaaS Prototype",
+      desc: "A personal inventory prediction prototype for the healthcare sector. I used Gemini Vision to implement shelf analysis, logical stock reconciliation, and replenishment-flow validation in a controlled personal project.",
       stack: ["React 19", "Supabase", "Gemini AI", "Deno Edge", "TypeScript"],
       screenshots: [
         "/assets/screenshots/PredictMed/predictmed (1).png",
@@ -120,9 +122,9 @@ CREATE POLICY "Authenticated delivery read"
       ],
       details: {
         innovation: "Computer vision auditing engine designed to support inventory checks and reduce repetitive manual verification.",
-        strongPoints: ["Stock workflow validation", "Real-time synchronization study", "Deno Edge personal project"],
-        architecture: "Event-driven study architecture built on Supabase Realtime and Deno Edge Functions for incremental project evolution.",
-        businessImpact: "Project used to practice requirements analysis, data modeling, integrations, interface states, and complete flow validation without implying formal professional employment.",
+        strongPoints: ["Stock workflow validation", "Validated realtime synchronization", "Deno Edge personal project"],
+        architecture: "Event-driven architecture built on Supabase Realtime and Deno Edge Functions for incremental project evolution.",
+        businessImpact: "Functional personal project used to demonstrate requirements analysis, data modeling, integrations, interface states, and complete flow validation without implying formal professional employment.",
         technicalChallenges: "Orchestrating computer-vision inference with data safety, state consistency, and predictable operating cost.",
         topology: "React 19 -> Supabase Edge (Deno) -> Gemini Vision AI API -> PostgreSQL Realtime",
         url: "https://predictmed.web.app/",
@@ -158,7 +160,7 @@ serve(async (req) => {
   const { imageBase64, facilityId, currentSnap } = await req.json();
   const model = ai.getGenerativeModel({ model: "gemini-1.5-pro-vision" });
   
-  // Prompt Engineering for Sub-metric Auditing
+  // Prompt design for structured shelf analysis
   const prompt = \`Analyze the volumetric density of the shelves. 
                  Return JSON: {deficit: number, risk: 'LOW'|'HIGH', drift_detected: boolean}\`;
   
@@ -219,13 +221,13 @@ const queue = sortedFiles.map(file => ({
       title: "LÚMEN | Spatial Drawing Engine",
       logo: logoLumen,
       impact: "Computer Vision & Immersive Experience",
-      desc: "A spatial drawing and audio study using real-time 3D hand tracking. I used MediaPipe to transform gestures into neon art with procedural sound synthesis and practiced browser-based interaction tuning.",
+      desc: "A spatial drawing and audio project using real-time 3D hand tracking. I used MediaPipe to transform gestures into neon art with procedural sound synthesis and implemented browser-based interaction refinement.",
       stack: ["React 19", "MediaPipe Vision", "WebGL", "Sound Synthesis"],
       details: {
         innovation: "Stroke stabilization algorithm (Stability Ref) that uses point density and velocity to simulate real brush physics via computer vision.",
-        strongPoints: ["Gestural Tracking Study", "Procedural Sound Synthesizer", "WebGL Bloom & Neon Visual Effects"],
+        strongPoints: ["Gestural Tracking", "Procedural Sound Synthesizer", "WebGL Bloom & Neon Visual Effects"],
         architecture: "Reactive image processing pipeline utilizing workers for AI inference and WebGL for high-fidelity rendering at 60fps.",
-        businessImpact: "Project used to practice requirements analysis, data modeling, integrations, interface states, and complete flow validation without implying formal professional employment.",
+        businessImpact: "Functional personal project used to demonstrate requirements analysis, data modeling, integrations, interface states, and complete flow validation without implying formal professional employment.",
         technicalChallenges: "Orchestrating real-time AI landmark processing with continuous audio synthesis without causing frame drops or audio jitter.",
         topology: "MediaPipe (HandLandmarker) -> React 19 -> WebAudio Engine -> WebGL Canvas",
         github: "https://github.com/beehgiovani/lumen"
@@ -333,7 +335,7 @@ const smoothPoint = (raw, last, stability) => {
       title: "GuaruGeo & Interactive Map",
       logo: logoGuarugeo,
       impact: "GIS & Data Intelligence",
-      desc: "A geographic information system (GIS) I built from scratch for real estate firms. The edge here is PostGIS spatial indexing and the crawlers I made to mine public data and deliver intelligence 10x faster than any official portal.",
+      desc: "A personal geographic information system (GIS) project for real estate data. I implemented PostGIS spatial indexing, public-data collection, map visualization, and data organization around lots, addresses, and geospatial layers.",
       stack: ["PostGIS", "React 19", "Node.js", "Leaflet"],
       screenshots: [
         "/assets/screenshots/guarugeo/guarugeo (1).png",
@@ -344,7 +346,7 @@ const smoothPoint = (raw, last, stability) => {
         innovation: "Sub-metric GIS precision achieved through custom PostGIS spatial intersection engines and automated taxpayer data cross-referencing.",
         strongPoints: ["Advanced Spatial Indexing", "Real-time Vector Geometry Rendering", "Unified Data Sovereignty"],
         architecture: "Decoupled architecture with a PostGIS spatial backbone and a high-performance NodeJS middleware serving vector tiles to a reative React MapGL frontend.",
-        businessImpact: "Project used to practice requirements analysis, data modeling, integrations, interface states, and complete flow validation without implying formal professional employment.",
+        businessImpact: "Functional personal project used to demonstrate requirements analysis, data modeling, integrations, interface states, and complete flow validation without implying formal professional employment.",
         technicalChallenges: "Optimizing browser rendering for 18,000+ detailed polygons while maintaining a flawless 60fps interaction on standard devices.",
         topology: "Next.js (Edge) -> Supabase -> PostGIS -> Python OSINT Crawlers",
         url: "https://guarujainterativo.com.br/",
@@ -379,8 +381,8 @@ LIMIT 100;`
     cimed_experience: {
       title: "Cimed Experience (Gamified PWA)",
       logo: logoCimed,
-      impact: "Engagement & Conversion",
-      desc: "Native-behavior PWA designed to convert brand influence into physical store sales. Orchestrates global campaigns via an interactive social hub and AI health consultant, bridging digital engagement with real-world visitation.",
+      impact: "Personal Gamified PWA",
+      desc: "Personal PWA with native-like behavior, gamified missions, social hub interactions, and an AI health-consultant concept. The focus was building user flows, geolocation checks, ranking screens, and campaign-style UI.",
       stack: ["React", "Supabase", "PWA", "Firebase"],
       screenshots: [
         "/assets/screenshots/cimed_experience/cimedExperience (1).png",
@@ -391,7 +393,7 @@ LIMIT 100;`
         innovation: "Global Drive-to-Store engine utilizing Geo-Fencing and QR-validation to reward brand advocacy with tangible real-world benefits.",
         strongPoints: ["Real-time Leaderboards", "Secure Geo-validation Missions", "AI Health Consultant Implementation"],
         architecture: "Hybrid real-time architecture utilizing Firebase for social hub interactions and Supabase for mission persistence and validation.",
-        businessImpact: "Project used to practice requirements analysis, data modeling, integrations, interface states, and complete flow validation without implying formal professional employment.",
+        businessImpact: "Functional personal project used to demonstrate requirements analysis, data modeling, integrations, interface states, and complete flow validation without implying formal professional employment.",
         technicalChallenges: "Maintaining seamless offline-to-online state transitions and preventing validation spoofing in remote high-traffic retail environments.",
         topology: "React (PWA) -> Firebase Cloud Functions -> Supabase Realtime",
         url: "https://cimedexperience.web.app/onboarding",
@@ -412,14 +414,14 @@ if (distance <= 300) {
     metromargeo: {
       title: "MetroMarGeo Data Engine",
       logo: logoMetromargeo,
-      impact: "OSINT & Data Engineering",
+      impact: "OSINT & Data Automation",
       desc: "A geospatial data engine for collecting, normalizing, and validating public information. The focus was turning scattered public sources into a reliable real estate dataset.",
       stack: ["Python 3.11", "ddddOcr", "Pandas", "PostgreSQL"],
       details: {
         innovation: "Hybrid pipeline combining HTTP extraction, geospatial normalization, and automated validation to consolidate public data with traceability.",
         strongPoints: ["Geospatial normalization", "Batch WFS extraction", "Tax-property cross-linking"],
         architecture: "Multi-phase asynchronous extraction pipeline. Utilizes Python's Scrapy and custom ML models for high-throughput data normalization.",
-        businessImpact: "Project used to practice requirements analysis, data modeling, integrations, interface states, and complete flow validation without implying formal professional employment.",
+        businessImpact: "Functional personal project used to demonstrate requirements analysis, data modeling, integrations, interface states, and complete flow validation without implying formal professional employment.",
         technicalChallenges: "Standardizing unstable public sources, handling heterogeneous geospatial formats, and preserving consistency across incremental runs.",
         topology: "Python (AsyncIO) -> Data validation -> PostgreSQL Data Lake",
         github: "https://github.com/beehgiovani/SpLitoralScraping"
@@ -456,13 +458,13 @@ if (distance <= 300) {
       title: "AutoScraper Core",
       logo: logoAutoScraper,
       impact: "Practical Automation",
-      desc: "Personal automation study project for municipal data extraction, using Playwright, OCR experiments, and IP rotation concepts to practice resilient scraping flows.",
+      desc: "Personal automation project for municipal data extraction, using Playwright, OCR experiments, and IP rotation concepts to build resilient scraping flows.",
       stack: ["Python", "PyTorch", "Tor", "Playwright"],
       details: {
-        innovation: "Automation flow that uses Playwright workers, OCR experiments, and IP rotation concepts to practice robust data collection.",
+        innovation: "Automation flow that uses Playwright workers, OCR experiments, and IP rotation concepts to validate robust data collection.",
         strongPoints: ["IP rotation concepts", "OCR experimentation", "Data validation workflow"],
-        architecture: "Study architecture with isolated scraping workers, validation steps, and a central persistence layer.",
-        businessImpact: "Project used to practice requirements analysis, data modeling, integrations, interface states, and complete flow validation without implying formal professional employment.",
+        architecture: "Architecture with isolated scraping workers, validation steps, and a central persistence layer.",
+        businessImpact: "Functional personal project used to demonstrate requirements analysis, data modeling, integrations, interface states, and complete flow validation without implying formal professional employment.",
         technicalChallenges: "Managing session state across scraping workers, OCR experiments, and rotated proxy concepts while keeping data validation understandable.",
         topology: "Playwright -> Tor Cluster -> AsyncIO Dispatcher",
         github: "https://github.com/beehgiovani/crawler---dados-publicos"
@@ -545,13 +547,13 @@ def get_stats(self):
       title: "NidusCare",
       logo: logoNidusCare,
       impact: "Digital Health Ecosystem",
-      desc: "Native Android health companion for caregivers. Built with an offline-first architecture (Room), ensuring critical medication reminders and vital activity sync are never missed.",
+      desc: "Personal native Android health companion for caregiver workflows. Built with an offline-first Room architecture to implement medication reminders, local persistence, and activity synchronization.",
       stack: ["Kotlin", "Android SDK", "Room", "Firebase"],
       details: {
         innovation: "Local-first health management system that guarantees alarm delivery and medication adherence without constant internet reliance.",
         strongPoints: ["Offline-first Persistence", "Complex Alarm Scheduling", "Caregiver Real-time Sharing"],
         architecture: "MVVM Clean Architecture using Kotlin Flow for reactive state management and Room for reliable local persistence.",
-        businessImpact: "Project used to practice requirements analysis, data modeling, integrations, interface states, and complete flow validation without implying formal professional employment.",
+        businessImpact: "Functional personal project used to demonstrate requirements analysis, data modeling, integrations, interface states, and complete flow validation without implying formal professional employment.",
         technicalChallenges: "Implementing high-priority alarms that remain active through device reboots and aggressive OS battery optimizations.",
         topology: "Android Native (Kotlin) -> Room DB -> Firebase Cloud Sync",
         github: "https://github.com/beehgiovani/NidusCare"
@@ -631,13 +633,13 @@ return when {
       title: "PharmaFlow Ecosystem",
       logo: logoPharmaFlow,
       impact: "Supply Chain Optimization",
-      desc: "Personal logistics project for pharmaceutical-sector studies. Merges native Android telemetry with a React operations dashboard for real-time delivery tracking and inventory management.",
+      desc: "Personal logistics project applied to pharmaceutical-sector workflows. Merges native Android telemetry with a React operations dashboard for real-time delivery tracking and inventory management.",
       stack: ["Kotlin", "Firebase Realtime", "React Web"],
       details: {
-        innovation: "GPS telemetry study that synchronizes driver coordinates with a web-based dispatch hub for realtime delivery tracking practice.",
+        innovation: "GPS telemetry flow that synchronizes driver coordinates with a web-based dispatch hub for realtime delivery tracking validation.",
         strongPoints: ["Real-time Fleet Tracking", "Automated Inventory Deduction", "Cross-platform Data Sync"],
         architecture: "Event-driven architecture where mobile clients push coordinate updates to Firebase, immediately reflected in the React dispatcher.",
-        businessImpact: "Project used to practice requirements analysis, data modeling, integrations, interface states, and complete flow validation without implying formal professional employment.",
+        businessImpact: "Functional personal project used to demonstrate requirements analysis, data modeling, integrations, interface states, and complete flow validation without implying formal professional employment.",
         technicalChallenges: "Managing continuous GPS updates for hundreds of concurrent drivers without degrading mobile battery performance.",
         topology: "Kotlin Android -> Firebase Realtime DB -> React Dashboard",
         github: "https://github.com/beehgiovani/PharmaFlow"
@@ -681,13 +683,13 @@ COMMIT;`
       title: "AutoJuris AI",
       logo: logoCertibot,
       impact: "Legal Tech Automation",
-      desc: "Legal document portal for rapid bureaucratic extraction. Uses headless browsers and API reverse engineering to reduce certificate turnaround from days to under 60 seconds.",
+      desc: "Personal legal-document automation project. Uses headless browsing, form handling, and structured API calls to implement certificate-request flows and resilient error handling.",
       stack: ["Deno", "Node.js", "Puppeteer", "Firebase"],
       details: {
-        innovation: "Reverse-engineered public document infrastructures to transform manual bureaucratic processes into instantaneous API calls.",
+        innovation: "Implementation of public-document request flows, token handling, and browser automation patterns for structured certificate retrieval.",
         strongPoints: ["Headless Browser Automation", "Stateful Token Extraction", "Async Job Orchestration"],
         architecture: "Serverless backend (Deno) managing headless browser clusters that navigate legacy portals and return structured PDF data.",
-        businessImpact: "Project used to practice requirements analysis, data modeling, integrations, interface states, and complete flow validation without implying formal professional employment.",
+        businessImpact: "Functional personal project used to demonstrate requirements analysis, data modeling, integrations, interface states, and complete flow validation without implying formal professional employment.",
         technicalChallenges: "Maintaining session stability, error handling, and traceability across unstable legacy portals.",
         topology: "Deno Deploy -> Headless Puppeteer -> Supabase Storage",
         github: "https://github.com/beehgiovani/CertidaoGuaru"
@@ -762,7 +764,163 @@ for (const [key, value] of Object.entries(params)) {
         }
       ]
     },
-    marketposter: {
+    litoral: {
+      title: "Litoral Moveis e Colchoes",
+      logo: logoLitoral,
+      impact: "Personal Monorepo / PWA Project",
+      desc: "Local monorepo for building a furniture-store PWA with a customer app, an internal store dashboard, shared contracts, and a local data layer without an active backend in this phase.",
+      stack: ["React", "TypeScript", "Vite", "LocalStorage", "Vitest", "Docker", "Monorepo"],
+      screenshots: [
+        "/assets/screenshots/litoral/logoapp.png",
+        "/assets/screenshots/litoral/hero-cliente.png",
+        "/assets/screenshots/litoral/hero-loja.png"
+      ],
+      details: {
+        innovation: "Separation between customer app, store app, and shared packages to structure domain contracts, local workflow, and gradual evolution toward database/hosting.",
+        strongPoints: ["Customer and store apps", "domain and local-data packages", "JSON import/export", "Local quote and appointment queues", "Validation with lint, typecheck, tests, and build"],
+        architecture: "Monorepo with apps/cliente, apps/loja, packages/domain, and packages/local-data. The current phase uses localStorage and JSON files as a local bridge between storefront, catalog, promotions, service queues, and quick messages.",
+        businessImpact: "Functional personal project used to demonstrate monorepo organization, shared contracts, operational UX, local data validation, and gradual preparation for a future database layer without implying formal professional employment.",
+        technicalChallenges: "Keeping customer and store apps separated without duplicating types, validating JSON imports, preserving existing local data, and preparing future Supabase/RLS evolution without blocking the local phase.",
+        topology: "apps/cliente + apps/loja -> packages/domain + packages/local-data -> localStorage/JSON -> future SQL schema",
+        github: "https://github.com/beehgiovani/Litoral-Moveis-e-Colchoes"
+      },
+      codeSnippets: [
+        {
+          title: "Shared product contract",
+          language: "typescript",
+          code: `export type ProductSummary = {
+  id: string
+  categorySlug: CatalogCategorySlug
+  name: string
+  description: string
+  visibility: ProductVisibility
+  showPrice: boolean
+  priceInCents: number | null
+  variants?: ProductVariantSummary[]
+  createdAt: string
+  updatedAt: string
+}`
+        },
+        {
+          title: "Versioned local snapshots",
+          language: "typescript",
+          code: `export const localCatalogStorageKey = 'litoral.local.catalog.v1'
+export const localQuoteRequestsStorageKey = 'litoral.local.quote-requests.v1'
+export const localAppointmentRequestsStorageKey = 'litoral.local.appointment-requests.v1'
+export const localStorefrontExportFileName = 'litoral-vitrine-local.json'
+
+export type LocalStorefrontSnapshot = {
+  catalog: LocalCatalogSnapshot
+  promotions: LocalPromotionsSnapshot
+  updatedAt: string | null
+}`
+        },
+        {
+          title: "Local validation before import",
+          language: "typescript",
+          code: `async function handleCatalogImport(event: ChangeEvent<HTMLInputElement>) {
+  const file = event.target.files?.[0]
+  if (!file) return
+
+  const text = await file.text()
+  const parseResult = parseLocalCatalogSnapshot(text)
+  if (!parseResult.isValid) {
+    setCatalogImportMessage('Invalid file. Local catalog was preserved.')
+    return
+  }
+
+  persistLocalCatalogSnapshot(parseResult.snapshot)
+}`
+        }
+      ]
+    },    cachetaburaco: {
+      title: "Cacheta & Buraco",
+      logo: logoCachetaBuraco,
+      impact: "Personal Android / Kotlin Project",
+      desc: "Android card game built with Kotlin and Jetpack Compose to implement Cacheta, Buraco, and Tranca rules, with local play, solo bot matches, Wi-Fi rooms, and a codebase prepared for future online mode.",
+      stack: ["Kotlin", "Jetpack Compose", "Material 3", "Coroutines", "NSD", "TCP Socket", "JUnit"],
+      screenshots: [
+        "/assets/screenshots/cachetaburaco/feature-graphic-1024x500.png",
+        "/assets/screenshots/cachetaburaco/01-login-1920x1080.png",
+        "/assets/screenshots/cachetaburaco/02-menu-1920x1080.png",
+        "/assets/screenshots/cachetaburaco/03-partida-1920x1080.png",
+        "/assets/screenshots/cachetaburaco/04-vitoria-ranking-1920x1080.png"
+      ],
+      details: {
+        innovation: "Rules engine separated from UI and network transport, so the same validation can be reused for local play, bot matches, Wi-Fi rooms, and a future online mode.",
+        strongPoints: ["Cacheta, Buraco, and Tranca", "Authoritative host for deck and mortos", "Local network via NSD + TCP socket", "Solo bot through the same protocol", "Play Store assets prepared"],
+        architecture: "Native Android app in Kotlin/Compose with pure domain models, GameRulesEngine for rules, MatchViewModel as the table orchestrator, and LocalNetworkRepository as the transport contract.",
+        businessImpact: "Functional personal project used to demonstrate mobile architecture, domain rules, state synchronization, local multiplayer, unit testing, and store asset preparation without implying formal professional employment.",
+        technicalChallenges: "Separating private and public table data, keeping the host as the official source for deck state, syncing card counts, discard pile and mortos between players, and preserving a reusable base for online evolution.",
+        topology: "Compose UI -> MatchViewModel -> GameRulesEngine + LocalNetworkRepository -> NSD/TCP or SoloBotNetworkRepository",
+        github: "https://github.com/beehgiovani/CachetaBuraco"
+      },
+      codeSnippets: [
+        {
+          title: "Single state observed by the table",
+          language: "kotlin",
+          code: `data class GameState(
+    val myHand: List<Card> = emptyList(),
+    val discardPile: List<Card> = emptyList(),
+    val opponentHandCount: Int = 0,
+    val deckSize: Int = 0,
+    val mortosLeft: Int = 0,
+    val activeSeat: Int = 0,
+    val turnPhase: TurnPhase = TurnPhase.WAITING_OPPONENT,
+    val config: MatchConfig = MatchConfig()
+)`
+        },
+        {
+          title: "Reusable network contract",
+          language: "kotlin",
+          code: `interface LocalNetworkRepository {
+    val discoveredRooms: StateFlow<List<DiscoveredRoom>>
+    val connectedClientsCount: StateFlow<Int>
+    val incomingMessages: SharedFlow<NetworkMessage>
+    val connectionStatus: StateFlow<ConnectionStatus>
+
+    fun startHosting(playerName: String, port: Int = 9090, config: MatchConfig? = null)
+    fun connectToRoom(host: String, port: Int)
+    fun sendMessage(message: NetworkMessage)
+    fun sendMessageToPlayer(playerId: String, message: NetworkMessage): Boolean
+}`
+        },
+        {
+          title: "Public table state sync",
+          language: "kotlin",
+          code: `private fun buildPublicTableStatePayload(): String {
+    val state = gameState.value
+    val handCounts = JSONArray().apply {
+        repeat(currentConfig.maxPlayers.coerceAtLeast(2)) { seat ->
+            put(publicHandCountForSeat(seat, state))
+        }
+    }
+
+    return JSONObject()
+        .put("activeSeat", state.activeSeat)
+        .put("deckSize", state.deckSize)
+        .put("discardCount", state.discardPile.size)
+        .put("mortosLeft", state.mortosLeft)
+        .put("handCounts", handCounts)
+        .toString()
+}`
+        },
+        {
+          title: "Centralized discard draw rule",
+          language: "kotlin",
+          code: `fun canDrawFromDiscard(topDiscard: Card?, config: MatchConfig): DrawDiscardResult {
+    if (topDiscard == null) return DrawDiscardResult(false, "Empty discard pile")
+    if (!config.allowDrawFromDiscard) return DrawDiscardResult(false, "Discard draw disabled")
+
+    return when (config.gameType) {
+        GameType.CACHETA -> DrawDiscardResult(true)
+        GameType.BURACO -> if (topDiscard.isJoker) DrawDiscardResult(false, "Joker blocked") else DrawDiscardResult(true)
+        GameType.TRANCA -> validateTrancaDiscard(topDiscard)
+    }
+}`
+        }
+      ]
+    },    marketposter: {
       title: "MarketPoster",
       logo: logoMarketPoster,
       impact: "Retail Empowerment",
@@ -772,7 +930,7 @@ for (const [key, value] of Object.entries(params)) {
         innovation: "On-device AI background removal and professional graphic design capabilities localized for branch-level retail operations.",
         strongPoints: ["Offline ML Segmentation", "Native C++ OpenCV Integration", "Direct Network Printing"],
         architecture: "Resource-intensive native app leveraging ML Kit for image analysis and OpenCV C++ libraries for high-fidelity graphic rendering.",
-        businessImpact: "Project used to practice requirements analysis, data modeling, integrations, interface states, and complete flow validation without implying formal professional employment.",
+        businessImpact: "Functional personal project used to demonstrate requirements analysis, data modeling, integrations, interface states, and complete flow validation without implying formal professional employment.",
         technicalChallenges: "Optimizing ML models and C++ image processing to run smoothly on mid-range Android tablets without UI lag.",
         topology: "Android Native -> ML Kit -> OpenCV C++ -> Network Print",
         github: "https://github.com/beehgiovani/MarketPoster"
@@ -801,8 +959,8 @@ void processFrame(Mat& frame) {
     interactivemap: {
       title: "InteractiveMap - Jardim Acapulco",
       logo: logoAcapulco,
-      impact: "High-End Visualization",
-      desc: "Immersive real estate map with dynamic lot visualization and real-time administrative moderation. Delivers a flawless 60fps experience for luxury clients.",
+      impact: "Personal Interactive Map",
+      desc: "Personal interactive real estate map with dynamic lot visualization and administrative state updates. The focus was implementing map rendering, lot status changes, and a polished browsing experience.",
       stack: ["React", "TypeScript", "Vite", "Firebase"],
       screenshots: [
         acapulco1,
@@ -813,7 +971,7 @@ void processFrame(Mat& frame) {
         innovation: "Dynamic SVG-based mapping engine that replaces heavy GIS servers with lightweight reative layers for instant client feedback.",
         strongPoints: ["60fps Interaction Speed", "Real-time Lot Moderation", "Optimized CSR Performance"],
         architecture: "Client-side mapping engine built on React and Leaflet, communicating via an optimized Firebase JSON state to skip heavy map servers.",
-        businessImpact: "Project used to practice requirements analysis, data modeling, integrations, interface states, and complete flow validation without implying formal professional employment.",
+        businessImpact: "Functional personal project used to demonstrate requirements analysis, data modeling, integrations, interface states, and complete flow validation without implying formal professional employment.",
         technicalChallenges: "Rendering hundreds of reactive GeoJSON overlays while maintaining high scroll and zoom performance in the browser.",
         topology: "React -> SVG/Leaflet Hybrid -> Firebase Realtime",
         github: "https://github.com/beehgiovani/InteractiveMap"
@@ -845,10 +1003,10 @@ void processFrame(Mat& frame) {
       desc: "Personal automation project for inbound contact parsing via IMAP. Uses structured extraction rules to route messages into CRM-style webhooks.",
       stack: ["Python", "IMAP/SMTP", "Supabase", "Node"],
       details: {
-        innovation: "Data routing study that converts unstructured email text into clean, structured CRM-style entries automatically.",
+        innovation: "Data routing flow that converts unstructured email text into clean, structured CRM-style entries automatically.",
         strongPoints: ["Robust Regex Extractions", "Continuous IMAP Monitoring", "Supabase Webhook Integration"],
         architecture: "Independent Python watcher service processing email bodies and triggering real-time database synchronizations via Supabase.",
-        businessImpact: "Project used to practice requirements analysis, data modeling, integrations, interface states, and complete flow validation without implying formal professional employment.",
+        businessImpact: "Functional personal project used to demonstrate requirements analysis, data modeling, integrations, interface states, and complete flow validation without implying formal professional employment.",
         technicalChallenges: "Maintaining stable IMAP connections with legacy providers and handling wildly inconsistent email body formats through regex.",
         topology: "Python (IMAP Listener) -> Supabase Sync -> CRM Webhook",
         github: "https://github.com/beehgiovani/guaruja-email-monitor"
@@ -917,11 +1075,11 @@ if files_to_remove:
   skills: {
     java: "Reactive JVM Systems (Java/Kotlin, Spring Boot 3, Hibernate, Micronaut, Clean Architecture, Design Patterns)",
     react: "React 19 Ecosystem (TypeScript, Complex State Management, Next.js, Performance Optimization, Practical PWAs)",
-    spring: "Data Engineering & DBAs (Advanced PostgreSQL, PostGIS, Spatial Indexing, Pandas, Big Data Pipelines)",
+    spring: "Data & Databases (PostgreSQL, PostGIS, Spatial Indexing, Pandas, ETL flows)",
     python: "Artificial Intelligence & Automation (PyTorch, Custom OCR Models, OpenCV, Computer Vision, Headless Scrapers)",
     cloud: "Cloud & Edge Architecture (Deno Edge Functions, Supabase Realtime, AWS S3/EC2, Firebase Serverless, CI/CD)",
     gis: "Applied GIS Intelligence (GeoServer WFS/WMS, QGis Desktop/Server, GeoJSON, Leaflet Integration)",
-    arch: "Design Systems & Micro-frontends (Resilience, Horizontal Scalability, Storybook, Luxury UI/UX)",
+    arch: "Design Systems & Micro-frontends (Component organization, Storybook, UI/UX implementation)",
     node: "Native Mobile & Kotlin Flow (Android MVVM/MVI Architectures, Room DB, Coroutines, Jetpack Compose, BLE)",
   },
   certs: data.certifications_en,

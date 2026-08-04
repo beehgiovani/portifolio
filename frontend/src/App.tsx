@@ -202,6 +202,7 @@ function App() {
 
       {/* Rodapé principal */}
       <motion.footer
+        id="contact"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}

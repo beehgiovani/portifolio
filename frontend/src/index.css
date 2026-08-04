@@ -107,6 +107,11 @@ h4 {
   padding: 0 5%;
 }
 
+section[id],
+.app-footer[id] {
+  scroll-margin-top: 6.5rem;
+}
+
 /* REFACTORED BENTO GRID - NO OVERLAPS */
 .grid-bento {
   display: grid;

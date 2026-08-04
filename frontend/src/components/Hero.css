@@ -6,6 +6,15 @@
   justify-content: center;
   text-align: center;
   padding-top: 6rem;
+  width: 100%;
+  overflow: hidden;
+}
+
+.hero-content {
+  width: 100%;
+  max-width: 900px;
+  min-width: 0;
+  margin: 0 auto;
 }
 
 .profile-squircle {
@@ -53,6 +62,7 @@
   gap: 1rem;
   justify-content: center;
   flex-wrap: wrap;
+  min-width: 0;
 }
 
 .tag-gold {
@@ -72,22 +82,50 @@
 
 @media (max-width: 768px) {
   .hero-section-master {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
+    min-height: auto;
+    padding: 7rem 0 3.5rem;
+  }
+
+  .hero-content {
+    max-width: 100%;
+    padding: 0 0.75rem;
   }
 
   .profile-squircle {
-    width: 160px;
-    height: 160px;
+    width: 150px;
+    height: 150px;
     margin-bottom: 1.5rem;
   }
 
-  .hero-section-master h1 {
-    font-size: 2.5rem !important;
+  .hero-gradient-heading {
+    font-size: clamp(2.15rem, 10vw, 2.75rem) !important;
+    line-height: 1;
+    margin-bottom: 1.4rem;
+    overflow-wrap: anywhere;
   }
 
-  .hero-section-master p {
+  .hero-role-tagline,
+  .hero-description {
     font-size: 1rem !important;
-    padding: 0 1rem;
+    padding: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  .hero-role-tagline {
+    line-height: 1.45;
+  }
+
+  .hero-description {
+    margin-bottom: 2rem;
+  }
+
+  .hero-tag-container {
+    gap: 0.7rem;
+  }
+
+  .hero-tag-container .tech-tag {
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
 }

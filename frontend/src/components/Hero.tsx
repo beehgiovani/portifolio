@@ -9,6 +9,7 @@ export function Hero() {
   return (
     <section className="hero-section-master">
       <motion.div
+        className="hero-content"
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, ease: "easeOut" }}
