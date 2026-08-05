@@ -45,14 +45,14 @@ export function ResumeManager({ onClose }: ResumeManagerProps) {
     const originalBodyOverflow = document.body.style.overflow;
 
     const fileNames: Record<string, string> = {
-      javascript: 'Full Stack Developer',
-      java: 'Java Software Engineer',
-      kotlin: 'Mobile Developer',
-      python: 'Data Engineer'
+      javascript: 'Full-Stack Junior/Pleno',
+      java: 'Java Junior/Pleno',
+      kotlin: 'Kotlin Android Junior/Pleno',
+      python: 'Python Junior/Pleno'
     };
 
     const roleName = fileNames[selectedResume] || selectedResume;
-    document.title = `Curriculo - Bruno Giovani - ${roleName}`;
+    document.title = `Curriculo Bruno Giovani - ${roleName}`;
     document.body.dataset.selectedResume = String(selectedResume);
 
     document.body.style.overflow = 'hidden';

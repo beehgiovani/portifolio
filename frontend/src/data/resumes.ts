@@ -71,7 +71,7 @@ export const resumeData: Record<string, Record<'pt' | 'en', ResumeTemplate>> = {
         },
         {
           role: "Projeto pessoal Monorepo / PWA | Litoral Moveis e Colchoes",
-          date: "Junho 2026",
+          date: "Junho 2026 — Julho 2026",
           link: "https://github.com/beehgiovani/Litoral-Moveis-e-Colchoes",
           bullets: [
             "Criacao de monorepo com app do cliente, painel da loja e pacotes compartilhados em React, TypeScript e Vite.",
@@ -110,11 +110,11 @@ export const resumeData: Record<string, Record<'pt' | 'en', ResumeTemplate>> = {
         },
         {
           role: "CEO Founder | GuaruGeo (projeto pessoal)",
-          date: "Janeiro 2023 — Junho 2023",
+          date: "Agosto 2023 — atual",
           link: "https://github.com/beehgiovani/GuarujaInterativo",
           bullets: [
-            "Desenvolvimento de backend e interface para estudar dados geográficos aplicados ao mercado imobiliário.",
-            "Coleta e organização de dados públicos para consulta, filtros e visualização geográfica."
+            "Desenvolvimento de funcionalidades de mapa, consulta e organização de dados geográficos para projeto próprio.",
+            "Coleta e organização de dados públicos para apoiar filtros, visualização territorial e demandas pontuais."
           ]
         }
       ],
@@ -156,7 +156,7 @@ export const resumeData: Record<string, Record<'pt' | 'en', ResumeTemplate>> = {
         },
         {
           role: "Personal Monorepo / PWA Project | Litoral Moveis e Colchoes",
-          date: "June 2026",
+          date: "June 2026 — July 2026",
           link: "https://github.com/beehgiovani/Litoral-Moveis-e-Colchoes",
           bullets: [
             "Created a monorepo with a customer app, store dashboard, and shared packages using React, TypeScript, and Vite.",
@@ -195,11 +195,11 @@ export const resumeData: Record<string, Record<'pt' | 'en', ResumeTemplate>> = {
         },
         {
           role: "CEO Founder | GuaruGeo (personal project)",
-          date: "January 2023 — June 2023",
+          date: "August 2023 — current",
           link: "https://github.com/beehgiovani/GuarujaInterativo",
           bullets: [
-            "Built backend and interface features to build geospatial data features applied to real estate.",
-            "Collected and organized public data for search, filters, and map-based visualization."
+            "Built map, search, and geospatial data organization features for a personal project.",
+            "Collected and organized public data to support filters, territorial visualization, and occasional demands."
           ]
         }
       ],
@@ -253,11 +253,11 @@ export const resumeData: Record<string, Record<'pt' | 'en', ResumeTemplate>> = {
         },
         {
           role: "CEO Founder | GuaruGeo (projeto pessoal)",
-          date: "Janeiro 2023 — Junho 2023",
+          date: "Agosto 2023 — atual",
           link: "https://github.com/beehgiovani/GuarujaInterativo",
           bullets: [
             "Desenvolvimento de backend para consulta e organização de dados geográficos aplicados a imóveis.",
-            "Criação de APIs REST integradas com processamento de dados geográficos (PostGIS)."
+            "Criação e manutenção de APIs REST para filtros, mapas e integrações com dados públicos."
           ]
         }
       ],
@@ -318,11 +318,11 @@ export const resumeData: Record<string, Record<'pt' | 'en', ResumeTemplate>> = {
         },
         {
           role: "CEO Founder | GuaruGeo (personal project)",
-          date: "January 2023 — June 2023",
+          date: "August 2023 — current",
           link: "https://github.com/beehgiovani/GuarujaInterativo",
           bullets: [
             "Built backend features for searching and organizing geospatial data applied to real estate.",
-            "Created REST APIs integrated with geographic data processing (PostGIS)."
+            "Created and maintained REST APIs for filters, maps, and public data integrations."
           ]
         }
       ],
@@ -366,7 +366,7 @@ export const resumeData: Record<string, Record<'pt' | 'en', ResumeTemplate>> = {
         },
         {
           role: "Projeto pessoal Android / Kotlin | Cacheta & Buraco",
-          date: "Junho 2026",
+          date: "Julho 2026 — Agosto 2026",
           link: "https://github.com/beehgiovani/CachetaBuraco",
           bullets: [
             "Desenvolvimento de jogo Android em Jetpack Compose para implementar regras de Cacheta, Buraco e Tranca.",
@@ -395,11 +395,11 @@ export const resumeData: Record<string, Record<'pt' | 'en', ResumeTemplate>> = {
         },
         {
           role: "CEO Founder | GuaruGeo (projeto pessoal)",
-          date: "Janeiro 2023 — Junho 2023",
+          date: "Agosto 2023 — atual",
           link: "https://github.com/beehgiovani/GuarujaInterativo",
           bullets: [
-            "Integração de serviços móveis com backend geográfico em projeto pessoal.",
-            "Processamento assíncrono de dados públicos para aplicações GIS voltadas a dados imobiliários."
+            "Integração de telas e serviços com backend geográfico em projeto pessoal.",
+            "Organização de dados públicos para recursos GIS voltados a consulta imobiliária."
           ]
         }
       ],
@@ -441,7 +441,7 @@ export const resumeData: Record<string, Record<'pt' | 'en', ResumeTemplate>> = {
         },
         {
           role: "Personal Android / Kotlin Project | Cacheta & Buraco",
-          date: "June 2026",
+          date: "July 2026 — August 2026",
           link: "https://github.com/beehgiovani/CachetaBuraco",
           bullets: [
             "Developed an Android card game in Jetpack Compose to implement Cacheta, Buraco, and Tranca rules.",
@@ -470,11 +470,11 @@ export const resumeData: Record<string, Record<'pt' | 'en', ResumeTemplate>> = {
         },
         {
           role: "CEO Founder | GuaruGeo (personal project)",
-          date: "January 2023 — June 2023",
+          date: "August 2023 — current",
           link: "https://github.com/beehgiovani/GuarujaInterativo",
           bullets: [
-            "Integrated mobile services with a geospatial backend in a personal project.",
-            "Processed public data asynchronously for GIS features applied to real estate data."
+            "Integrated screens and services with a geospatial backend in a personal project.",
+            "Organized public data for GIS features applied to real estate search."
           ]
         }
       ],
@@ -545,11 +545,11 @@ export const resumeData: Record<string, Record<'pt' | 'en', ResumeTemplate>> = {
         },
         {
           role: "CEO Founder | GuaruGeo (projeto pessoal)",
-          date: "Janeiro 2023 — Junho 2023",
+          date: "Agosto 2023 — atual",
           link: "https://github.com/beehgiovani/SpLitoralScraping",
           bullets: [
-            "Desenvolvimento de scrapers para estudar coleta de dados públicos tributários e imobiliários.",
-            "Organização de uma base de consulta geográfica para aplicar filtros, mapas e análise de dados."
+            "Desenvolvimento de scripts para coleta e organização de dados públicos tributários e imobiliários.",
+            "Organização de base geográfica para filtros, mapas e análise exploratória de dados."
           ]
         }
       ],
@@ -617,11 +617,11 @@ export const resumeData: Record<string, Record<'pt' | 'en', ResumeTemplate>> = {
         },
         {
           role: "CEO Founder | GuaruGeo (personal project)",
-          date: "January 2023 — June 2023",
+          date: "August 2023 — current",
           link: "https://github.com/beehgiovani/SpLitoralScraping",
           bullets: [
-            "Built scrapers to collect and organize public tax and real estate data.",
-            "Organized a geospatial search base to apply filters, maps, and data analysis."
+            "Built scripts to collect and organize public tax and real estate data.",
+            "Organized a geospatial base for filters, maps, and exploratory data analysis."
           ]
         }
       ],
