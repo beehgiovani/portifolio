@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 import {
   Zap, Code2, Atom, Database, Brain,
   Cloud, Map, Layers, Smartphone,
-  Network, Banknote, Globe2, Languages
+  Network, Globe2, Languages
 } from 'lucide-react'
 import { AnimatedIcon } from './components/AnimatedIcon'
 import { ContactForm } from './components/ContactForm'
@@ -224,28 +224,14 @@ function App() {
         <ContactForm />
 
         <div className="footer-details-box">
-          <h4 className="footer-details-title">{lang === 'en' ? 'Professional Details (Junior/Mid)' : 'Detalhes Profissionais (Júnior/Pleno)'}</h4>
+          <h4 className="footer-details-title">{lang === 'en' ? 'Professional profile' : 'Perfil profissional'}</h4>
           <div className="footer-details-grid">
             <div className="footer-detail-item">
-              <AnimatedIcon icon={Banknote} animation="pulse" />
+              <AnimatedIcon icon={Code2} animation="pulse" />
               <div className="footer-detail-content">
                 <div className="footer-topic">
-                  <span className="topic-label">PJ (B2B):</span>
-                  <div className="topic-group">
-                    <span className="topic-value">$ 800 - 1,800 USD</span>
-                    <span className="topic-subvalue">($ 8 - 18/h)</span>
-                  </div>
-                  <div className="topic-group">
-                    <span className="topic-value">R$ 3.000 - 5.500</span>
-                    <span className="topic-subvalue">(R$ 20 - 35/h)</span>
-                  </div>
-                </div>
-                <div className="footer-topic">
-                  <span className="topic-label">CLT:</span>
-                  <div className="topic-group">
-                    <span className="topic-value">R$ 2.500 - 4.500</span>
-                    <span className="topic-subvalue">(+ Benefícios)</span>
-                  </div>
+                  <span className="topic-label">{lang === 'en' ? 'FOCUS' : 'FOCO'}:</span>
+                  <span className="topic-value">{t.footer.focus}</span>
                 </div>
               </div>
             </div>
@@ -254,12 +240,8 @@ function App() {
               <AnimatedIcon icon={Globe2} animation="spin" />
               <div className="footer-detail-content">
                 <div className="footer-topic">
-                  <span className="topic-label">{lang === 'en' ? 'MODEL' : 'MODELO'}:</span>
-                  <span className="topic-value">{lang === 'en' ? 'Remote, Hybrid or On-site' : 'Remoto, Híbrido ou Presencial'}</span>
-                </div>
-                <div className="footer-topic">
-                  <span className="topic-label">{lang === 'en' ? 'MOBILITY' : 'MOBILIDADE'}:</span>
-                  <span className="topic-value">{lang === 'en' ? 'Fully available for travel' : 'Total disponibilidade para viagens'}</span>
+                  <span className="topic-label">{lang === 'en' ? 'AVAILABILITY' : 'DISPONIBILIDADE'}:</span>
+                  <span className="topic-value">{t.footer.availability}</span>
                 </div>
               </div>
             </div>
@@ -268,12 +250,8 @@ function App() {
               <AnimatedIcon icon={Languages} animation="float" />
               <div className="footer-detail-content">
                 <div className="footer-topic">
-                  <span className="topic-label">{lang === 'en' ? 'NATIVE' : 'NATIVO'}:</span>
-                  <span className="topic-value">{lang === 'en' ? 'Portuguese (Native)' : 'Português (Nativo)'}</span>
-                </div>
-                <div className="footer-topic">
-                  <span className="topic-label">{lang === 'en' ? 'SECOND' : 'SEGUNDO'}:</span>
-                  <span className="topic-value">{lang === 'en' ? 'English (Intermediate B2)' : 'Inglês (Intermediário B2)'}</span>
+                  <span className="topic-label">{lang === 'en' ? 'LANGUAGES' : 'IDIOMAS'}:</span>
+                  <span className="topic-value">{t.footer.languages}</span>
                 </div>
               </div>
             </div>
@@ -285,8 +263,8 @@ function App() {
         <AdminMessages onClose={() => setShowAdmin(false)} adminToken={adminToken} />
       )}
 
-      {showResume && isAdminAuthorized && (
-        <ResumeManager onClose={() => setShowResume(false)} />
+      {showResume && (
+        <ResumeManager onClose={() => setShowResume(false)} canEdit={isAdminAuthorized} />
       )}
     </div>
   );

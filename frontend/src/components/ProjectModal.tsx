@@ -1,14 +1,10 @@
 import { useI18n } from '../hooks/useI18n.ts'
 import { useState, useEffect } from 'react'
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism'
 import type { Project } from '../types/project.ts'
 import { 
   Network, Target, Lightbulb, Zap, Settings, Camera, CheckCircle2
 } from 'lucide-react'
 import { AnimatedIcon } from './AnimatedIcon'
-
-const codeCustomStyle = { margin: 0, padding: '1.5rem', fontSize: '0.9rem' };
 
 export function ProjectModal({ project, onClose }: { project: Project, onClose: () => void }) {
   const { lang } = useI18n();
@@ -72,7 +68,7 @@ export function ProjectModal({ project, onClose }: { project: Project, onClose: 
                 <div className="pm-arch-header">
                   <h4 className="pm-h4">
                     <AnimatedIcon icon={Network} size={20} animation="float" />
-                    {lang === 'en' ? 'Architecture Topology' : 'Topologia da Arquitetura'}
+                    {lang === 'en' ? 'Architecture and scope' : 'Arquitetura e escopo'}
                   </h4>
                   {project.details.url && (
                     <a href={project.details.url} target="_blank" rel="noopener noreferrer" className="pm-live-btn">
@@ -90,31 +86,28 @@ export function ProjectModal({ project, onClose }: { project: Project, onClose: 
                 </div>
               </div>
 
-              {/* Aprendizados / Results */}
               {project.details.businessImpact && (
                 <div className="card-masterpiece pm-bento-full">
                   <h4 className="pm-h4">
                     <AnimatedIcon icon={Target} size={20} animation="pulse" />
-                    {lang === 'en' ? 'Learning Results' : 'Aprendizados e Resultados'}
+                    {lang === 'en' ? 'What this project demonstrates' : 'O que este projeto demonstra'}
                   </h4>
                   <p className="pm-p">{project.details.businessImpact}</p>
                 </div>
               )}
 
-              {/* Inovação */}
               <div className="card-masterpiece pm-bento-item">
                 <h4 className="pm-h4">
                   <AnimatedIcon icon={Lightbulb} size={20} animation="float" />
-                  {lang === 'en' ? 'Core Innovation' : 'Inovação Principal'}
+                  {lang === 'en' ? 'Core technical decision' : 'Decisão técnica central'}
                 </h4>
                 <p className="pm-p-sm">{project.details.innovation}</p>
               </div>
 
-              {/* Pontos Fortes */}
               <div className="card-masterpiece pm-bento-item">
                 <h4 className="pm-h4">
                   <AnimatedIcon icon={Zap} size={20} animation="pulse" />
-                  {lang === 'en' ? 'Strong Points' : 'Pontos Fortes'}
+                  {lang === 'en' ? 'Verified strengths' : 'Pontos verificáveis'}
                 </h4>
                 <ul className="pm-ul">
                   {project.details.strongPoints.map((point: string, i: number) => (
@@ -126,57 +119,16 @@ export function ProjectModal({ project, onClose }: { project: Project, onClose: 
                 </ul>
               </div>
 
-              {/* Desafios Técnicos */}
               {project.details.technicalChallenges && (
                 <div className="card-masterpiece pm-bento-item">
                   <h4 className="pm-h4">
                     <AnimatedIcon icon={Settings} size={20} animation="spin" />
-                    {lang === 'en' ? 'Technical Challenges Overcome' : 'Desafios Técnicos Superados'}
+                    {lang === 'en' ? 'Engineering challenges' : 'Desafios de engenharia'}
                   </h4>
                   <p className="pm-p-sm">{project.details.technicalChallenges}</p>
                 </div>
               )}
 
-              {/* Trechos de Código */}
-              {(project.codeSnippets || (project.codeSnippet && project.codeLanguage)) && (
-                <div className="card-masterpiece pm-code-container">
-                  <h4 className="pm-h4">
-                    <span className="mr-05">{'</>'}</span>
-                    {lang === 'en' ? 'Technical Authority Snippets' : 'Trechos de Autoridade Técnica'}
-                  </h4>
-
-                  {project.codeSnippets ? (
-                    <div className="pm-snippets-stack">
-                      {project.codeSnippets.map((snippet, idx) => (
-                        <div key={idx} className="pm-snippet-item">
-                          <h5 className="pm-snippet-title">{snippet.title}</h5>
-                          <div className="pm-code-wrapper">
-                            <SyntaxHighlighter
-                              language={snippet.language}
-                              style={vscDarkPlus}
-                              customStyle={codeCustomStyle}
-                              showLineNumbers={true}
-                            >
-                              {snippet.code}
-                            </SyntaxHighlighter>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  ) : (
-                    <div className="pm-code-wrapper">
-                      <SyntaxHighlighter
-                        language={project.codeLanguage!}
-                        style={vscDarkPlus}
-                        customStyle={codeCustomStyle}
-                        showLineNumbers={true}
-                      >
-                        {project.codeSnippet!}
-                      </SyntaxHighlighter>
-                    </div>
-                  )}
-                </div>
-              )}
             </div>
           )}
 

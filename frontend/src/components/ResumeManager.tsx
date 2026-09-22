@@ -9,6 +9,7 @@ import './ResumeManager.css';
 
 interface ResumeManagerProps {
   onClose: () => void;
+  canEdit?: boolean;
 }
 
 const renderMultiLine = (text: string) => {
@@ -20,24 +21,22 @@ const renderMultiLine = (text: string) => {
   ));
 };
 
-export function ResumeManager({ onClose }: ResumeManagerProps) {
-  const [selectedResume, setSelectedResume] = useState<keyof typeof resumeData>('javascript');
+export function ResumeManager({ onClose, canEdit = false }: ResumeManagerProps) {
+  const [selectedResume, setSelectedResume] = useState<keyof typeof resumeData>('fullstack');
   const [lang, setLang] = useState<'pt' | 'en'>('pt');
   const [isEditing, setIsEditing] = useState(false);
   const [editedData, setEditedData] = useState(JSON.parse(JSON.stringify(resumeData)));
 
   const currentData = editedData[selectedResume][lang];
   const templateDescriptions: Record<keyof typeof resumeData, string> = {
-    javascript: lang === 'en' ? 'Full Stack / Frontend' : 'Full Stack / Frontend',
-    java: lang === 'en' ? 'Corporate Backend' : 'Backend Corporativo',
-    kotlin: lang === 'en' ? 'Mobile & Modern Backend' : 'Mobile & Backend Moderno',
-    python: lang === 'en' ? 'Data / Automation / AI' : 'Dados / Automação / IA'
+    fullstack: lang === 'en' ? 'Web products and APIs' : 'Produtos web e APIs',
+    android: lang === 'en' ? 'Native mobile development' : 'Desenvolvimento mobile nativo',
+    data: lang === 'en' ? 'Automation, data, and GIS' : 'Automação, dados e GIS'
   };
   const templateNames: Record<keyof typeof resumeData, string> = {
-    javascript: 'Full Stack',
-    java: 'Java',
-    kotlin: 'Kotlin',
-    python: 'Python'
+    fullstack: 'Full-stack',
+    android: 'Android / Kotlin',
+    data: 'Python / Dados / GIS'
   };
 
   useEffect(() => {
@@ -45,10 +44,9 @@ export function ResumeManager({ onClose }: ResumeManagerProps) {
     const originalBodyOverflow = document.body.style.overflow;
 
     const fileNames: Record<string, string> = {
-      javascript: 'Full-Stack Junior/Pleno',
-      java: 'Java Junior/Pleno',
-      kotlin: 'Kotlin Android Junior/Pleno',
-      python: 'Python Junior/Pleno'
+      fullstack: 'Full-Stack',
+      android: 'Android Kotlin',
+      data: 'Python Dados GIS'
     };
 
     const roleName = fileNames[selectedResume] || selectedResume;
@@ -190,21 +188,23 @@ export function ResumeManager({ onClose }: ResumeManagerProps) {
           <div className="sidebar-section">
             <label>{lang === 'en' ? 'Actions' : 'Ações'}</label>
             <div className="action-buttons">
-              <button onClick={() => setIsEditing(!isEditing)} className="action-btn edit-btn" type="button">
-                {isEditing ? <Check size={18} /> : <Edit3 size={18} />}
-                {isEditing ? (lang === 'en' ? 'Save Changes' : 'Salvar Alterações') : (lang === 'en' ? 'Edit Mode' : 'Modo Edição')}
-              </button>
+              {canEdit && (
+                <button onClick={() => setIsEditing(!isEditing)} className="action-btn edit-btn" type="button">
+                  {isEditing ? <Check size={18} /> : <Edit3 size={18} />}
+                  {isEditing ? (lang === 'en' ? 'Save Changes' : 'Salvar Alterações') : (lang === 'en' ? 'Edit Mode' : 'Modo Edição')}
+                </button>
+              )}
               <button onClick={handlePrint} className="action-btn print-btn" type="button">
                 <Printer size={18} />
-                {lang === 'en' ? 'Print PDF' : 'Gerar PDF'}
+                {lang === 'en' ? 'Save as PDF' : 'Salvar em PDF'}
               </button>
             </div>
           </div>
 
           <div className="print-safety-note">
             {lang === 'en'
-              ? 'Print is isolated to the selected resume only.'
-              : 'A impressão fica isolada apenas no currículo selecionado.'}
+              ? 'Choose Save as PDF in the browser print dialog.'
+              : 'Na janela de impressão do navegador, escolha Salvar como PDF.'}
           </div>
 
           <button onClick={onClose} className="close-manager-btn" type="button">
@@ -358,55 +358,9 @@ export function ResumeManager({ onClose }: ResumeManagerProps) {
                     </section>
 
                     <div className="resume-footer-section">
-                      <h2 className="footer-title">{lang === 'en' ? 'Compensation & Availability' : 'Pretensões & Disponibilidade'}</h2>
+                      <h2 className="footer-title">{lang === 'en' ? 'Availability and languages' : 'Disponibilidade e idiomas'}</h2>
 
                       <div className="footer-main-grid">
-                        {/* Bloco de Salários Expandido */}
-                        <div className="grid-item salary-box full-width">
-                          <div className="salary-columns">
-                            <div className="salary-col">
-                              <div className="grid-label">{lang === 'en' ? 'Contract (B2B/PJ):' : 'Pretensão B2B (PJ):'}</div>
-                              <div
-                                className="grid-value highlight"
-                                contentEditable={isEditing}
-                                onBlur={(e) => handleEdit('salaryB2B', null, '', e.currentTarget.innerText)}
-                                suppressContentEditableWarning
-                              >
-                                {isEditing ? currentData.salaryB2B : renderMultiLine(currentData.salaryB2B)}
-                              </div>
-                              <div
-                                className="grid-subvalue"
-                                contentEditable={isEditing}
-                                onBlur={(e) => handleEdit('salaryB2BSub', null, '', e.currentTarget.innerText)}
-                                suppressContentEditableWarning
-                              >
-                                {isEditing ? currentData.salaryB2BSub : renderMultiLine(currentData.salaryB2BSub)}
-                              </div>
-                            </div>
-                            <div className="salary-divider"></div>
-                            <div className="salary-col">
-                              <div className="grid-label">{lang === 'en' ? 'Full-Time (CLT):' : 'Pretensão CLT:'}</div>
-                              <div
-                                className="grid-value highlight"
-                                contentEditable={isEditing}
-                                onBlur={(e) => handleEdit('salaryCLT', null, '', e.currentTarget.innerText)}
-                                suppressContentEditableWarning
-                              >
-                                {isEditing ? currentData.salaryCLT : renderMultiLine(currentData.salaryCLT)}
-                              </div>
-                              <div
-                                className="grid-subvalue"
-                                contentEditable={isEditing}
-                                onBlur={(e) => handleEdit('salaryCLTSub', null, '', e.currentTarget.innerText)}
-                                suppressContentEditableWarning
-                              >
-                                {isEditing ? currentData.salaryCLTSub : renderMultiLine(currentData.salaryCLTSub)}
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-
-                        {/* Bloco de Modelo & Mobilidade */}
                         <div className="grid-item">
                           <div className="grid-label">{lang === 'en' ? 'Model & Mobility:' : 'Modelo & Mobilidade:'}</div>
                           <div
@@ -427,7 +381,6 @@ export function ResumeManager({ onClose }: ResumeManagerProps) {
                           </div>
                         </div>
 
-                        {/* Bloco de Idiomas */}
                         <div className="grid-item">
                           <div className="grid-label">{lang === 'en' ? 'Languages:' : 'Idiomas:'}</div>
                           <div className="grid-value">

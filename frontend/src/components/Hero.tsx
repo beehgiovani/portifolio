@@ -25,10 +25,10 @@ export function Hero() {
           {t.hero.tagline}
         </p>
         <div className="hero-tag-container">
-          <span className="tech-tag tag-gold">#JuniorPlenoFullStack</span>
-          <span className="tech-tag tag-white">#AI_Solutions_Developer</span>
-          <span className="tech-tag tag-muted">#Cloud_Native</span>
-          <span className="tech-tag tag-white">#Geo_Intelligence</span>
+          <span className="tech-tag tag-gold">#React_TypeScript</span>
+          <span className="tech-tag tag-white">#Kotlin_Android</span>
+          <span className="tech-tag tag-muted">#Python_Automation</span>
+          <span className="tech-tag tag-white">#GIS_Data</span>
         </div>
       </motion.div>
     </section>

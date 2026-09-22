@@ -1,32 +1,47 @@
-# AWS Deployment Strategy - Bruno Giovani Portfolio
+# Publicação do portfólio
 
-This guide outlines the recommended "Premium" deployment for your full-stack portfolio.
+O frontend de produção é hospedado no Firebase Hosting e atende o domínio `brunodevs.com`.
 
-## 1. Frontend (React)
-**Host on AWS S3 + CloudFront**
-- **S3 Bucket**: Static website hosting.
-- **CloudFront (CDN)**: Low latency, HTTPS (ACM), and caching.
-- **Route 53**: Your custom domain (e.g., `brunogiovani.dev`).
+## Pré-requisitos
 
-## 2. Backend (Spring Boot)
-**AWS App Runner (Simplest Premium Choice)**
-- **Source**: Directly from GitHub or ECR Container.
-- **Auto-scaling**: Handles surges in traffic.
-- **Port**: `8080`.
-- **Environment**: JDK 21.
+- Node.js compatível com a versão declarada pelo projeto.
+- Dependências instaladas com `npm ci` dentro de `frontend`.
+- Firebase CLI autenticada em uma conta com acesso ao site `brunodevs`.
 
-## 3. Database (PostgreSQL)
-**AWS RDS (Optional for future CRUD features)**
-- **Instance**: `db.t4g.micro` (Free tier eligible).
-- **Security**: VPC Private Subnet, accessible only by App Runner.
+## Verificação obrigatória
 
-## 4. Integration & Security
-- **AWS Secrets Manager**: Storing API keys for Gemini, Database credentials.
-- **IAM**: Least privilege roles for App Runner.
-- **AWS SES**: If you implement a real email sending form.
+Dentro de `frontend`:
 
----
-### Local Development Cheat Sheet
-- **Frontend**: `cd frontend && npm install && npm run dev`
-- **Backend**: Open the `backend/` folder in IntelliJ or Android Studio and run `PortfolioApplication` with the `local` profile enabled.
-- **Local admin token**: the frontend uses `frontend/.env.local` and the backend uses `application-local.properties`; both default to `local-admin` for local-only access.
+```bash
+npm run lint
+npm test
+npm run build
+```
+
+Antes de publicar, abra o preview local e valide:
+
+- navegação em português e inglês;
+- abertura dos seis projetos selecionados;
+- links de demonstração e GitHub;
+- currículos Full-stack, Android/Kotlin e Python/Dados/GIS;
+- impressão de cada currículo;
+- formulário de contato;
+- layout em desktop e mobile.
+
+## Deploy
+
+```bash
+cd frontend
+firebase deploy --only hosting:brunodevs
+```
+
+O arquivo `frontend/firebase.json` aponta `dist` como diretório público e redireciona rotas para `index.html`.
+
+## Pós-publicação
+
+1. Abrir `https://brunodevs.com` sem cache.
+2. Confirmar título, descrição e imagem Open Graph.
+3. Repetir o smoke test dos links e currículos.
+4. Conferir o cabeçalho `Last-Modified` e registrar o commit publicado.
+
+O backend Spring Boot não faz parte do deploy do Firebase Hosting. Se a API de contato for publicada separadamente, documente o provedor, a URL e as variáveis de ambiente em uma atualização específica deste arquivo.

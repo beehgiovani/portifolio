@@ -59,20 +59,11 @@ export function ProjectGrid({ onSelect }: { onSelect: (p: Project) => void }) {
   const { t } = useI18n();
   const featuredProjectKeys = [
     'farmadelivery',
-    'predictmed',
-    'guarugeo',
-    'lumen',
-    'metromargeo',
-    'cimed_experience',
-    'niduscare',
-    'pharmaflow',
-    'litoral',
-    'certidoesapp',
     'cachetaburaco',
-    'automacao_scraper',
-    'interactivemap',
-    'emailmonitor',
-    'marketposter'
+    'guarugeo',
+    'predictmed',
+    'marketposter',
+    'lumen'
   ];
 
   const projectList: Project[] = featuredProjectKeys
