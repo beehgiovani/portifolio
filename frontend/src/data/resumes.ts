@@ -13,521 +13,359 @@ export interface ResumeTemplate {
     link?: string;
   }[];
   education: string[];
-  salaryB2B: string;
-  salaryB2BSub: string;
-  salaryCLT: string;
-  salaryCLTSub: string;
   workModel: string;
   mobility: string;
   nativeLang: string;
   secondLang: string;
 }
 
-const relevantEducationPt = [
+const educationPt = [
   "<strong>Análise e Desenvolvimento de Sistemas (ADS)</strong> — FMU (em curso)",
   "<strong>API REST com Kotlin e Spring Boot: camada de persistência</strong> — Alura",
   "<strong>Python: Orientação a Objetos</strong> — Alura",
-  "<strong>Python para Dados: funções, estruturas de dados e exceções</strong> — Alura",
-  "<strong>SQLite Online: consultas e instruções SQL</strong> — Alura",
+  "<strong>Python para Dados: funções, estruturas e exceções</strong> — Alura",
+  "<strong>SQLite: consultas e instruções SQL</strong> — Alura",
   "<strong>Git e GitHub: controle de versão e colaboração</strong> — Alura"
-];
+]
 
-const relevantEducationEn = [
-  "<strong>Systems Analysis and Development (ADS)</strong> — FMU (in progress)",
+const educationEn = [
+  "<strong>Systems Analysis and Development</strong> — FMU (in progress)",
   "<strong>REST API with Kotlin and Spring Boot: persistence layer</strong> — Alura",
   "<strong>Python: Object-Oriented Programming</strong> — Alura",
-  "<strong>Python for Data: functions, data structures and exceptions</strong> — Alura",
-  "<strong>SQLite Online: SQL queries and instructions</strong> — Alura",
+  "<strong>Python for Data: functions, structures, and exceptions</strong> — Alura",
+  "<strong>SQLite: SQL queries and statements</strong> — Alura",
   "<strong>Git and GitHub: version control and collaboration</strong> — Alura"
-];
+]
 
-export const resumeData: Record<string, Record<'pt' | 'en', ResumeTemplate>> = {
-  javascript: {
+const commonPt = {
+  name: "Bruno Giovani Pereira",
+  contactInfo: "Guarujá, SP | brunoadmin@guarujainterativo.com.br | +55 (13) 99205-8836",
+  linkedin: "https://linkedin.com/in/beehgiovani",
+  github: "https://github.com/beehgiovani",
+  education: educationPt,
+  workModel: "Remoto, híbrido ou presencial",
+  mobility: "Disponível para viagens",
+  nativeLang: "Português nativo",
+  secondLang: "Inglês técnico para leitura de documentação"
+}
+
+const commonEn = {
+  name: "Bruno Giovani Pereira",
+  contactInfo: "Guarujá, São Paulo, Brazil | brunoadmin@guarujainterativo.com.br | +55 (13) 99205-8836",
+  linkedin: "https://linkedin.com/in/beehgiovani",
+  github: "https://github.com/beehgiovani",
+  education: educationEn,
+  workModel: "Remote, hybrid, or on-site",
+  mobility: "Available for travel",
+  nativeLang: "Native Portuguese",
+  secondLang: "Technical English for reading documentation"
+}
+
+export const resumeData = {
+  fullstack: {
     pt: {
-      name: "Bruno Giovani Pereira",
-      subtitle: "Arquiteto Full-Stack Pleno/Sênior (Node.js / React / TypeScript)",
-      contactInfo: "Guarujá, SP | brunoadmin@guarujainterativo.com.br | +55 (13) 99205-8836",
-      linkedin: "https://linkedin.com/in/beehgiovani",
-      github: "https://github.com/beehgiovani",
-      summary: "Arquiteto Full-Stack Pleno/Sênior especializado na construção de interfaces de alto impacto e backends escaláveis utilizando o ecossistema TypeScript. Expertise profunda em React 19, Next.js, Node.js e Tailwind CSS. Especialista em performance frontend (Vite, Web-vitals), Clean Architecture e sistemas offline-first. Forte histórico na entrega de MVPs rápidos e escaláveis, liderando a convergência entre Design System, UX e escalabilidade técnica para maximizar o ROI e a retenção de usuários.",
+      ...commonPt,
+      subtitle: "Desenvolvedor Full-Stack | React, TypeScript e APIs",
+      summary: "Desenvolvedor de software com prática em projetos independentes que integram interfaces React, APIs Node.js, bancos PostgreSQL/Supabase e clientes mobile. Tenho experiência construindo painéis, autenticação, regras de acesso, importação de dados, testes e rotinas de deploy. Busco uma oportunidade de desenvolvimento em equipe, com escopo e nível definidos pela vaga e pela avaliação técnica.",
       skills: [
-        "<strong>Frontend:</strong> React 19, TypeScript, Redux Toolkit, Framer Motion, Tailwind CSS, Sass.",
-        "<strong>Backend:</strong> Node.js, NestJS, Express, Prisma ORM, Deno, Edge Functions.",
-        "<strong>Mobile:</strong> React Native, Kotlin (Android Nativo), Jetpack Compose.",
-        "<strong>Dados:</strong> PostgreSQL (PostGIS), MongoDB, Supabase, Firebase Realtime DB.",
-        "<strong>Infra & DevOps:</strong> AWS, Vercel, Docker, CI/CD (GitHub Actions), Supabase Edge Functions."
+        "<strong>Frontend:</strong> React 19, TypeScript, Vite, formulários, dashboards, PWAs e interfaces responsivas.",
+        "<strong>Backend:</strong> Node.js, Fastify, Express, tRPC, APIs REST, validação e autenticação.",
+        "<strong>Dados:</strong> PostgreSQL, Supabase, Prisma, Drizzle, Firebase e noções de PostGIS.",
+        "<strong>Qualidade:</strong> Vitest/JUnit, lint, typecheck, documentação, Git e preflight de ambiente.",
+        "<strong>Entrega:</strong> Firebase Hosting, Vercel, Docker e configuração segura por variáveis de ambiente."
       ],
       experience: [
         {
-          role: "Pleno/Sênior Full-Stack Developer | PredictMed",
-          date: "Março 2026 — Outubro 2026",
-          link: "https://github.com/beehgiovani/predictmed",
+          role: "FarmaDelivery | Projeto independente full-stack",
+          date: "Maio de 2026",
+          link: "https://github.com/beehgiovani/FarmaDelivery",
           bullets: [
-            "Liderando o desenvolvimento de Edge Functions para processar IA em tempo real com baixa latência.",
-            "Arquitetura de camadas de integração assíncrona para SaaS de saúde preditiva B2B.",
-            "Refinei a arquitetura do front-end para ser modular, escalável e extremamente rápida."
+            "Estruturei um monorepo com painel React, API Fastify, PWA e app Android para um fluxo de entregas de farmácia.",
+            "Modelei perfis, entregas, relatórios e integrações com PostgreSQL/Supabase, Prisma e Firebase Messaging.",
+            "Adicionei testes, checagens de ambiente e documentação que separa validação local de homologação operacional."
           ]
         },
         {
-          role: "Lead Developer - Automação & UI/UX | Cimed",
-          date: "Janeiro 2024 — Março 2026",
-          link: "https://github.com/beehgiovani/MarketPoster",
-          bullets: [
-            "Criação de dashboards executivos complexos para visualização de dados industriais em tempo real.",
-            "Desenvolvimento de interface intuitiva que reduziu o tempo de treinamento de novos operadores em 50%."
-          ]
-        },
-        {
-          role: "Pleno/Sênior Full-Stack Developer | Soo Tech (Híbrido)",
-          date: "Janeiro 2024 — Presente",
-          link: "https://github.com/beehgiovani/PharmaFlow",
-          bullets: [
-            "Liderança na transição de SPAs legadas para micro-frontends modernos em React/TypeScript.",
-            "Otimização de bundle e renderização (60% melhoria no Lighthouse) e redução de 25% no churn.",
-            "Desenvolvimento de Design System interno para padronização de interfaces em múltiplos produtos SaaS."
-          ]
-        },
-        {
-          role: "Arquiteto Full-Stack | GuaruGeo",
-          date: "2023 — Presente",
+          role: "Guarujá Interativo | Aplicação Web GIS",
+          date: "Março — julho de 2026",
           link: "https://github.com/beehgiovani/GuarujaInterativo",
           bullets: [
-            "Desenvolvimento do core backend de um ecossistema GIS voltado à inteligência imobiliária.",
-            "Processamento automatizado de dados abertos (OSINT) enriquecendo o banco de dados imobiliário 24/7."
+            "Desenvolvi busca e navegação sobre lotes e unidades em uma aplicação JavaScript/Leaflet publicada na web.",
+            "Integrei Supabase, índice espacial no cliente e módulos experimentais de CRM, mantendo bases sensíveis fora do repositório público."
+          ]
+        },
+        {
+          role: "PredictMed | Protótipo de apoio à reposição",
+          date: "Março de 2026",
+          link: "https://github.com/beehgiovani/predictmed",
+          bullets: [
+            "Implementei importação de catálogo e histórico, registro de rupturas e sugestões parametrizadas de reposição.",
+            "Usei React/TypeScript, Express/tRPC, Drizzle e PostgreSQL, tratando indicadores como apoio à decisão, sem promessa de acurácia comercial."
+          ]
+        },
+        {
+          role: "Colaboração pontual | Agili",
+          date: "2024 — escopo PJ informal concluído",
+          bullets: [
+            "Atuei em ajustes de funcionalidades, manutenção de código, correções e integrações web.",
+            "A experiência foi pontual e informal; não a apresento como vínculo empregatício ou cargo formal."
           ]
         }
-      ],
-      education: relevantEducationPt,
-      salaryB2B: "R$ 10.000,00 - R$ 12.000,00 | $ 4,000 - $ 6,500 USD/mês",
-      salaryB2BSub: "R$ 60,00 - R$ 75,00/h | $ 25.00 - $ 45.00/h",
-      salaryCLT: "R$ 8.000,00 - R$ 9.500,00",
-      salaryCLTSub: "Mais benefícios",
-      workModel: "Remoto, Híbrido ou Presencial",
-      mobility: "Disponível para viagens",
-      nativeLang: "Português (Nativo)",
-      secondLang: "Inglês (Leitura Técnica e Documentação)"
+      ]
     },
     en: {
-      name: "Bruno Giovani Pereira",
-      subtitle: "Mid/Senior Full-Stack Architect (Node.js / React / TypeScript)",
-      contactInfo: "Guarujá, SP | brunoadmin@guarujainterativo.com.br | +55 (13) 99205-8836",
-      linkedin: "https://linkedin.com/in/beehgiovani",
-      github: "https://github.com/beehgiovani",
-      summary: "Mid/Senior Full-Stack Architect specialized in building high-impact interfaces and scalable backends using the TypeScript ecosystem. Deep expertise in React 19, Next.js, Node.js, and Tailwind CSS. Specialist in frontend performance (Vite, Web-vitals), Clean Architecture, and offline-first systems. Proven track record in delivering fast and scalable MVPs, leading the convergence between Design System, UX, and technical scalability to maximize ROI and user retention.",
+      ...commonEn,
+      subtitle: "Full-Stack Developer | React, TypeScript, and APIs",
+      summary: "Software developer with hands-on experience from independent projects that connect React interfaces, Node.js APIs, PostgreSQL/Supabase databases, and mobile clients. I have built dashboards, authentication, access rules, data-import flows, tests, and deployment routines. I am looking for a team-based development role, with seniority and scope defined by the position and technical assessment.",
       skills: [
-        "<strong>Frontend:</strong> React 19, TypeScript, Redux Toolkit, Framer Motion, Tailwind CSS, Sass.",
-        "<strong>Backend:</strong> Node.js, NestJS, Express, Prisma ORM, Deno, Edge Functions.",
-        "<strong>Mobile:</strong> React Native, Kotlin (Android Native), Jetpack Compose.",
-        "<strong>Data:</strong> PostgreSQL (PostGIS), MongoDB, Supabase, Firebase Realtime DB.",
-        "<strong>Infra & DevOps:</strong> AWS, Vercel, Docker, CI/CD (GitHub Actions), Supabase Edge Functions."
+        "<strong>Frontend:</strong> React 19, TypeScript, Vite, forms, dashboards, PWAs, and responsive interfaces.",
+        "<strong>Backend:</strong> Node.js, Fastify, Express, tRPC, REST APIs, validation, and authentication.",
+        "<strong>Data:</strong> PostgreSQL, Supabase, Prisma, Drizzle, Firebase, and working knowledge of PostGIS.",
+        "<strong>Quality:</strong> Vitest/JUnit, linting, type checking, documentation, Git, and environment preflight.",
+        "<strong>Delivery:</strong> Firebase Hosting, Vercel, Docker, and secure environment-variable configuration."
       ],
       experience: [
         {
-          role: "Mid/Senior Full-Stack Developer | PredictMed",
-          date: "March 2026 — October 2026",
-          link: "https://github.com/beehgiovani/predictmed",
+          role: "FarmaDelivery | Independent full-stack project",
+          date: "May 2026",
+          link: "https://github.com/beehgiovani/FarmaDelivery",
           bullets: [
-            "Leading the development of Edge Functions to process real-time AI with low latency.",
-            "Architecting asynchronous integration layers for B2B predictive health SaaS.",
-            "Refined frontend architecture to be modular, scalable, and extremely fast."
+            "Structured a monorepo with a React dashboard, Fastify API, PWA, and Android app for a pharmacy-delivery workflow.",
+            "Modeled roles, deliveries, reports, and integrations with PostgreSQL/Supabase, Prisma, and Firebase Messaging.",
+            "Added tests, environment checks, and documentation that separates local validation from operational acceptance testing."
           ]
         },
         {
-          role: "Lead Developer - Automation & UI/UX | Cimed",
-          date: "January 2024 — March 2026",
+          role: "Guarujá Interativo | Web GIS application",
+          date: "March — July 2026",
+          link: "https://github.com/beehgiovani/GuarujaInterativo",
+          bullets: [
+            "Built search and navigation over lots and units in a published JavaScript/Leaflet application.",
+            "Integrated Supabase, a client-side spatial index, and experimental CRM modules while keeping sensitive datasets outside the public repository."
+          ]
+        },
+        {
+          role: "PredictMed | Replenishment-support prototype",
+          date: "March 2026",
+          link: "https://github.com/beehgiovani/predictmed",
+          bullets: [
+            "Implemented catalog and history imports, stockout records, and parameterized replenishment suggestions.",
+            "Used React/TypeScript, Express/tRPC, Drizzle, and PostgreSQL while treating indicators as decision support rather than proven commercial accuracy."
+          ]
+        },
+        {
+          role: "Short-term collaboration | Agili",
+          date: "2024 — completed informal B2B scope",
+          bullets: [
+            "Worked on feature adjustments, code maintenance, bug fixes, and web integrations.",
+            "This was a short-term informal engagement, not formal employment or a formal company title."
+          ]
+        }
+      ]
+    }
+  },
+  android: {
+    pt: {
+      ...commonPt,
+      subtitle: "Desenvolvedor Android | Kotlin e Jetpack Compose",
+      summary: "Desenvolvedor Android com prática em Kotlin, Jetpack Compose, Coroutines/Flow, persistência local e integrações Supabase/Firebase. Meus projetos incluem um jogo com regras e sincronização, um app operacional de entregas e ferramentas de criação visual. Busco contribuir com manutenção, implementação de telas, consumo de APIs, testes e evolução de aplicativos em equipe.",
+      skills: [
+        "<strong>Android:</strong> Kotlin, Jetpack Compose, Material 3, ViewModel e Navigation.",
+        "<strong>Assíncrono e estado:</strong> Coroutines, Flow, serialização e gerenciamento de estado de UI.",
+        "<strong>Dados:</strong> Room, DataStore, Supabase Auth/PostgREST/Realtime e Firebase.",
+        "<strong>Rede:</strong> Ktor/OkHttp, sockets TCP, descoberta NSD e integração com APIs HTTP.",
+        "<strong>Qualidade:</strong> JUnit, testes instrumentados, Gradle, builds debug/release e documentação técnica."
+      ],
+      experience: [
+        {
+          role: "Carteado BR | Jogo Android",
+          date: "Julho — agosto de 2026",
+          link: "https://github.com/beehgiovani/CachetaBuraco",
+          bullets: [
+            "Implementei regras de Cacheta, Buraco e Tranca em um motor separado da interface Compose.",
+            "Criei transportes intercambiáveis para bot local, Wi-Fi e modo online beta com Supabase Realtime.",
+            "Modelei estado público e informações privadas dos jogadores, eventos idempotentes, reconexão e testes unitários."
+          ]
+        },
+        {
+          role: "FarmaDelivery | App Android de entregas",
+          date: "Maio de 2026",
+          link: "https://github.com/beehgiovani/FarmaDelivery",
+          bullets: [
+            "Desenvolvi o cliente Android do motoboy dentro de um monorepo que também contém API, painel e PWA.",
+            "Trabalhei com autenticação, acompanhamento de entregas, localização, notificações e contratos compartilhados com o backend."
+          ]
+        },
+        {
+          role: "MarketPoster | Editor Android para varejo",
+          date: "Dezembro de 2025",
           link: "https://github.com/beehgiovani/MarketPoster",
           bullets: [
-            "Creation of complex executive dashboards for real-time industrial data visualization.",
-            "Development of an intuitive interface that reduced new operator training time by 50%."
+            "Construí fluxos de composição visual, persistência com Room/DataStore e importação CSV/XLSX.",
+            "Integrei Hilt, WorkManager, Firebase e segmentação de imagem com ML Kit em caráter experimental."
           ]
         },
         {
-          role: "Mid/Senior Full-Stack Developer | Soo Tech (Hybrid)",
-          date: "January 2024 — Present",
-          link: "https://github.com/beehgiovani/PharmaFlow",
-          bullets: [
-            "Led the transition from legacy SPAs to modern micro-frontends in React/TypeScript.",
-            "Bundle and rendering optimization (60% Lighthouse improvement) and 25% churn reduction.",
-            "Internal Design System development for interface standardization across multiple SaaS products."
-          ]
-        },
-        {
-          role: "Full-Stack Architect | GuaruGeo",
-          date: "2023 — Present",
-          link: "https://github.com/beehgiovani/GuarujaInterativo",
-          bullets: [
-            "Development of the core backend for a GIS ecosystem focused on real estate intelligence.",
-            "Automated open data processing (OSINT) enriching the real estate database 24/7."
-          ]
-        }
-      ],
-      education: relevantEducationEn,
-      salaryB2B: "$ 4,000 - $ 6,500 USD | R$ 10,000 - R$ 12,000",
-      salaryB2BSub: "$ 25.00 - $ 45.00/h | R$ 60.00 - R$ 75.00/h",
-      salaryCLT: "R$ 8,000.00 - R$ 9.500.00",
-      salaryCLTSub: "(Plus benefits)",
-      workModel: "Remote, Hybrid, or On-site",
-      mobility: "Fully available for travel",
-      nativeLang: "Portuguese (Native)",
-      secondLang: "English (Technical Reading & Documentation)"
-    }
-  },
-  java: {
-    pt: {
-      name: "Bruno Giovani Pereira",
-      subtitle: "Engenheiro de Software Java Pleno/Sênior & Arquiteto",
-      contactInfo: "Guarujá, SP | brunoadmin@guarujainterativo.com.br | +55 (13) 99205-8836",
-      linkedin: "https://linkedin.com/in/beehgiovani",
-      github: "https://github.com/beehgiovani",
-      summary: "Engenheiro de Software Pleno/Sênior especializado no ecossistema Java e Spring Boot, com sólida expertise em arquitetura de sistemas de alta performance e processamento assíncrono. Forte atuação em ambientes de missão crítica, projetando microsserviços escaláveis, implementando Clean Architecture e garantindo alta cobertura de testes automatizados (TDD/BDD). Profundo conhecimento em otimização de bancos de dados relacionais (PostgreSQL) e integração robusta com plataformas cloud (AWS/Azure).",
-      skills: [
-        "<strong>Linguagens:</strong> Java (11 a 21), Kotlin, SQL.",
-        "<strong>Frameworks:</strong> Spring Boot 3, Spring Security, Spring Data JPA, Hibernate.",
-        "<strong>Arquitetura:</strong> Clean Architecture, SOLID, Microsserviços, Event-Driven Architecture (EDA).",
-        "<strong>Dados & Messaging:</strong> PostgreSQL, Redis, Kafka, RabbitMQ, AWS SQS/SNS.",
-        "<strong>Qualidade:</strong> JUnit 5, Mockito, Testcontainers, SonarQube, TDD."
-      ],
-      experience: [
-        {
-          role: "Pleno/Sênior Software Engineer (Java) | Soo Tech (Híbrido)",
-          date: "Janeiro 2024 — Presente",
-          link: "https://github.com/beehgiovani/PharmaFlow",
-          bullets: [
-            "Projetou e implementou microsserviços distribuídos utilizando Spring Boot 3 e Java 17+.",
-            "Liderou o refactoring de sistemas legados para Clean Architecture, isolando lógicas de domínio.",
-            "Otimizou rotinas assíncronas e queries SQL (PostgreSQL), reduzindo latências em 40%."
-          ]
-        },
-        {
-          role: "Arquiteto de Soluções & Backend Engineer | GuaruGeo",
-          date: "2023 — Presente",
-          link: "https://github.com/beehgiovani/GuarujaInterativo",
-          bullets: [
-            "Desenvolvimento do core backend de um ecossistema GIS voltado à inteligência imobiliária.",
-            "Construção de APIs REST robustas integradas com processamento de dados geográficos (PostGIS)."
-          ]
-        }
-      ],
-      education: relevantEducationPt,
-      salaryB2B: "R$ 10.000,00 - R$ 12.000,00 | $ 4,000 - $ 6,500 USD",
-      salaryB2BSub: "R$ 60,00 - R$ 75,00/h | $ 25.00 - $ 45.00/h",
-      salaryCLT: "R$ 8.000,00 - R$ 9.500,00",
-      salaryCLTSub: "(Mais benefícios)",
-      workModel: "Remoto, Híbrido ou Presencial",
-      mobility: "Disponível para viagens",
-      nativeLang: "Português (Nativo)",
-      secondLang: "Inglês (Leitura Técnica e Documentação)"
-    },
-    en: {
-      name: "Bruno Giovani Pereira",
-      subtitle: "Mid/Senior Java Software Engineer & Architect",
-      contactInfo: "Guarujá, SP | brunoadmin@guarujainterativo.com.br | +55 (13) 99205-8836",
-      linkedin: "https://linkedin.com/in/beehgiovani",
-      github: "https://github.com/beehgiovani",
-      summary: "Mid/Senior Software Engineer specialized in the Java and Spring Boot ecosystem, with solid expertise in high-performance system architecture and asynchronous processing. Strong background in mission-critical environments, designing scalable microservices, implementing Clean Architecture, and ensuring high automated test coverage (TDD/BDD). Deep knowledge in relational database optimization (PostgreSQL) and robust integration with cloud platforms (AWS/Azure).",
-      skills: [
-        "<strong>Languages:</strong> Java (11 to 21), Kotlin, SQL.",
-        "<strong>Frameworks:</strong> Spring Boot 3, Spring Security, Spring Data JPA, Hibernate.",
-        "<strong>Architecture:</strong> Clean Architecture, SOLID, Microservices, Event-Driven Architecture (EDA).",
-        "<strong>Data & Messaging:</strong> PostgreSQL, Redis, Kafka, RabbitMQ, AWS SQS/SNS.",
-        "<strong>Quality:</strong> JUnit 5, Mockito, Testcontainers, SonarQube, TDD."
-      ],
-      experience: [
-        {
-          role: "Back-End Engineer | PredictMed",
-          date: "March 2026 — October 2026",
-          link: "https://github.com/beehgiovani/predictmed",
-          bullets: [
-            "Architecture of asynchronous integration layers for B2B predictive health SaaS.",
-            "Implementation of resilient and scalable data flows for real-time processing."
-          ]
-        },
-        {
-          role: "Mid/Senior Software Engineer (Java) | Soo Tech (Hybrid)",
-          date: "January 2024 — Present",
-          link: "https://github.com/beehgiovani/PharmaFlow",
-          bullets: [
-            "Designed and implemented distributed microservices using Spring Boot 3 and Java 17+.",
-            "Led legacy system refactoring to Clean Architecture, isolating domain logic.",
-            "Optimized asynchronous routines and SQL queries (PostgreSQL), reducing latency by 40%."
-          ]
-        },
-        {
-          role: "Solutions Architect & Backend Engineer | GuaruGeo",
-          date: "2023 — Present",
-          link: "https://github.com/beehgiovani/GuarujaInterativo",
-          bullets: [
-            "Development of the core backend for a GIS ecosystem focused on real estate intelligence.",
-            "Construction of robust REST APIs integrated with geographic data processing (PostGIS)."
-          ]
-        }
-      ],
-      education: relevantEducationEn,
-      salaryB2B: "$ 4,000 - $ 6,500 USD | R$ 10,000 - R$ 12,000",
-      salaryB2BSub: "$ 25.00 - $ 45.00/h | R$ 60.00 - R$ 75.00/h",
-      salaryCLT: "R$ 8,000.00 - R$ 9.500.00",
-      salaryCLTSub: "(Plus benefits)",
-      workModel: "Remote, Hybrid or On-site",
-      mobility: "Fully available for travel",
-      nativeLang: "Portuguese (Native)",
-      secondLang: "English (Technical Reading & Documentation)"
-    }
-  },
-  kotlin: {
-    pt: {
-      name: "Bruno Giovani Pereira",
-      subtitle: "Especialista Kotlin Pleno/Sênior & Mobile Backend",
-      contactInfo: "Guarujá, SP | brunoadmin@guarujainterativo.com.br | +55 (13) 99205-8836",
-      linkedin: "https://linkedin.com/in/beehgiovani",
-      github: "https://github.com/beehgiovani",
-      summary: "Arquiteto Pleno/Sênior especializado em ecossistema Kotlin, com forte atuação em desenvolvimento Android Nativo e Backend escalável. Expert em Kotlin Coroutines, Flow e Ktor. Sólida experiência na construção de aplicações offline-first com alta complexidade de dados e interfaces reativas (Jetpack Compose). Especialista em Clean Architecture e SOLID, focado na entrega de software resiliente e de alta performance.",
-      skills: [
-        "<strong>Linguagens:</strong> Kotlin (Avançado), Java, SQL.",
-        "<strong>Mobile Android:</strong> Jetpack Compose, ViewModels, Room DB, Retrofit, WorkManager, Hilt/Koin.",
-        "<strong>Backend Kotlin:</strong> Spring Boot 3, Ktor, Hibernate, Exposed ORM.",
-        "<strong>Arquitetura:</strong> Clean Architecture, MVVM, MVI, SOLID, Design Patterns.",
-        "<strong>Infra:</strong> Docker, AWS, Firebase, CI/CD (GitHub Actions)."
-      ],
-      experience: [
-        {
-          role: "Kotlin Specialist | Lúmen Web",
-          date: "2025 — Fevereiro 2026",
+          role: "Lúmen | Experimento Web e Android",
+          date: "Maio de 2026",
           link: "https://github.com/beehgiovani/lumen",
           bullets: [
-            "Arquitetura de engine de processamento de áudio em tempo real usando Kotlin nativo.",
-            "Integração de visão computacional com processamento assíncrono de alta performance."
-          ]
-        },
-        {
-          role: "Pleno/Sênior Software Engineer (Kotlin) | Soo Tech (Híbrido)",
-          date: "Janeiro 2024 — Presente",
-          link: "https://github.com/beehgiovani/PharmaFlow",
-          bullets: [
-            "Atuação como Lead Engineer implementando serviços resilientes com Spring Boot em Kotlin.",
-            "Usufruindo da forte tipagem e segurança contra nulos (Null-safety) do Kotlin para reduzir bugs em produção.",
-            "Design de arquitetura corporativa Clean e princípios SOLID focados no backend corporativo."
-          ]
-        },
-        {
-          role: "Arquiteto Full-Stack | GuaruGeo",
-          date: "2023 — Presente",
-          link: "https://github.com/beehgiovani/GuarujaInterativo",
-          bullets: [
-            "Integração de serviços móveis com backend geográfico distribuído.",
-            "Processamento assíncrono de dados massivos para aplicações GIS de inteligência imobiliária."
+            "Organizei uma base Android multimódulo com Compose, separando domínio, visão, UI comum e desenho.",
+            "O projeto permanece experimental e não é apresentado como aplicativo em produção."
           ]
         }
-      ],
-      education: relevantEducationPt,
-      salaryB2B: "R$ 10.000,00 - R$ 12.000,00 | $ 4,000 - $ 6,500 USD",
-      salaryB2BSub: "R$ 60,00 - R$ 75,00/h | $ 25.00 - $ 45.00/h",
-      salaryCLT: "R$ 8.000,00 - R$ 9.500,00",
-      salaryCLTSub: "(Mais benefícios)",
-      workModel: "Remoto, Híbrido ou Presencial",
-      mobility: "Disponibilidade total",
-      nativeLang: "Português (Nativo)",
-      secondLang: "Inglês (Leitura Técnica e Documentação)"
+      ]
     },
     en: {
-      name: "Bruno Giovani Pereira",
-      subtitle: "Mid/Senior Kotlin & Mobile Backend Specialist",
-      contactInfo: "Guarujá, SP | brunoadmin@guarujainterativo.com.br | +55 (13) 99205-8836",
-      linkedin: "https://linkedin.com/in/beehgiovani",
-      github: "https://github.com/beehgiovani",
-      summary: "Mid/Senior Architect specialized in the Kotlin ecosystem, with strong focus on Native Android development and scalable Backend. Expert in Kotlin Coroutines, Flow, and Ktor. Solid experience building offline-first applications with high data complexity and reactive interfaces (Jetpack Compose). Specialist in Clean Architecture and SOLID, focused on delivering resilient, high-performance software.",
+      ...commonEn,
+      subtitle: "Android Developer | Kotlin and Jetpack Compose",
+      summary: "Android developer with hands-on experience in Kotlin, Jetpack Compose, Coroutines/Flow, local persistence, and Supabase/Firebase integrations. My projects include a synchronized rules-based card game, an operational delivery app, and visual-creation tools. I am looking to contribute to maintenance, screen implementation, API consumption, testing, and app evolution within a team.",
       skills: [
-        "<strong>Languages:</strong> Kotlin (Advanced), Java, SQL.",
-        "<strong>Mobile Android:</strong> Jetpack Compose, ViewModels, Room DB, Retrofit, WorkManager, Hilt/Koin.",
-        "<strong>Backend Kotlin:</strong> Spring Boot 3, Ktor, Hibernate, Exposed ORM.",
-        "<strong>Architecture:</strong> Clean Architecture, MVVM, MVI, SOLID, Design Patterns.",
-        "<strong>Infra:</strong> Docker, AWS, Firebase, CI/CD (GitHub Actions)."
+        "<strong>Android:</strong> Kotlin, Jetpack Compose, Material 3, ViewModel, and Navigation.",
+        "<strong>Async and state:</strong> Coroutines, Flow, serialization, and UI state management.",
+        "<strong>Data:</strong> Room, DataStore, Supabase Auth/PostgREST/Realtime, and Firebase.",
+        "<strong>Networking:</strong> Ktor/OkHttp, TCP sockets, NSD discovery, and HTTP API integration.",
+        "<strong>Quality:</strong> JUnit, instrumented tests, Gradle, debug/release builds, and technical documentation."
       ],
       experience: [
         {
-          role: "Kotlin Specialist | Lúmen Web",
-          date: "2025 — February 2026",
+          role: "Carteado BR | Android card game",
+          date: "July — August 2026",
+          link: "https://github.com/beehgiovani/CachetaBuraco",
+          bullets: [
+            "Implemented Cacheta, Buraco, and Tranca rules in an engine separated from the Compose UI.",
+            "Created interchangeable transports for a local bot, Wi-Fi, and a Supabase Realtime online beta.",
+            "Modeled public state and private player information, idempotent events, reconnection, and unit tests."
+          ]
+        },
+        {
+          role: "FarmaDelivery | Android delivery app",
+          date: "May 2026",
+          link: "https://github.com/beehgiovani/FarmaDelivery",
+          bullets: [
+            "Built the courier Android client within a monorepo that also includes an API, dashboard, and PWA.",
+            "Worked with authentication, delivery tracking, location, notifications, and contracts shared with the backend."
+          ]
+        },
+        {
+          role: "MarketPoster | Android retail editor",
+          date: "December 2025",
+          link: "https://github.com/beehgiovani/MarketPoster",
+          bullets: [
+            "Built visual-composition flows, Room/DataStore persistence, and CSV/XLSX imports.",
+            "Integrated Hilt, WorkManager, Firebase, and experimental ML Kit image segmentation."
+          ]
+        },
+        {
+          role: "Lúmen | Web and Android experiment",
+          date: "May 2026",
           link: "https://github.com/beehgiovani/lumen",
           bullets: [
-            "Architecture of a real-time audio processing engine using native Kotlin.",
-            "Integration of computer vision with high-performance asynchronous processing."
-          ]
-        },
-        {
-          role: "Mid/Senior Software Engineer (Kotlin) | Soo Tech (Hybrid)",
-          date: "January 2024 — Present",
-          link: "https://github.com/beehgiovani/PharmaFlow",
-          bullets: [
-            "Leading Engineer implementing resilient services with Spring Boot in Kotlin.",
-            "Leveraging Kotlin's strong typing and null-safety to significantly reduce production bugs.",
-            "Enterprise Clean Architecture design and SOLID principles focused on corporate backend."
-          ]
-        },
-        {
-          role: "Full-Stack Architect | GuaruGeo",
-          date: "2023 — Present",
-          link: "https://github.com/beehgiovani/GuarujaInterativo",
-          bullets: [
-            "Integration of mobile services with distributed geographic backends.",
-            "Asynchronous processing of massive data for real estate intelligence GIS applications."
+            "Organized a multi-module Android foundation with Compose, separating domain, vision, common UI, and drawing.",
+            "The project remains experimental and is not presented as a production application."
           ]
         }
-      ],
-      education: relevantEducationPt,
-      salaryB2B: "$ 4,000 - $ 6,500 USD | R$ 10,000 - R$ 12,000",
-      salaryB2BSub: "$ 25.00 - $ 45.00/h | R$ 60.00 - R$ 75.00/h",
-      salaryCLT: "R$ 8,000.00 - R$ 9.500.00",
-      salaryCLTSub: "(Plus benefits)",
-      workModel: "Remote, Hybrid or On-site",
-      mobility: "Fully available",
-      nativeLang: "Portuguese (Native)",
-      secondLang: "English (Technical Reading & Documentation)"
+      ]
     }
   },
-  python: {
+  data: {
     pt: {
-      name: "Bruno Giovani Pereira",
-      subtitle: "Especialista Python Pleno/Sênior, IA & Automação",
-      contactInfo: "Guarujá, SP | brunoadmin@guarujainterativo.com.br | +55 (13) 99205-8836",
-      linkedin: "https://linkedin.com/in/beehgiovani",
-      github: "https://github.com/beehgiovani",
-      summary: "Arquiteto Python Pleno/Sênior com foco em Automação Extrema, Engenharia de Dados e Inteligência Artificial Aplicada. Expert na construção de scrapers de alta complexidade (Headless Browsing), modelos de Visão Computacional (Neural OCR) e pipelines de dados GIS massivos. Especialista em processamento assíncrono (Asyncio/Celery) e integração de APIs resilientes. Forte histórico na redução de custos operacionais (OPEX) através da automação inteligente.",
+      ...commonPt,
+      subtitle: "Desenvolvedor Python | Automação, Dados e GIS",
+      summary: "Desenvolvedor com prática em Python para automação web, coleta controlada de dados públicos, tratamento de arquivos e fluxos geográficos. Trabalho com Playwright, requests, pandas, GeoJSON e serviços WFS, sempre separando ferramentas de coleta das aplicações finais. Busco oportunidades em automação, integrações, dados ou GIS, com atenção a limites de acesso, privacidade e reexecução segura.",
       skills: [
-        "<strong>Linguagens:</strong> Python 3.12+ (Avançado), SQL, Bash.",
-        "<strong>Data & IA:</strong> Pandas, NumPy, Scikit-learn, PyTorch, OpenCV, LangChain.",
-        "<strong>Automação & Scraping:</strong> Playwright, Selenium, Scrapy, BeautifulSoup, validação de dados públicos.",
-        "<strong>Backend & APIs:</strong> FastAPI, Flask, Pydantic, Webhooks.",
-        "<strong>Infra:</strong> AWS (Lambda, S3), Docker, Linux Scripting, CI/CD."
+        "<strong>Python:</strong> scripts reexecutáveis, requests, pandas, processamento de arquivos e organização de dados.",
+        "<strong>Automação:</strong> Playwright, navegação controlada, retries, logs e experimentos de OCR.",
+        "<strong>GIS:</strong> GeoJSON, WFS/WMS, Leaflet, PostGIS, conversão e validação espacial.",
+        "<strong>Integrações:</strong> APIs REST, Supabase/PostgreSQL, armazenamento e rotinas agendadas.",
+        "<strong>Cuidados:</strong> variáveis de ambiente, não persistência de credenciais, limites de taxa e documentação de origem."
       ],
       experience: [
         {
-          role: "Lead Developer - Automação & Data Engineering | Cimed",
-          date: "Janeiro 2024 — Março 2026",
-          link: "https://github.com/beehgiovani/MarketPoster",
+          role: "Guarujá Interativo | Dados geográficos e aplicação GIS",
+          date: "2026",
+          link: "https://github.com/beehgiovani/GuarujaInterativo",
           bullets: [
-            "Arquitetura de pipeline de extração massiva de dados para forecasting industrial.",
-            "Automatização total de processos logísticos, economizando centenas de horas mensais."
+            "Organizei dados de lotes e unidades para busca e visualização em uma aplicação Leaflet.",
+            "Separei bases e ferramentas de coleta da aplicação publicada, mantendo dados sensíveis fora do repositório."
           ]
         },
         {
-          role: "IA Engineer | OmniTrace",
-          date: "2024 — Dezembro 2025",
-          link: "https://github.com/beehgiovani/guaruja-email-monitor",
-          bullets: [
-            "Desenvolvimento de sistema de governança de IA focado em controle de custos e políticas.",
-            "Criação de ferramentas CLI em Python para automação de workflow de desenvolvedores.",
-            "Integração de LLMs (GPT/Gemini) para análise automatizada de logs e segurança."
-          ]
-        },
-        {
-          role: "MetroMar GIS Intelligence | Data Architect",
-          date: "2023 — 2024",
-          link: "https://github.com/beehgiovani/InteractiveMap",
-          bullets: [
-            "Desenvolvimento de arquitetura de dados para engine geográfica de alta performance.",
-            "Normalização de datasets complexos para visualização em tempo real de margens metropolitanas."
-          ]
-        },
-        {
-          role: "Pleno/Sênior Python Engineer | Soo Tech (Híbrido)",
-          date: "Janeiro 2024 — Presente",
-          link: "https://github.com/beehgiovani/PharmaFlow",
-          bullets: [
-            "Liderança na transição de SPAs legadas para micro-frontends modernos em React/TypeScript.",
-            "Otimização de bundle e renderização (60% melhoria no Lighthouse) e redução de 25% no churn.",
-            "Desenvolvimento de Design System interno para padronização de interfaces em múltiplos produtos SaaS."
-          ]
-        },
-        {
-          role: "Arquiteto de Dados / GIS | GuaruGeo",
-          date: "2023 — Presente",
+          role: "MetroMarGeo | Ferramentas de coleta geográfica",
+          date: "Abril de 2026",
           link: "https://github.com/beehgiovani/SpLitoralScraping",
           bullets: [
-            "Desenvolvimento de scrapers governamentais para coleta de dados tributários e imobiliários.",
-            "Criação da primeira visão unificada de dados do litoral paulista através de inteligência geográfica."
+            "Criei scripts para consultar serviços públicos de geoprocessamento e exportar dados por município.",
+            "Documentei dependências, saídas e limites; rotinas que dependem de portais externos precisam ser verificadas antes de nova execução."
+          ]
+        },
+        {
+          role: "Automação de certidões | Protótipo técnico",
+          date: "Abril de 2026",
+          link: "https://github.com/beehgiovani/CertidaoGuaru",
+          bullets: [
+            "Experimentei Playwright, OCR e processamento em lote para automatizar tarefas repetitivas em portais públicos.",
+            "O uso depende de autorização, termos de cada serviço, limites de acesso e conferência humana dos documentos."
+          ]
+        },
+        {
+          role: "Colaboração pontual | Agili",
+          date: "2024 — escopo PJ informal concluído",
+          bullets: [
+            "Atuei em automações, manutenção de código e integrações em um escopo pontual.",
+            "A experiência não é apresentada como cargo formal nem como operação de dados em escala comprovada."
           ]
         }
-      ],
-      education: relevantEducationPt,
-      salaryB2B: "R$ 10.000,00 - R$ 12.000,00 | $ 4,000 - $ 6,500 USD",
-      salaryB2BSub: "R$ 60,00 - R$ 75,00/h | $ 25.00 - $ 45.00/h",
-      salaryCLT: "R$ 8.000,00 - R$ 9.500,00",
-      salaryCLTSub: "Mais benefícios",
-      workModel: "Remoto, Híbrido ou Presencial",
-      mobility: "Disponibilidade total",
-      nativeLang: "Português (Nativo)",
-      secondLang: "Inglês (Leitura Técnica e Documentação)"
+      ]
     },
     en: {
-      name: "Bruno Giovani Pereira",
-      subtitle: "Mid/Senior Python Architect, AI & Automation Specialist",
-      contactInfo: "Guarujá, SP | brunoadmin@guarujainterativo.com.br | +55 (13) 99205-8836",
-      linkedin: "https://linkedin.com/in/beehgiovani",
-      github: "https://github.com/beehgiovani",
-      summary: "Mid/Senior Python Architect focused on Extreme Automation, Geospatial Data Engineering, and Applied AI. Expert in building high-complexity scrapers, Computer Vision models (Neural OCR), and massive GIS pipelines. Specialist in Flask and FastAPI for internal tools, leveraging AI-accelerated workflows (LLMs/Copilots) to deliver production-ready solutions with high efficiency and absolute uptime.",
+      ...commonEn,
+      subtitle: "Python Developer | Automation, Data, and GIS",
+      summary: "Developer with hands-on Python experience in web automation, controlled collection of public data, file processing, and geospatial workflows. I work with Playwright, requests, pandas, GeoJSON, and WFS services while keeping collection tooling separate from final applications. I am looking for automation, integration, data, or GIS roles with attention to access limits, privacy, and safe re-execution.",
       skills: [
-        "<strong>Languages:</strong> Python 3.12+ (Advanced), SQL, Bash.",
-        "<strong>Geospatial:</strong> PostGIS, Vector Tiles, GeoPandas, Tippecanoe, Shapefiles.",
-        "<strong>AI & Automation:</strong> Daily use of AI tools (LLMs) for workflow acceleration, Gemini Vision, PyTorch, Playwright.",
-        "<strong>Backend & Cloud:</strong> Python (Flask/FastAPI Expert), AWS (S3, Lambda, EC2), SQL (Advanced PostgreSQL), CI/CD."
+        "<strong>Python:</strong> rerunnable scripts, requests, pandas, file processing, and data organization.",
+        "<strong>Automation:</strong> Playwright, controlled navigation, retries, logging, and OCR experiments.",
+        "<strong>GIS:</strong> GeoJSON, WFS/WMS, Leaflet, PostGIS, conversion, and spatial validation.",
+        "<strong>Integrations:</strong> REST APIs, Supabase/PostgreSQL, storage, and scheduled routines.",
+        "<strong>Safeguards:</strong> environment variables, no credential persistence, rate limits, and source documentation."
       ],
       experience: [
         {
-          role: "Lead Developer - Automation & Data Engineering | Cimed",
-          date: "January 2024 — March 2026",
-          link: "https://github.com/beehgiovani/MarketPoster",
+          role: "Guarujá Interativo | Geospatial data and GIS application",
+          date: "2026",
+          link: "https://github.com/beehgiovani/GuarujaInterativo",
           bullets: [
-            "Architecture of a massive data extraction pipeline for industrial forecasting.",
-            "Full automation of logistics processes, saving hundreds of man-hours monthly."
+            "Organized lot and unit data for search and visualization in a Leaflet application.",
+            "Separated datasets and collection tooling from the published application, keeping sensitive data outside the repository."
           ]
         },
         {
-          role: "AI Engineer | OmniTrace",
-          date: "2024 — December 2025",
-          link: "https://github.com/beehgiovani/guaruja-email-monitor",
-          bullets: [
-            "Development of an AI governance system focused on cost control and policies.",
-            "Creation of Python-based CLI tools to automate developer workflows.",
-            "LLM integration (GPT/Gemini) for automated log analysis and security."
-          ]
-        },
-        {
-          role: "MetroMar GIS Intelligence | Data Architect",
-          date: "2023 — 2024",
-          link: "https://github.com/beehgiovani/InteractiveMap",
-          bullets: [
-            "Data architecture development for high-performance geospatial engines.",
-            "Normalization of complex datasets for real-time visualization of metropolitan margins."
-          ]
-        },
-        {
-          role: "Mid/Senior Python Engineer | Soo Tech (Hybrid)",
-          date: "January 2024 — Present",
-          link: "https://github.com/beehgiovani/PharmaFlow",
-          bullets: [
-            "Designing and maintaining internal tools using Flask to streamline engineering operations.",
-            "Processing massive geospatial datasets using PostGIS and automated data pipelines.",
-            "Integrated AI tools into the development workflow, increasing sprint velocity by 30%."
-          ]
-        },
-        {
-          role: "Data Architect / GIS | GuaruGeo",
-          date: "2023 — Present",
+          role: "MetroMarGeo | Geospatial collection tools",
+          date: "April 2026",
           link: "https://github.com/beehgiovani/SpLitoralScraping",
           bullets: [
-            "Development of government scrapers for tax and real estate data collection.",
-            "Created the first unified data view of the São Paulo coast through geographic intelligence."
+            "Created scripts to query public geoprocessing services and export data by municipality.",
+            "Documented dependencies, outputs, and limitations; routines that depend on external portals must be checked before a new run."
+          ]
+        },
+        {
+          role: "Certificate automation | Technical prototype",
+          date: "April 2026",
+          link: "https://github.com/beehgiovani/CertidaoGuaru",
+          bullets: [
+            "Experimented with Playwright, OCR, and batch processing for repetitive tasks on public portals.",
+            "Use depends on authorization, each service's terms, access limits, and human review of generated documents."
+          ]
+        },
+        {
+          role: "Short-term collaboration | Agili",
+          date: "2024 — completed informal B2B scope",
+          bullets: [
+            "Worked on automation, code maintenance, and integrations in a limited engagement.",
+            "The experience is not presented as a formal title or as proven large-scale data operations."
           ]
         }
-      ],
-      education: relevantEducationEn,
-      salaryB2B: "$ 4,000 - $ 6,500 USD | R$ 10,000 - R$ 12,000",
-      salaryB2BSub: "$ 25.00 - $ 45.00/h | R$ 60.00 - R$ 75.00/h",
-      salaryCLT: "R$ 8,000.00 - R$ 9.500.00",
-      salaryCLTSub: "Plus benefits",
-      workModel: "Remote, Hybrid or On-site",
-      mobility: "Fully available",
-      nativeLang: "Portuguese (Native)",
-      secondLang: "English (Technical Reading & Documentation)"
+      ]
     }
   }
-};
+} satisfies Record<string, Record<'pt' | 'en', ResumeTemplate>>

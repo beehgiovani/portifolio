@@ -9,6 +9,7 @@ export function Hero() {
   return (
     <section className="hero-section-master">
       <motion.div
+        className="hero-content"
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, ease: "easeOut" }}
@@ -24,10 +25,10 @@ export function Hero() {
           {t.hero.tagline}
         </p>
         <div className="hero-tag-container">
-          <span className="tech-tag tag-gold">#Pleno/SeniorFullStack</span>
-          <span className="tech-tag tag-white">#AI_Solutions_Architect</span>
-          <span className="tech-tag tag-muted">#Cloud_Native</span>
-          <span className="tech-tag tag-white">#Geo_Intelligence</span>
+          <span className="tech-tag tag-gold">#React_TypeScript</span>
+          <span className="tech-tag tag-white">#Kotlin_Android</span>
+          <span className="tech-tag tag-muted">#Python_Automation</span>
+          <span className="tech-tag tag-white">#GIS_Data</span>
         </div>
       </motion.div>
     </section>

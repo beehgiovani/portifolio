@@ -28,6 +28,9 @@ public class CorsConfig {
     }
 
     private String[] parseOrigins() {
-        return allowedOrigins.split("\\s*,\\s*");
+        if (allowedOrigins == null || allowedOrigins.trim().isEmpty()) {
+            return new String[] { "http://localhost:5173", "http://127.0.0.1:5173" };
+        }
+        return allowedOrigins.trim().split("\\s*,\\s*");
     }
 }

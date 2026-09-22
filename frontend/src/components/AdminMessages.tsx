@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { Table, RefreshCcw, Mail, User, Calendar, MessageSquare, Phone } from 'lucide-react';
 import { useI18n } from '../hooks/useI18n';
@@ -24,7 +24,7 @@ export function AdminMessages({ onClose, adminToken = '' }: AdminMessagesProps) 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
-  const fetchMessages = async (signal?: AbortSignal) => {
+  const fetchMessages = useCallback(async (signal?: AbortSignal) => {
     setLoading(true);
     setError('');
     try {
@@ -53,7 +53,7 @@ export function AdminMessages({ onClose, adminToken = '' }: AdminMessagesProps) 
     } finally {
       setLoading(false);
     }
-  };
+  }, [adminToken, lang]);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -69,7 +69,7 @@ export function AdminMessages({ onClose, adminToken = '' }: AdminMessagesProps) 
       controller.abort();
       clearTimeout(timeoutId);
     };
-  }, [adminToken, lang]);
+  }, [fetchMessages]);
 
   return (
     <motion.div

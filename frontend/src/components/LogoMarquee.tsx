@@ -5,23 +5,23 @@ export function LogoMarquee() {
 
   const metrics = [
     {
-      value: "100k+",
-      label: lang === 'en' ? "Records processed per hour" : "Registros processados por hora",
+      value: "APIs",
+      label: lang === 'en' ? "REST integrations and data flows" : "Integracoes REST e fluxos de dados",
       glow: "metric-glow-blue"
     },
     {
-      value: "98%",
-      label: lang === 'en' ? "AI Prediction Accuracy" : "Precisão Preventiva via IA",
+      value: "AI",
+      label: lang === 'en' ? "Validation and automation studies" : "Estudos de validacao e automacao",
       glow: "metric-glow-purple"
     },
     {
-      value: "≤ 200ms",
-      label: lang === 'en' ? "WebSocket Sync Latency" : "Latência de Sincronização",
+      value: "Sync",
+      label: lang === 'en' ? "Realtime update experiments" : "Experimentos de atualizacao em tempo real",
       glow: "metric-glow-blue"
     },
     {
-      value: "Sub-metric",
-      label: lang === 'en' ? "GIS Spatial Precision" : "Precisão Espacial GIS",
+      value: "GIS",
+      label: lang === 'en' ? "Maps and geodata practice" : "Pratica com mapas e geodados",
       glow: "metric-glow-purple"
     }
   ];
@@ -47,9 +47,6 @@ export function LogoMarquee() {
           ))}
         </div>
       </div>
-
-
     </div>
   );
 }
-

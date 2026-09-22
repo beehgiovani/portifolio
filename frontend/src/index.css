@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;800&family=Plus+Jakarta+Sans:wght@300;400;600&family=JetBrains+Mono:wght@400;700&display=swap');
 
 :root {
-  /* Premium Slate Palette (Tailwind-inspired) */
+  /* Slate Palette (Tailwind-inspired) */
   --bg-dark-0: #020617;
   /* Slate 950 */
   --bg-dark-1: #0f172a;
@@ -105,6 +105,11 @@ h4 {
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 5%;
+}
+
+section[id],
+.app-footer[id] {
+  scroll-margin-top: 6.5rem;
 }
 
 /* REFACTORED BENTO GRID - NO OVERLAPS */

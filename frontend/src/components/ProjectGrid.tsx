@@ -57,22 +57,16 @@ export function ProjectCard({ project, onSelect, span = false }: { project: Proj
 
 export function ProjectGrid({ onSelect }: { onSelect: (p: Project) => void }) {
   const { t } = useI18n();
-  const seniorProjectKeys = [
-    'predictmed',
+  const featuredProjectKeys = [
+    'farmadelivery',
+    'cachetaburaco',
     'guarugeo',
-    'lumen',
-    'metromargeo',
-    'cimed_experience',
-    'niduscare',
-    'pharmaflow',
-    'certidoesapp',
-    'automacao_scraper',
-    'interactivemap',
-    'emailmonitor',
-    'marketposter'
+    'predictmed',
+    'marketposter',
+    'lumen'
   ];
 
-  const projectList: Project[] = seniorProjectKeys
+  const projectList: Project[] = featuredProjectKeys
     .map((key) => t.projects[key as keyof typeof t.projects] as Project | undefined)
     .filter((project): project is Project => project !== undefined);
 

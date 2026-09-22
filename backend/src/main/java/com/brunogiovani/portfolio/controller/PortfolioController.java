@@ -23,7 +23,7 @@ import java.util.HexFormat;
 @RequestMapping("/api/portfolio")
 public class PortfolioController {
 
-    private static final String FRONTEND_ADMIN_HASH = "fc79fc22787172c45089fdfec21c03161980c8ccbc2979ca24bcfaaf607d3349";
+    private static final String FRONTEND_ADMIN_HASH = "baa93941b068ab3d4d6031d2825fe2f5aeac1ba3083a212c0a37edd3f614ab7b";
 
     private final ContactService contactService;
     private final String adminToken;

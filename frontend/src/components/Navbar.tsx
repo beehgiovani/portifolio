@@ -26,23 +26,23 @@ export function Navbar({ onShowAdmin, onShowResume, isAdmin }: { onShowAdmin: ()
             <span>{lang === 'en' ? 'EN' : 'PT'}</span>
           </button>
 
+          <button
+            onClick={onShowResume}
+            className="navbar-lang-btn navbar-resume-btn"
+            title={lang === 'en' ? 'Role-specific resumes' : 'Currículos por objetivo'}
+          >
+            <FileText size={16} />
+            <span>{lang === 'en' ? 'Resumes' : 'Currículos'}</span>
+          </button>
+
           {isAdmin && (
-            <>
-              <button 
-                onClick={onShowResume}
-                className="navbar-lang-btn navbar-admin-btn"
-                title="Resume Manager"
-              >
-                <FileText size={16} />
-              </button>
-              <button 
-                onClick={onShowAdmin}
-                className="navbar-lang-btn navbar-admin-btn"
-                title="Admin Messages"
-              >
-                <Settings size={16} />
-              </button>
-            </>
+            <button
+              onClick={onShowAdmin}
+              className="navbar-lang-btn navbar-admin-btn"
+              title="Admin Messages"
+            >
+              <Settings size={16} />
+            </button>
           )}
         </div>
       </div>

@@ -1,6 +1,5 @@
 export interface Project {
   screenshots?: string[];
-  codeSnippets?: { title: string, language: string, code: string }[];
   title: string;
   logo?: string;
   impact: string;
@@ -16,8 +15,6 @@ export interface Project {
     businessImpact?: string;
     technicalChallenges?: string;
   };
-  codeSnippet?: string;
-  codeLanguage?: string;
 }
 
 export type Language = 'en' | 'pt';
